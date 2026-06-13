@@ -1,35 +1,29 @@
 # Sisaemdal Tools
 
-Cloudflare에서 구매한 `sisaemdal.com`을 기준으로 만든 사이트 패키지입니다.
+Sisaemdal Tools는 브라우저에서 바로 사용할 수 있는 무료 온라인 웹 도구 모음입니다.
 
-## 구성
+현재는 PDF 관련 도구를 제공하며, 앞으로 이미지, 텍스트, QR 코드 등 다양한 웹 도구를 추가할 예정입니다.
 
-- `index.html`: 루트 홈페이지. `https://sisaemdal.com/` 접속 시 가장 먼저 보이는 범용 도구 모음 홈입니다.
-- `pdf-tools.html`: PDF Tools 소개/기능 선택 페이지입니다.
-- `standalone.html`: 실제 PDF 도구 실행 페이지입니다.
-- `about.html`: 사이트 소개입니다.
-- `privacy.html`: 개인정보처리방침입니다.
-- `terms.html`: 이용약관입니다.
-- `contact.html`: GitHub Issues 문의 페이지입니다.
-- `sitemap.xml`: 검색엔진 제출용 사이트맵입니다.
-- `robots.txt`: 검색엔진 크롤링 안내 파일입니다.
-- `_headers`: Cloudflare Pages 보안 헤더 예시입니다.
-- `_redirects`: `www` 및 짧은 경로 리다이렉트 예시입니다.
-- `ads.txt.sample`: AdSense 승인 후 사용할 ads.txt 샘플입니다.
+## 제공 기능
 
-## 배포 전 확인
+* PDF 암호 설정 및 해제
+* PDF 병합 및 분할
+* PDF 페이지 회전
+* PDF를 이미지로 변환
+* 이미지를 PDF로 변환
+* PDF와 Excel 간 기본 변환
 
-1. Cloudflare Pages 또는 Workers Custom Domain에 `sisaemdal.com`을 연결합니다.
-2. 대표 주소는 `https://sisaemdal.com/`으로 통일하는 것을 권장합니다.
-3. `https://www.sisaemdal.com/`은 `https://sisaemdal.com/`으로 리다이렉트하세요.
-4. GitHub Issues 문의 주소는 `https://github.com/sisaem/tools/issues`로 반영되어 있습니다.
-5. AdSense 승인 후 `ads.txt.sample`의 Publisher ID를 실제 값으로 교체하고 파일명을 `ads.txt`로 변경하세요.
+## 특징
 
-## 추천 URL 구조
+* 별도 프로그램 설치 없이 브라우저에서 사용
+* 직관적인 카드형 인터페이스
+* 대부분의 작업을 사용자 브라우저에서 처리
+* 간단한 문서 작업에 적합한 무료 도구
 
-- 홈: https://sisaemdal.com/
-- PDF Tools: https://sisaemdal.com/pdf-tools.html
-- PDF 도구 실행: https://sisaemdal.com/standalone.html
-- 개인정보처리방침: https://sisaemdal.com/privacy.html
-- 이용약관: https://sisaemdal.com/terms.html
-- 문의: https://sisaemdal.com/contact.html
+## 문의 및 오류 제보
+
+오류 제보나 기능 제안은 GitHub Issues를 통해 남겨주세요.
+
+https://github.com/sisaem/tools/issues
+
+문의 시 개인정보, 비밀번호, 원본 PDF 파일 등 민감한 정보는 포함하지 말아 주세요.
