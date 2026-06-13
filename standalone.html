@@ -3,7 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Password Remover</title>
+    <title>무료 PDF 편집 도구 - 암호·병합·분할·회전·변환 | PDF Tools</title>
+    <meta name="description" content="브라우저에서 PDF 암호 설정과 해제, 병합, 분할, 회전, PDF 이미지 변환, PDF Excel 변환을 처리하는 무료 PDF 편집 도구입니다.">
+    <meta name="keywords" content="무료 PDF 편집, PDF 암호 해제, PDF 암호 설정, PDF 병합, PDF 분할, PDF 회전, PDF JPG 변환, PDF Excel 변환">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Sisaemdal Tools">
+    <link rel="canonical" href="https://sisaemdal.com/standalone.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:title" content="무료 PDF 편집 도구 | PDF Tools">
+    <meta property="og:description" content="PDF 암호, 병합, 분할, 회전, 이미지 변환, Excel 변환을 브라우저에서 바로 처리하세요.">
+    <meta property="og:url" content="https://sisaemdal.com/standalone.html">
+    <meta property="og:site_name" content="Sisaemdal Tools">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="무료 PDF 편집 도구 | PDF Tools">
+    <meta name="twitter:description" content="설치 없이 브라우저에서 PDF를 편집하고 변환하는 무료 도구입니다.">
+    <!-- AdSense 승인 후 아래 형식으로 자동 광고 스크립트를 추가하세요. ca-pub 값은 본인의 Publisher ID로 교체해야 합니다.
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PDF Tools",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "url": "https://sisaemdal.com/standalone.html",
+      "inLanguage": "ko-KR",
+      "description": "PDF 암호 관리, 병합, 분할, 회전, 이미지 변환, Excel 변환을 제공하는 무료 브라우저 기반 PDF 도구입니다.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"}
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -550,6 +580,58 @@
             100% { transform: rotate(360deg); }
         }
 
+
+
+        .tool-nav, .tool-footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .tool-nav a, .tool-footer-links a {
+            color: #6B7280;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .tool-nav a {
+            border: 1px solid #E5E7EB;
+            border-radius: 999px;
+            padding: 8px 14px;
+            background: #F9FAFB;
+        }
+
+        .tool-nav a:hover, .tool-footer-links a:hover {
+            color: #8B5CF6;
+        }
+
+        .site-footer {
+            background: white;
+            padding: 28px 20px 34px;
+            text-align: center;
+            border-top: 1px solid #E5E7EB;
+            color: #6B7280;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .tool-footer-links {
+            margin: 0 0 12px;
+        }
+
+        .seo-summary {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-top: 20px;
+            color: #4B5563;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 0;
@@ -587,12 +669,23 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="index.html" class="home-button" id="homeButton">
+            <a href="pdf-tools.html" class="home-button" id="homeButton">
                 <span>←</span>
-                <span>홈으로</span>
+                <span>PDF 도구 홈</span>
             </a>
             <h1 id="pageTitle">🛠️ PDF Tools</h1>
-            <p class="subtitle" id="pageSubtitle">PDF 암호 해제, 병합, 분할을 한 곳에서</p>
+            <p class="subtitle" id="pageSubtitle">PDF 암호 해제, 병합, 분할, 회전, 변환을 한 곳에서</p>
+            <nav class="tool-nav" aria-label="주요 메뉴">
+                <a href="index.html">Sisaemdal 홈</a>
+                <a href="pdf-tools.html">PDF Tools</a>
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+                <a href="contact.html">문의</a>
+            </nav>
+            <div class="seo-summary">
+                PDF Tools는 파일을 사용자의 브라우저에서 처리하는 무료 PDF 유틸리티입니다. 암호 관리, 병합, 분할, 회전, 이미지 변환, 기본 Excel 변환 기능을 제공합니다.
+            </div>
         </div>
 
         <!-- 탭 버튼 -->
@@ -1310,6 +1403,19 @@
             </div>
             <!-- 탭 5 끝 -->
         </div>
+
+        <footer class="site-footer">
+            <div class="tool-footer-links" aria-label="푸터 메뉴">
+                <a href="index.html">Sisaemdal 홈</a>
+                <a href="pdf-tools.html">PDF Tools</a>
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+                <a href="contact.html">문의</a>
+                <a href="sitemap.xml">사이트맵</a>
+            </div>
+            <p>© 2026 Sisaemdal Tools. 선택한 파일은 브라우저에서 처리되며, 민감한 문서는 사용 후 안전하게 관리하세요.</p>
+        </footer>
     </div>
 
     <!-- 암호 입력 모달 -->
@@ -2923,8 +3029,8 @@
                                     label.classList.remove('selected');
                                 }
                             });
-                            document.getElementById('pdf-to-image-content').style.display = config.mode === 'pdf-to-image' ? 'block' : 'none';
-                            document.getElementById('image-to-pdf-content').style.display = config.mode === 'image-to-pdf' ? 'block' : 'none';
+                            document.getElementById('convert-pdf-to-image').style.display = config.mode === 'pdf-to-image' ? 'block' : 'none';
+                            document.getElementById('convert-image-to-pdf').style.display = config.mode === 'image-to-pdf' ? 'block' : 'none';
                         }
                     }
                 }

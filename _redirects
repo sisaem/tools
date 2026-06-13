@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+https://www.sisaemdal.com/* https://sisaemdal.com/:splat 301
+/pdf-tools /pdf-tools.html 301
+/pdf-tools/ /pdf-tools.html 301
