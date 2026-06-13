@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools - 무료 온라인 PDF 도구</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #4a5568;
+            font-weight: 400;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 40px;
+        }
+
+        .icon-password {
+            background: #FFE5E5;
+        }
+
+        .icon-merge-split {
+            background: #E5F3FF;
+        }
+
+        .icon-rotate {
+            background: #FFF5E5;
+        }
+
+        .icon-convert {
+            background: #F0E5FF;
+        }
+
+        .icon-excel {
+            background: #E5FFEF;
+        }
+
+        .tool-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .tool-description {
+            font-size: 15px;
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tool-card {
+                padding: 30px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 PDF Tools</h1>
+            <p class="subtitle">브라우저에서 바로 사용하는 무료 PDF 도구 모음</p>
+        </header>
+
+        <div class="tools-grid">
+            <a href="standalone.html?tab=password" class="tool-card">
+                <div class="icon-wrapper icon-password">🔐</div>
+                <h2 class="tool-title">PDF 암호 관리</h2>
+                <p class="tool-description">PDF 파일의 암호를 설정하거나 해제하여 보안을 관리하세요</p>
+            </a>
+
+            <a href="standalone.html?tab=merge-split" class="tool-card">
+                <div class="icon-wrapper icon-merge-split">📑</div>
+                <h2 class="tool-title">PDF 병합/분할</h2>
+                <p class="tool-description">여러 PDF를 하나로 병합하거나, 하나의 PDF를 여러 개로 분할하세요</p>
+            </a>
+
+            <a href="standalone.html?tab=rotate" class="tool-card">
+                <div class="icon-wrapper icon-rotate">🔄</div>
+                <h2 class="tool-title">PDF 회전</h2>
+                <p class="tool-description">PDF 페이지를 원하는 각도로 회전하고 미리보기로 확인하세요</p>
+            </a>
+
+            <a href="standalone.html?tab=convert" class="tool-card">
+                <div class="icon-wrapper icon-convert">🔀</div>
+                <h2 class="tool-title">PDF ↔ 이미지</h2>
+                <p class="tool-description">PDF를 이미지로 변환하거나, 이미지를 PDF로 변환하세요</p>
+            </a>
+
+            <a href="standalone.html?tab=excel" class="tool-card">
+                <div class="icon-wrapper icon-excel">📊</div>
+                <h2 class="tool-title">PDF ↔ Excel</h2>
+                <p class="tool-description">PDF를 Excel로 변환하거나, Excel을 PDF로 변환하세요 (기본 표 구조만 지원)</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,3332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Password Remover</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background: #F8F9FA;
+            max-width: 950px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #E5E7EB;
+            color: #6B7280;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-button:hover {
+            background: #F9FAFB;
+            border-color: #8B5CF6;
+            color: #8B5CF6;
+            transform: translateY(-50%) translateX(-2px);
+        }
+
+        .home-button.show {
+            display: flex;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #6B7280;
+            font-size: 16px;
+        }
+
+        .tabs {
+            display: flex;
+            background: white;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .tabs.hidden {
+            display: none;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 20px;
+            border: none;
+            background: white;
+            color: #6B7280;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-button:hover {
+            background: #F9FAFB;
+            color: #1F2937;
+        }
+
+        .tab-button.active {
+            color: #8B5CF6;
+            border-bottom-color: #8B5CF6;
+            background: #F9FAFB;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .main-content {
+            padding: 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1F2937;
+        }
+
+        .file-badge {
+            background: #EDE9FE;
+            color: #7C3AED;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .drop-zone {
+            border: 3px dashed #E5E7EB;
+            border-radius: 16px;
+            padding: 50px 20px;
+            text-align: center;
+            background: #F9FAFB;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .drop-zone:hover, .drop-zone.drag-over {
+            border-color: #8B5CF6;
+            background: #EDE9FE;
+        }
+
+        .drop-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .drop-text {
+            color: #6B7280;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .file-list {
+            background: #F9FAFB;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 120px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 8px;
+            align-items: center;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .file-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .file-name {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-status {
+            font-size: 24px;
+            width: 32px;
+            text-align: center;
+        }
+
+        .file-remove {
+            background: transparent;
+            border: none;
+            color: #EF4444;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px;
+            margin: 0;
+            border-radius: 5px;
+            transition: all 0.2s;
+            width: 60px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .file-remove:hover {
+            background: #FEE2E2;
+            transform: scale(1.05);
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #9CA3AF;
+            padding: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #6B7280;
+            border: 2px solid #E5E7EB;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #F3F4F6;
+        }
+
+        .btn-danger {
+            background: transparent;
+            color: #EF4444;
+            border: 2px solid #E5E7EB;
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #FEE2E2;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .process-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .process-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+        }
+
+        .progress-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+        }
+
+        .status-text {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            background: #F3F4F6;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        label {
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: #EDE9FE;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-icon {
+            font-size: 28px;
+        }
+
+        .modal-filename {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1F2937;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .modal-label {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .radio-option:hover {
+            border-color: #8B5CF6;
+            background: #F9FAFB;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .radio-option.selected {
+            border-color: #8B5CF6;
+            background: #EDE9FE;
+        }
+
+        .radio-label {
+            flex: 1;
+        }
+
+        .radio-title {
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 2px;
+        }
+
+        .radio-desc {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .spinner {
+            border: 4px solid #F3F4F6;
+            border-top: 4px solid #8B5CF6;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        .spinner.show {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .home-button {
+                left: 15px;
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="home-button" id="homeButton">
+                <span>←</span>
+                <span>홈으로</span>
+            </a>
+            <h1 id="pageTitle">🛠️ PDF Tools</h1>
+            <p class="subtitle" id="pageSubtitle">PDF 암호 해제, 병합, 분할을 한 곳에서</p>
+        </div>
+
+        <!-- 탭 버튼 -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('password')">
+                <span>🔐</span>
+                <span>암호 관리</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('merge-split')">
+                <span>📑</span>
+                <span>병합/분할</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('rotate')">
+                <span>🔄</span>
+                <span>회전</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('convert')">
+                <span>🖼️</span>
+                <span>변환</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('excel')">
+                <span>📊</span>
+                <span>Excel</span>
+            </button>
+        </div>
+
+        <div class="main-content">
+            <!-- 탭 1: 암호 관리 -->
+            <div id="tab-password" class="tab-content active">
+                <!-- 모드 선택 -->
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 20px;">
+                        <span>🔐</span>
+                        <span>기능 선택</span>
+                    </div>
+
+                    <div class="radio-group">
+                        <label class="radio-option selected" onclick="selectPasswordMode('unlock')">
+                            <input type="radio" name="passwordMode" value="unlock" checked>
+                            <div class="radio-label">
+                                <div class="radio-title">🔓 암호 해제</div>
+                                <div class="radio-desc">암호로 보호된 PDF의 암호를 제거</div>
+                            </div>
+                        </label>
+
+                        <label class="radio-option" onclick="selectPasswordMode('lock')">
+                            <input type="radio" name="passwordMode" value="lock">
+                            <div class="radio-label">
+                                <div class="radio-title">🔒 암호 설정</div>
+                                <div class="radio-desc">PDF에 암호를 걸어 보호</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 암호 해제 모드 -->
+                <div id="unlock-content" class="password-mode-content">
+            <!-- 파일 선택 카드 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span>📁</span>
+                        <span>파일 선택</span>
+                    </div>
+                    <div class="file-badge" id="fileBadge">0개</div>
+                </div>
+
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-icon">📄</div>
+                    <div class="drop-text">PDF 파일을 드래그하거나</div>
+                    <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectFiles()">
+                        파일 선택
+                    </button>
+                </div>
+
+                <div class="file-list" id="fileList">
+                    <div class="empty-state">선택된 파일이 없습니다</div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="selectFiles()">➕ 파일 추가</button>
+                    <button class="btn-danger" onclick="clearFiles()">🗑️ 목록 지우기</button>
+                </div>
+            </div>
+
+            <!-- 다운로드 방식 선택 -->
+            <div class="card">
+                <div class="card-title" style="margin-bottom: 15px;">
+                    <span>💾</span>
+                    <span>다운로드 방식</span>
+                </div>
+
+                <div class="radio-group">
+                    <label class="radio-option selected" onclick="selectDownloadMode('zip')">
+                        <input type="radio" name="downloadMode" value="zip" checked>
+                        <div class="radio-label">
+                            <div class="radio-title">📦 ZIP 파일로 다운로드 (권장)</div>
+                            <div class="radio-desc">모든 PDF를 하나의 ZIP으로 묶어서 다운로드</div>
+                        </div>
+                    </label>
+
+                    <label class="radio-option" onclick="selectDownloadMode('individual')">
+                        <input type="radio" name="downloadMode" value="individual">
+                        <div class="radio-label">
+                            <div class="radio-title">📄 개별 파일로 다운로드</div>
+                            <div class="radio-desc">각 PDF를 따로 다운로드 (브라우저 승인 필요)</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 진행 상태 카드 -->
+            <div class="progress-card">
+                <div class="status-text" id="statusText">파일을 추가해주세요</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <!-- 실행 버튼 -->
+            <button class="process-btn" id="processBtn" onclick="startProcessing()" disabled>
+                🔓 암호 해제 시작
+            </button>
+                </div>
+                <!-- 암호 해제 모드 끝 -->
+
+                <!-- 암호 설정 모드 -->
+                <div id="lock-content" class="password-mode-content" style="display: none;">
+                    <!-- 파일 선택 카드 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span>📁</span>
+                                <span>파일 선택</span>
+                            </div>
+                            <div class="file-badge" id="lockFileBadge">0개</div>
+                        </div>
+
+                        <div class="drop-zone" id="lockDropZone">
+                            <div class="drop-icon">📄</div>
+                            <div class="drop-text">PDF 파일을 드래그하거나</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectLockFiles()">
+                                파일 선택
+                            </button>
+                        </div>
+
+                        <div class="file-list" id="lockFileList">
+                            <div class="empty-state">선택된 파일이 없습니다</div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn-secondary" onclick="selectLockFiles()">➕ 파일 추가</button>
+                            <button class="btn-danger" onclick="clearLockFiles()">🗑️ 목록 지우기</button>
+                        </div>
+                    </div>
+
+                    <!-- 암호 설정 -->
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 15px;">
+                            <span>🔒</span>
+                            <span>암호 설정 방식</span>
+                        </div>
+
+                        <div class="radio-group" style="margin-bottom: 20px;">
+                            <label class="radio-option selected" onclick="selectLockPasswordMode('same')">
+                                <input type="radio" name="lockPasswordMode" value="same" checked>
+                                <div class="radio-label">
+                                    <div class="radio-title">🔑 모든 파일 동일 암호</div>
+                                    <div class="radio-desc">모든 PDF에 같은 암호 적용 (빠름)</div>
+                                </div>
+                            </label>
+
+                            <label class="radio-option" onclick="selectLockPasswordMode('individual')">
+                                <input type="radio" name="lockPasswordMode" value="individual">
+                                <div class="radio-label">
+                                    <div class="radio-title">🔐 파일별 개별 암호</div>
+                                    <div class="radio-desc">각 PDF마다 다른 암호 설정</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- 동일 암호 입력 -->
+                        <div id="samePasswordInput">
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-weight: 600; color: #1F2937; margin-bottom: 8px; font-size: 14px;">
+                                    암호 입력
+                                </label>
+                                <input type="password" id="lockPasswordInput" placeholder="PDF를 보호할 암호를 입력하세요"
+                                       style="width: 100%; padding: 12px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 14px;">
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-weight: 600; color: #1F2937; margin-bottom: 8px; font-size: 14px;">
+                                    암호 확인
+                                </label>
+                                <input type="password" id="lockPasswordConfirm" placeholder="암호를 다시 입력하세요"
+                                       style="width: 100%; padding: 12px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 14px;">
+                            </div>
+                        </div>
+
+                        <!-- 개별 암호 입력 -->
+                        <div id="individualPasswordInput" style="display: none;">
+                            <div id="individualPasswordList">
+                                <div style="text-align: center; color: #6B7280; padding: 20px;">
+                                    먼저 파일을 추가해주세요
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #FEF3C7; padding: 12px; border-radius: 8px; border-left: 4px solid #F59E0B; font-size: 13px; color: #92400E;">
+                            <strong>⚠️ 암호 분실 주의</strong><br>
+                            설정한 암호를 잊어버리면 PDF를 열 수 없습니다. 암호를 안전하게 보관하세요.
+                        </div>
+                    </div>
+
+                    <!-- 다운로드 방식 선택 -->
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 15px;">
+                            <span>💾</span>
+                            <span>다운로드 방식</span>
+                        </div>
+
+                        <div class="radio-group">
+                            <label class="radio-option selected" onclick="selectLockDownloadMode('zip')">
+                                <input type="radio" name="lockDownloadMode" value="zip" checked>
+                                <div class="radio-label">
+                                    <div class="radio-title">📦 ZIP 파일로 다운로드 (권장)</div>
+                                    <div class="radio-desc">모든 PDF를 하나의 ZIP으로 묶어서 다운로드</div>
+                                </div>
+                            </label>
+
+                            <label class="radio-option" onclick="selectLockDownloadMode('individual')">
+                                <input type="radio" name="lockDownloadMode" value="individual">
+                                <div class="radio-label">
+                                    <div class="radio-title">📄 개별 파일로 다운로드</div>
+                                    <div class="radio-desc">각 PDF를 개별적으로 다운로드</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="lockProcessBtn" onclick="lockFiles()" disabled>
+                        🔒 암호 설정 시작
+                    </button>
+                </div>
+                <!-- 암호 설정 모드 끝 -->
+            </div>
+            <!-- 탭 1 끝 -->
+
+            <!-- 탭 2: 병합/분할 -->
+            <div id="tab-merge-split" class="tab-content">
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 20px;">
+                        <span>📦</span>
+                        <span>기능 선택</span>
+                    </div>
+
+                    <div class="radio-group">
+                        <label class="radio-option selected" onclick="selectMergeSplitMode('merge')">
+                            <input type="radio" name="mergeSplitMode" value="merge" checked>
+                            <div class="radio-label">
+                                <div class="radio-title">📦 병합 (여러 PDF → 하나)</div>
+                                <div class="radio-desc">여러 PDF 파일을 하나의 PDF로 합치기</div>
+                            </div>
+                        </label>
+
+                        <label class="radio-option" onclick="selectMergeSplitMode('split')">
+                            <input type="radio" name="mergeSplitMode" value="split">
+                            <div class="radio-label">
+                                <div class="radio-title">✂️ 분할 (하나의 PDF → 여러 개)</div>
+                                <div class="radio-desc">하나의 PDF를 여러 개로 나누기</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 병합 모드 -->
+                <div id="merge-content" class="merge-split-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span>📁</span>
+                                <span>PDF 파일 선택</span>
+                            </div>
+                            <div class="file-badge" id="mergeFileBadge">0개</div>
+                        </div>
+
+                        <div class="drop-zone" id="mergeDropZone">
+                            <div class="drop-icon">📄</div>
+                            <div class="drop-text">PDF 파일을 드래그하거나</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectMergeFiles()">
+                                파일 선택
+                            </button>
+                        </div>
+
+                        <div class="file-list" id="mergeFileList">
+                            <div class="empty-state">선택된 파일이 없습니다</div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn-secondary" onclick="selectMergeFiles()">➕ 파일 추가</button>
+                            <button class="btn-danger" onclick="clearMergeFiles()">🗑️ 목록 지우기</button>
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="mergeBtn" onclick="mergePDFs()" disabled>
+                        📦 PDF 병합하기
+                    </button>
+                </div>
+
+                <!-- 분할 모드 -->
+                <div id="split-content" class="merge-split-content" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span>📁</span>
+                                <span>PDF 파일 선택 (1개)</span>
+                            </div>
+                        </div>
+
+                        <div class="drop-zone" id="splitDropZone">
+                            <div class="drop-icon">📄</div>
+                            <div class="drop-text">PDF 파일을 드래그하거나</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectSplitFile()">
+                                파일 선택
+                            </button>
+                        </div>
+
+                        <div id="splitFileInfo" style="display: none; background: #F9FAFB; border-radius: 12px; padding: 20px; margin-top: 20px;">
+                            <div style="font-weight: 600; margin-bottom: 5px;" id="splitFileName"></div>
+                            <div style="font-size: 14px; color: #6B7280;" id="splitFilePages"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 15px;">
+                            <span>✂️</span>
+                            <span>분할 방식</span>
+                        </div>
+
+                        <div class="radio-group">
+                            <label class="radio-option selected" onclick="selectSplitMethod('all')">
+                                <input type="radio" name="splitMethod" value="all" checked>
+                                <div class="radio-label">
+                                    <div class="radio-title">전체 페이지 분할</div>
+                                    <div class="radio-desc">각 페이지를 개별 PDF로 분할</div>
+                                </div>
+                            </label>
+
+                            <label class="radio-option" onclick="selectSplitMethod('range')">
+                                <input type="radio" name="splitMethod" value="range">
+                                <div class="radio-label">
+                                    <div class="radio-title">특정 페이지 범위</div>
+                                    <div class="radio-desc">예: 1-3, 5-10, 15 (쉼표로 구분)</div>
+                                </div>
+                            </label>
+
+                            <label class="radio-option" onclick="selectSplitMethod('chunk')">
+                                <input type="radio" name="splitMethod" value="chunk">
+                                <div class="radio-label">
+                                    <div class="radio-title">N페이지씩 분할</div>
+                                    <div class="radio-desc">지정한 페이지 수만큼 묶어서 분할</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="rangeInput" style="display: none; margin-top: 15px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #1F2937;">페이지 범위 입력</label>
+                            <input type="text" id="rangeText" placeholder="예: 1-3, 5-10, 15"
+                                   style="width: 100%; padding: 12px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 14px;">
+                        </div>
+
+                        <div id="chunkInput" style="display: none; margin-top: 15px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #1F2937;">페이지 수</label>
+                            <input type="number" id="chunkSize" placeholder="예: 3" min="1"
+                                   style="width: 100%; padding: 12px; border: 2px solid #E5E7EB; border-radius: 10px; font-size: 14px;">
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="splitBtn" onclick="splitPDF()" disabled>
+                        ✂️ PDF 분할하기
+                    </button>
+                </div>
+            </div>
+            <!-- 탭 2 끝 -->
+
+            <!-- 탭 3: 회전 -->
+            <div id="tab-rotate" class="tab-content">
+                <!-- 파일 업로드 -->
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 20px;">
+                        <span>📁</span>
+                        <span>PDF 파일 업로드</span>
+                    </div>
+
+                    <div class="drop-zone" id="rotateDropZone" onclick="selectRotateFile()">
+                        <div class="drop-icon">📄</div>
+                        <div class="drop-text">PDF 파일을 선택하세요</div>
+                        <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectRotateFile(); event.stopPropagation();">
+                            파일 선택
+                        </button>
+                    </div>
+                    <input type="file" id="rotateFileInput" accept=".pdf" style="display: none;">
+
+                    <div class="file-list" id="rotateFileNameContainer" style="display: none;">
+                        <div class="file-item" id="rotateFileName">
+                            <span class="file-name" id="rotateFileNameText"></span>
+                            <button class="file-remove" onclick="removeRotateFile()" title="파일 제거">×</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 미리보기 및 회전 버튼 -->
+                <div id="rotatePreviewSection" class="card" style="display: none;">
+                    <div class="card-title" style="margin-bottom: 20px;">
+                        <span>👁️</span>
+                        <span>미리보기 및 회전</span>
+                    </div>
+
+                    <!-- 회전 버튼 -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
+                        <button class="btn-primary" onclick="rotatePreview(90)" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span style="font-size: 20px;">↻</span>
+                            <span>오른쪽 90°</span>
+                        </button>
+                        <button class="btn-primary" onclick="rotatePreview(-90)" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span style="font-size: 20px;">↺</span>
+                            <span>왼쪽 90°</span>
+                        </button>
+                        <button class="btn-primary" onclick="rotatePreview(180)" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span style="font-size: 20px;">↻↻</span>
+                            <span>오른쪽 180°</span>
+                        </button>
+                        <button class="btn-primary" onclick="rotatePreview(-180)" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span style="font-size: 20px;">↺↺</span>
+                            <span>왼쪽 180°</span>
+                        </button>
+                    </div>
+
+                    <!-- 현재 회전 각도 표시 -->
+                    <div style="text-align: center; margin-bottom: 15px; padding: 10px; background: #F3F4F6; border-radius: 8px;">
+                        <span style="color: #6B7280; font-size: 14px;">현재 회전: </span>
+                        <span id="rotationAngle" style="color: #8B5CF6; font-weight: 600; font-size: 16px;">0°</span>
+                    </div>
+
+                    <!-- 미리보기 영역 -->
+                    <div style="display: flex; justify-content: center; align-items: center; min-height: 500px; background: #F9FAFB; border-radius: 10px; padding: 20px; overflow: auto;">
+                        <canvas id="rotateCanvas" style="max-width: 100%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background: white;"></canvas>
+                    </div>
+
+                    <!-- 다운로드 버튼 -->
+                    <button class="process-btn" id="downloadRotatedBtn" onclick="downloadRotatedPDF()" style="margin-top: 20px;">
+                        💾 회전된 PDF 다운로드
+                    </button>
+                </div>
+            </div>
+            <!-- 탭 3 끝 -->
+
+            <!-- 탭 4: 변환 -->
+            <div id="tab-convert" class="tab-content">
+                <!-- 변환 모드 선택 -->
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 20px;">
+                        <span>🔄</span>
+                        <span>변환 모드 선택</span>
+                    </div>
+
+                    <div class="radio-group">
+                        <label class="radio-option selected" onclick="selectConvertMode('pdf-to-image')">
+                            <input type="radio" name="convertMode" value="pdf-to-image" checked>
+                            <div class="radio-label">
+                                <div class="radio-title">PDF → 이미지 변환</div>
+                                <div class="radio-desc">PDF의 모든 페이지를 JPG 또는 PNG 이미지로 변환</div>
+                            </div>
+                        </label>
+
+                        <label class="radio-option" onclick="selectConvertMode('image-to-pdf')">
+                            <input type="radio" name="convertMode" value="image-to-pdf">
+                            <div class="radio-label">
+                                <div class="radio-title">이미지 → PDF 변환</div>
+                                <div class="radio-desc">여러 이미지를 하나의 PDF 파일로 병합</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- PDF → 이미지 모드 -->
+                <div id="convert-pdf-to-image" style="display: block;">
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 20px;">
+                            <span>📁</span>
+                            <span>PDF 파일 선택</span>
+                        </div>
+
+                        <div class="drop-zone" id="convertPdfDropZone" onclick="selectConvertPdfFile()">
+                            <div class="drop-icon">📄</div>
+                            <div class="drop-text">PDF 파일을 선택하세요</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectConvertPdfFile(); event.stopPropagation();">
+                                파일 선택
+                            </button>
+                        </div>
+                        <input type="file" id="convertPdfFileInput" accept=".pdf" style="display: none;">
+
+                        <div class="file-list" id="convertPdfFileNameContainer" style="display: none;">
+                            <div class="file-item" id="convertPdfFileName">
+                                <span class="file-name">
+                                    <span id="convertPdfFileNameText"></span>
+                                    <span id="convertPdfPageCount" style="color: #6B7280; font-size: 12px;"></span>
+                                </span>
+                                <button class="file-remove" onclick="removeConvertPdfFile()" title="파일 제거">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 출력 포맷 선택 -->
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 20px;">
+                            <span>🎨</span>
+                            <span>출력 포맷</span>
+                        </div>
+
+                        <div class="radio-group">
+                            <label class="radio-option selected" onclick="selectImageFormat('jpg')">
+                                <input type="radio" name="imageFormat" value="jpg" checked>
+                                <div class="radio-label">
+                                    <div class="radio-title">📷 JPG (JPEG)</div>
+                                    <div class="radio-desc">압축 포맷, 파일 크기 작음 (권장)</div>
+                                </div>
+                            </label>
+
+                            <label class="radio-option" onclick="selectImageFormat('png')">
+                                <input type="radio" name="imageFormat" value="png">
+                                <div class="radio-label">
+                                    <div class="radio-title">🖼️ PNG</div>
+                                    <div class="radio-desc">무손실 포맷, 투명도 지원</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="pdfToImageBtn" onclick="convertPdfToImage()" disabled>
+                        🖼️ 이미지로 변환
+                    </button>
+                </div>
+
+                <!-- 이미지 → PDF 모드 -->
+                <div id="convert-image-to-pdf" style="display: none;">
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 20px;">
+                            <span>📁</span>
+                            <span>이미지 파일 선택</span>
+                        </div>
+
+                        <div class="drop-zone" id="convertImageDropZone">
+                            <div class="drop-icon">🖼️</div>
+                            <div class="drop-text">이미지 파일을 드래그하거나</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectConvertImageFiles()">
+                                파일 선택
+                            </button>
+                        </div>
+                        <input type="file" id="convertImageFileInput" accept="image/jpeg,image/png,image/jpg" multiple style="display: none;">
+
+                        <div class="file-list" id="convertImageFileList">
+                            <div class="empty-state">선택된 이미지가 없습니다</div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn-secondary" onclick="selectConvertImageFiles()">➕ 이미지 추가</button>
+                            <button class="btn-danger" onclick="clearConvertImages()">🗑️ 목록 지우기</button>
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="imageToPdfBtn" onclick="convertImageToPdf()" disabled>
+                        📄 PDF로 변환
+                    </button>
+                </div>
+            </div>
+            <!-- 탭 4 끝 -->
+
+            <!-- 탭 5: Excel 변환 -->
+            <div id="tab-excel" class="tab-content">
+                <!-- 변환 모드 선택 -->
+                <div class="card">
+                    <div class="card-title" style="margin-bottom: 20px;">
+                        <span>📊</span>
+                        <span>변환 모드 선택</span>
+                    </div>
+
+                    <div class="radio-group">
+                        <label class="radio-option selected" onclick="selectExcelMode('pdf-to-excel')">
+                            <input type="radio" name="excelMode" value="pdf-to-excel" checked>
+                            <div class="radio-label">
+                                <div class="radio-title">📄 PDF → Excel 변환</div>
+                                <div class="radio-desc">PDF의 표를 Excel 파일로 변환 (표 구조 자동 감지)</div>
+                            </div>
+                        </label>
+
+                        <label class="radio-option" onclick="selectExcelMode('excel-to-pdf')">
+                            <input type="radio" name="excelMode" value="excel-to-pdf">
+                            <div class="radio-label">
+                                <div class="radio-title">📊 Excel → PDF 변환</div>
+                                <div class="radio-desc">Excel 파일을 PDF로 변환 (기본 표 형식)</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 경고 메시지 -->
+                <div class="card" style="background: #FEF3C7; border: 2px solid #F59E0B;">
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <div style="font-size: 24px;">⚠️</div>
+                        <div>
+                            <div style="font-weight: 600; color: #92400E; margin-bottom: 8px;">품질 제한 안내</div>
+                            <ul style="color: #92400E; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                                <li><strong>PDF → Excel</strong>: 기본 표 구조만 지원 (복잡한 레이아웃은 정확도 낮음)</li>
+                                <li><strong>Excel → PDF</strong>: 단순 데이터만 변환 (수식, 차트, 복잡한 서식 미지원)</li>
+                                <li>클라이언트 사이드 처리로 인한 한계가 있습니다</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PDF → Excel 모드 -->
+                <div id="excel-pdf-to-excel" style="display: block;">
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 20px;">
+                            <span>📁</span>
+                            <span>PDF 파일 선택</span>
+                        </div>
+
+                        <div class="drop-zone" id="excelPdfDropZone" onclick="selectExcelPdfFile()">
+                            <div class="drop-icon">📄</div>
+                            <div class="drop-text">PDF 파일을 선택하세요</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectExcelPdfFile(); event.stopPropagation();">
+                                파일 선택
+                            </button>
+                        </div>
+                        <input type="file" id="excelPdfFileInput" accept=".pdf" style="display: none;">
+
+                        <div class="file-list" id="excelPdfFileNameContainer" style="display: none;">
+                            <div class="file-item" id="excelPdfFileName">
+                                <span class="file-name">
+                                    <span id="excelPdfFileNameText"></span>
+                                    <span id="excelPdfPageCount" style="color: #6B7280; font-size: 12px;"></span>
+                                </span>
+                                <button class="file-remove" onclick="removeExcelPdfFile()" title="파일 제거">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 변환 옵션 -->
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 20px;">
+                            <span>⚙️</span>
+                            <span>변환 옵션</span>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-weight: 600; color: #4B5563; margin-bottom: 10px;">
+                                표 인식 민감도
+                            </label>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <span style="font-size: 14px; color: #6B7280; min-width: 60px;">느슨하게</span>
+                                <input type="range" id="excelSensitivity" min="1" max="3" value="1"
+                                       style="flex: 1; height: 6px; border-radius: 5px; background: #E5E7EB; outline: none; -webkit-appearance: none;"
+                                       oninput="updateSensitivityLabel(this.value)">
+                                <span style="font-size: 14px; color: #6B7280; min-width: 60px;">정교하게</span>
+                            </div>
+                            <div style="margin-top: 8px; font-size: 13px; color: #6B7280; text-align: center;">
+                                현재: <span id="sensitivityLabel" style="font-weight: 600; color: #8B5CF6;">느슨하게</span>
+                            </div>
+                        </div>
+
+                        <div style="padding: 12px; background: #F3F4F6; border-radius: 8px; font-size: 12px; color: #4B5563;">
+                            💡 <strong>팁:</strong> 대부분의 표는 "느슨하게"가 가장 좋습니다. 열 간격이 일정한 표는 "정교하게"를 시도해보세요.
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="pdfToExcelBtn" onclick="convertPdfToExcel()" disabled>
+                        📊 Excel로 변환
+                    </button>
+                </div>
+
+                <!-- Excel → PDF 모드 -->
+                <div id="excel-excel-to-pdf" style="display: none;">
+                    <div class="card">
+                        <div class="card-title" style="margin-bottom: 20px;">
+                            <span>📁</span>
+                            <span>Excel 파일 선택</span>
+                        </div>
+
+                        <div class="drop-zone" id="excelFileDropZone" onclick="selectExcelFile()">
+                            <div class="drop-icon">📊</div>
+                            <div class="drop-text">Excel 파일을 선택하세요</div>
+                            <button class="btn-primary" style="width: auto; padding: 12px 30px;" onclick="selectExcelFile(); event.stopPropagation();">
+                                파일 선택
+                            </button>
+                        </div>
+                        <input type="file" id="excelFileInput" accept=".xlsx,.xls" style="display: none;">
+
+                        <div class="file-list" id="excelFileNameContainer" style="display: none;">
+                            <div class="file-item" id="excelFileName">
+                                <span class="file-name">
+                                    <span id="excelFileNameText"></span>
+                                </span>
+                                <button class="file-remove" onclick="removeExcelFile()" title="파일 제거">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="process-btn" id="excelToPdfBtn" onclick="convertExcelToPdf()" disabled>
+                        📄 PDF로 변환
+                    </button>
+                </div>
+            </div>
+            <!-- 탭 5 끝 -->
+        </div>
+    </div>
+
+    <!-- 암호 입력 모달 -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-icon">🔒</span>
+                <div class="modal-filename" id="modalFilename">파일명</div>
+            </div>
+
+            <label class="modal-label">PDF 암호를 입력하세요</label>
+            <input type="password" class="modal-input" id="passwordInput" placeholder="••••••••">
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="useSamePassword">
+                <label for="useSamePassword">모든 파일에 동일한 암호 사용</label>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="modal-btn btn-secondary" onclick="cancelPassword()">취소</button>
+                <button class="modal-btn btn-primary" onclick="confirmPassword()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept=".pdf" multiple style="display: none;">
+    <input type="file" id="mergeFileInput" accept=".pdf" multiple style="display: none;">
+    <input type="file" id="splitFileInput" accept=".pdf" style="display: none;">
+
+    <!-- JSZip CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- pdf-lib CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+    <!-- pdf.js CDN for preview -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- ExcelJS CDN for Excel conversion -->
+    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+
+    <!-- jsPDF CDN for Excel to PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <script type="module">
+        import Module from 'https://cdn.jsdelivr.net/npm/@jspawn/qpdf-wasm@0.0.2/qpdf.mjs';
+
+        let qpdfModule = null;
+        let selectedFiles = [];
+        let currentFileIndex = 0;
+        let savedPassword = '';
+        let useSamePasswordForAll = false;
+        let passwordResolve = null;
+        let downloadMode = 'zip';
+        let passwordMode = 'unlock';
+        let lockFiles = [];
+        let lockDownloadMode = 'zip';
+        let lockPasswordMode = 'same';
+        let mergeSplitMode = 'merge';
+        let mergeFiles = [];
+        let splitFile = null;
+        let splitMethod = 'all';
+        let rotateFile = null;
+        let rotateFileData = null; // 원본 파일 데이터 저장
+        let rotatePdfDoc = null;
+        let currentRotation = 0;
+        let pdfPage = null;
+        let convertMode = 'pdf-to-image';
+        let imageFormat = 'jpg';
+        let convertPdfFile = null;
+        let convertImageFiles = [];
+        let excelMode = 'pdf-to-excel';
+        let excelPdfFile = null;
+        let excelFile = null;
+
+        // 탭 전환
+        window.switchTab = function(tabName) {
+            // 모든 탭 버튼과 컨텐츠 비활성화
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // 선택한 탭 활성화
+            event.currentTarget.classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+
+            // 제목 및 설명 업데이트
+            updatePageTitle(tabName);
+        };
+
+        // 페이지 제목 업데이트
+        function updatePageTitle(tabName) {
+            const titleElement = document.getElementById('pageTitle');
+            const subtitleElement = document.getElementById('pageSubtitle');
+
+            const titles = {
+                'password': {
+                    title: '🔐 PDF 암호 관리',
+                    subtitle: 'PDF 파일에 암호를 설정하거나 해제하여 보안을 관리하세요'
+                },
+                'merge-split': {
+                    title: '📑 PDF 병합/분할',
+                    subtitle: '여러 PDF를 하나로 병합하거나, 하나의 PDF를 여러 개로 분할하세요'
+                },
+                'rotate': {
+                    title: '🔄 PDF 회전',
+                    subtitle: 'PDF 페이지를 원하는 각도로 회전하고 미리보기로 확인하세요'
+                },
+                'convert': {
+                    title: '🔀 PDF ↔ 이미지 변환',
+                    subtitle: 'PDF를 이미지로 변환하거나, 이미지를 PDF로 변환하세요'
+                },
+                'excel': {
+                    title: '📊 PDF ↔ Excel 변환',
+                    subtitle: 'PDF를 Excel로 변환하거나, Excel을 PDF로 변환하세요'
+                }
+            };
+
+            if (titles[tabName]) {
+                titleElement.textContent = titles[tabName].title;
+                subtitleElement.textContent = titles[tabName].subtitle;
+            }
+        }
+
+        // 암호 관리 모드 선택
+        window.selectPasswordMode = function(mode) {
+            passwordMode = mode;
+            document.querySelectorAll('input[name="passwordMode"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            // 암호 해제/설정 컨텐츠 표시/숨김
+            document.getElementById('unlock-content').style.display = mode === 'unlock' ? 'block' : 'none';
+            document.getElementById('lock-content').style.display = mode === 'lock' ? 'block' : 'none';
+        };
+
+        // 병합/분할 모드 선택
+        window.selectMergeSplitMode = function(mode) {
+            mergeSplitMode = mode;
+            document.querySelectorAll('input[name="mergeSplitMode"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            // 병합/분할 컨텐츠 표시/숨김
+            document.getElementById('merge-content').style.display = mode === 'merge' ? 'block' : 'none';
+            document.getElementById('split-content').style.display = mode === 'split' ? 'block' : 'none';
+        };
+
+        // 분할 방법 선택
+        window.selectSplitMethod = function(method) {
+            splitMethod = method;
+            document.querySelectorAll('input[name="splitMethod"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            // 입력 필드 표시/숨김
+            document.getElementById('rangeInput').style.display = method === 'range' ? 'block' : 'none';
+            document.getElementById('chunkInput').style.display = method === 'chunk' ? 'block' : 'none';
+        };
+
+        // qpdf 초기화
+        async function initQPDF() {
+            try {
+                qpdfModule = await Module({
+                    locateFile: (path) => {
+                        if (path.endsWith('.wasm')) {
+                            return 'https://cdn.jsdelivr.net/npm/@jspawn/qpdf-wasm@0.0.2/' + path;
+                        }
+                        return path;
+                    }
+                });
+                console.log('qpdf initialized successfully');
+            } catch (error) {
+                console.error('qpdf init error:', error);
+                alert('qpdf 초기화 실패. 페이지를 새로고침해주세요.');
+            }
+        }
+
+        initQPDF();
+
+        // 다운로드 모드 선택
+        window.selectDownloadMode = function(mode) {
+            downloadMode = mode;
+            document.querySelectorAll('.radio-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        };
+
+        // 파일 선택
+        window.selectFiles = function() {
+            document.getElementById('fileInput').click();
+        };
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            addFiles(files);
+            e.target.value = '';
+        });
+
+        // 드래그 앤 드롭
+        const dropZone = document.getElementById('dropZone');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const files = Array.from(e.dataTransfer.files).filter(f => f.name.toLowerCase().endsWith('.pdf'));
+            addFiles(files);
+        });
+
+        function addFiles(files) {
+            files.forEach(file => {
+                if (!selectedFiles.find(f => f.name === file.name)) {
+                    selectedFiles.push({ file, status: 'pending' });
+                }
+            });
+            updateFileList();
+            updateUI();
+        }
+
+        window.clearFiles = function() {
+            selectedFiles = [];
+            updateFileList();
+            updateUI();
+        };
+
+        window.removeFile = function(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
+            updateUI();
+        };
+
+        function updateFileList() {
+            const fileList = document.getElementById('fileList');
+
+            if (selectedFiles.length === 0) {
+                fileList.innerHTML = '<div class="empty-state">선택된 파일이 없습니다</div>';
+            } else {
+                fileList.innerHTML = selectedFiles.map((item, index) => `
+                    <div class="file-item">
+                        <span class="file-name">${index + 1}. ${item.file.name}</span>
+                        <span class="file-status">${getStatusIcon(item.status)}</span>
+                        <button class="file-remove" onclick="removeFile(${index})" title="파일 제거">×</button>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('fileBadge').textContent = `${selectedFiles.length}개`;
+        }
+
+        function getStatusIcon(status) {
+            switch(status) {
+                case 'pending': return '⏳';
+                case 'processing': return '⚙️';
+                case 'success': return '✅';
+                case 'error': return '❌';
+                default: return '';
+            }
+        }
+
+        function updateUI() {
+            const hasFiles = selectedFiles.length > 0;
+            document.getElementById('processBtn').disabled = !hasFiles;
+
+            if (!hasFiles) {
+                document.getElementById('statusText').textContent = '파일을 추가해주세요';
+                document.getElementById('progressBar').style.width = '0%';
+            } else {
+                document.getElementById('statusText').textContent = `${selectedFiles.length}개 파일 선택됨`;
+            }
+        }
+
+        // 암호 입력 모달
+        function showPasswordModal(filename) {
+            return new Promise((resolve) => {
+                passwordResolve = resolve;
+                document.getElementById('modalFilename').textContent = filename;
+                document.getElementById('passwordInput').value = savedPassword;
+                document.getElementById('useSamePassword').checked = useSamePasswordForAll;
+                document.getElementById('passwordModal').classList.add('show');
+                document.getElementById('passwordInput').focus();
+            });
+        }
+
+        window.confirmPassword = function() {
+            const password = document.getElementById('passwordInput').value;
+            if (!password) {
+                alert('암호를 입력해주세요.');
+                return;
+            }
+
+            useSamePasswordForAll = document.getElementById('useSamePassword').checked;
+            if (useSamePasswordForAll) {
+                savedPassword = password;
+            }
+
+            document.getElementById('passwordModal').classList.remove('show');
+            passwordResolve({ password, cancelled: false });
+        };
+
+        window.cancelPassword = function() {
+            document.getElementById('passwordModal').classList.remove('show');
+            passwordResolve({ password: null, cancelled: true });
+        };
+
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                confirmPassword();
+            }
+        });
+
+        // 파일 처리
+        window.startProcessing = async function() {
+            if (!qpdfModule) {
+                alert('qpdf가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+                return;
+            }
+
+            document.getElementById('processBtn').disabled = true;
+            savedPassword = '';
+            useSamePasswordForAll = false;
+            currentFileIndex = 0;
+
+            let successCount = 0;
+            let failedFiles = [];
+            let processedFiles = [];
+
+            for (let i = 0; i < selectedFiles.length; i++) {
+                currentFileIndex = i;
+                const item = selectedFiles[i];
+                item.status = 'processing';
+
+                updateFileList();
+                updateProgress(i + 1, selectedFiles.length, `처리 중: ${item.file.name}`);
+
+                try {
+                    // 암호 입력
+                    let password = savedPassword;
+                    if (!useSamePasswordForAll || !savedPassword) {
+                        const result = await showPasswordModal(item.file.name);
+                        if (result.cancelled) {
+                            item.status = 'error';
+                            failedFiles.push({ name: item.file.name, reason: '사용자 취소' });
+                            continue;
+                        }
+                        password = result.password;
+                    }
+
+                    // PDF 처리
+                    const arrayBuffer = await item.file.arrayBuffer();
+                    const uint8Array = new Uint8Array(arrayBuffer);
+
+                    const FS = qpdfModule.FS;
+                    const inputFileName = `input_${i}.pdf`;
+                    const outputFileName = `output_${i}.pdf`;
+
+                    FS.writeFile(inputFileName, uint8Array);
+
+                    const args = ['--decrypt', `--password=${password}`, inputFileName, outputFileName];
+                    const exitCode = qpdfModule.callMain(args);
+
+                    if (exitCode !== 0) {
+                        throw new Error('암호가 올바르지 않습니다.');
+                    }
+
+                    const outputData = FS.readFile(outputFileName);
+                    const unlockedFilename = item.file.name.replace('.pdf', '_unlocked.pdf');
+
+                    // 다운로드 방식에 따라 처리
+                    if (downloadMode === 'individual') {
+                        const blob = new Blob([outputData], { type: 'application/pdf' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = unlockedFilename;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    } else {
+                        processedFiles.push({
+                            name: unlockedFilename,
+                            data: outputData
+                        });
+                    }
+
+                    // 정리
+                    FS.unlink(inputFileName);
+                    FS.unlink(outputFileName);
+
+                    item.status = 'success';
+                    successCount++;
+
+                } catch (error) {
+                    console.error('Error processing file:', error);
+                    item.status = 'error';
+                    failedFiles.push({ name: item.file.name, reason: error.message });
+                }
+
+                updateFileList();
+            }
+
+            // ZIP 파일 생성
+            if (downloadMode === 'zip' && processedFiles.length > 0) {
+                updateProgress(selectedFiles.length, selectedFiles.length, 'ZIP 파일 생성 중...');
+                await createZipAndDownload(processedFiles);
+            }
+
+            updateProgress(selectedFiles.length, selectedFiles.length, `완료! ${successCount}/${selectedFiles.length} 성공`);
+
+            // 실패한 파일이 있을 때만 알림 표시
+            if (failedFiles.length > 0) {
+                let message = `처리 완료\n\n성공: ${successCount}/${selectedFiles.length}\n실패: ${failedFiles.length}/${selectedFiles.length}\n\n실패 목록:\n`;
+                failedFiles.slice(0, 5).forEach(f => {
+                    message += `- ${f.name}: ${f.reason}\n`;
+                });
+                if (failedFiles.length > 5) {
+                    message += `... 외 ${failedFiles.length - 5}개`;
+                }
+                alert(message);
+            }
+
+            document.getElementById('processBtn').disabled = false;
+        };
+
+        async function createZipAndDownload(files) {
+            const zip = new JSZip();
+
+            files.forEach(file => {
+                zip.file(file.name, file.data);
+            });
+
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const url = URL.createObjectURL(zipBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'unlocked_pdfs.zip';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function updateProgress(current, total, message) {
+            const percent = (current / total) * 100;
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('statusText').textContent = message;
+        }
+
+        // ========================================
+        // 병합 기능
+        // ========================================
+
+        window.selectMergeFiles = function() {
+            document.getElementById('mergeFileInput').click();
+        };
+
+        document.getElementById('mergeFileInput').addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            addMergeFiles(files);
+            e.target.value = '';
+        });
+
+        // 드래그 앤 드롭
+        const mergeDropZone = document.getElementById('mergeDropZone');
+        mergeDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            mergeDropZone.classList.add('drag-over');
+        });
+        mergeDropZone.addEventListener('dragleave', () => {
+            mergeDropZone.classList.remove('drag-over');
+        });
+        mergeDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            mergeDropZone.classList.remove('drag-over');
+            const files = Array.from(e.dataTransfer.files).filter(f => f.name.toLowerCase().endsWith('.pdf'));
+            addMergeFiles(files);
+        });
+
+        function addMergeFiles(files) {
+            files.forEach(file => {
+                if (!mergeFiles.find(f => f.name === file.name)) {
+                    mergeFiles.push(file);
+                }
+            });
+            updateMergeFileList();
+        }
+
+        window.clearMergeFiles = function() {
+            mergeFiles = [];
+            updateMergeFileList();
+        };
+
+        window.removeMergeFile = function(index) {
+            mergeFiles.splice(index, 1);
+            updateMergeFileList();
+        };
+
+        function updateMergeFileList() {
+            const fileList = document.getElementById('mergeFileList');
+
+            if (mergeFiles.length === 0) {
+                fileList.innerHTML = '<div class="empty-state">선택된 파일이 없습니다</div>';
+                document.getElementById('mergeBtn').disabled = true;
+            } else {
+                fileList.innerHTML = mergeFiles.map((file, index) => `
+                    <div class="file-item">
+                        <span class="file-name">${index + 1}. ${file.name}</span>
+                        <button class="file-remove" onclick="removeMergeFile(${index}); event.stopPropagation();" title="파일 제거">×</button>
+                    </div>
+                `).join('');
+                document.getElementById('mergeBtn').disabled = mergeFiles.length < 2;
+            }
+
+            document.getElementById('mergeFileBadge').textContent = `${mergeFiles.length}개`;
+        }
+
+        window.mergePDFs = async function() {
+            if (mergeFiles.length < 2) {
+                alert('병합하려면 최소 2개의 PDF가 필요합니다.');
+                return;
+            }
+
+            try {
+                document.getElementById('mergeBtn').disabled = true;
+                document.getElementById('mergeBtn').textContent = '📦 병합 중...';
+
+                const mergedPdf = await PDFLib.PDFDocument.create();
+
+                for (let i = 0; i < mergeFiles.length; i++) {
+                    const arrayBuffer = await mergeFiles[i].arrayBuffer();
+                    try {
+                        const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+                        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                        copiedPages.forEach((page) => mergedPdf.addPage(page));
+                    } catch (loadError) {
+                        if (loadError.message.includes('encrypted')) {
+                            throw new Error(`"${mergeFiles[i].name}" 파일이 암호화되어 있습니다.\n\n먼저 "암호 해제" 탭에서 암호를 해제한 후 사용해주세요.`);
+                        }
+                        throw loadError;
+                    }
+                }
+
+                const mergedPdfBytes = await mergedPdf.save();
+                const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'merged.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // 성공 시 조용히 다운로드만 (알림 없음)
+            } catch (error) {
+                console.error('병합 오류:', error);
+                alert('PDF 병합 중 오류가 발생했습니다: ' + error.message);
+            } finally {
+                document.getElementById('mergeBtn').disabled = false;
+                document.getElementById('mergeBtn').textContent = '📦 PDF 병합하기';
+            }
+        };
+
+        // ========================================
+        // 분할 기능
+        // ========================================
+
+        window.selectSplitFile = function() {
+            document.getElementById('splitFileInput').click();
+        };
+
+        document.getElementById('splitFileInput').addEventListener('change', async (e) => {
+            if (e.target.files.length > 0) {
+                splitFile = e.target.files[0];
+                await loadSplitFileInfo();
+                e.target.value = '';
+            }
+        });
+
+        // 드래그 앤 드롭
+        const splitDropZone = document.getElementById('splitDropZone');
+        splitDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            splitDropZone.classList.add('drag-over');
+        });
+        splitDropZone.addEventListener('dragleave', () => {
+            splitDropZone.classList.remove('drag-over');
+        });
+        splitDropZone.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            splitDropZone.classList.remove('drag-over');
+            const files = Array.from(e.dataTransfer.files).filter(f => f.name.toLowerCase().endsWith('.pdf'));
+            if (files.length > 0) {
+                splitFile = files[0];
+                await loadSplitFileInfo();
+            }
+        });
+
+        async function loadSplitFileInfo() {
+            try {
+                const arrayBuffer = await splitFile.arrayBuffer();
+                const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+                const pageCount = pdf.getPageCount();
+
+                document.getElementById('splitFileName').textContent = splitFile.name;
+                document.getElementById('splitFilePages').textContent = `총 ${pageCount}페이지`;
+                document.getElementById('splitFileInfo').style.display = 'block';
+                document.getElementById('splitBtn').disabled = false;
+            } catch (error) {
+                if (error.message.includes('encrypted')) {
+                    alert('❌ 암호화된 PDF 파일입니다.\n\n먼저 "암호 해제" 탭에서 암호를 해제한 후 사용해주세요.');
+                } else {
+                    alert('PDF 로드 중 오류가 발생했습니다: ' + error.message);
+                }
+                splitFile = null;
+                document.getElementById('splitFileInfo').style.display = 'none';
+                document.getElementById('splitBtn').disabled = true;
+            }
+        }
+
+        window.splitPDF = async function() {
+            if (!splitFile) {
+                alert('분할할 PDF 파일을 선택해주세요.');
+                return;
+            }
+
+            try {
+                document.getElementById('splitBtn').disabled = true;
+                document.getElementById('splitBtn').textContent = '✂️ 분할 중...';
+
+                const arrayBuffer = await splitFile.arrayBuffer();
+                const sourcePdf = await PDFLib.PDFDocument.load(arrayBuffer);
+                const totalPages = sourcePdf.getPageCount();
+                const splitPdfs = [];
+
+                if (splitMethod === 'all') {
+                    // 전체 페이지 분할 (1페이지씩)
+                    for (let i = 0; i < totalPages; i++) {
+                        const newPdf = await PDFLib.PDFDocument.create();
+                        const [copiedPage] = await newPdf.copyPages(sourcePdf, [i]);
+                        newPdf.addPage(copiedPage);
+                        const pdfBytes = await newPdf.save();
+                        splitPdfs.push({
+                            name: `page_${i + 1}.pdf`,
+                            data: pdfBytes
+                        });
+                    }
+                } else if (splitMethod === 'range') {
+                    // 특정 페이지 범위
+                    const rangeText = document.getElementById('rangeText').value.trim();
+                    if (!rangeText) {
+                        alert('페이지 범위를 입력해주세요.');
+                        return;
+                    }
+
+                    const ranges = parsePageRanges(rangeText, totalPages);
+                    for (let i = 0; i < ranges.length; i++) {
+                        const newPdf = await PDFLib.PDFDocument.create();
+                        const copiedPages = await newPdf.copyPages(sourcePdf, ranges[i]);
+                        copiedPages.forEach(page => newPdf.addPage(page));
+                        const pdfBytes = await newPdf.save();
+                        splitPdfs.push({
+                            name: `range_${i + 1}.pdf`,
+                            data: pdfBytes
+                        });
+                    }
+                } else if (splitMethod === 'chunk') {
+                    // N페이지씩 분할
+                    const chunkSize = parseInt(document.getElementById('chunkSize').value);
+                    if (!chunkSize || chunkSize < 1) {
+                        alert('페이지 수를 입력해주세요.');
+                        return;
+                    }
+
+                    for (let i = 0; i < totalPages; i += chunkSize) {
+                        const newPdf = await PDFLib.PDFDocument.create();
+                        const endPage = Math.min(i + chunkSize, totalPages);
+                        const pageIndices = [];
+                        for (let j = i; j < endPage; j++) {
+                            pageIndices.push(j);
+                        }
+                        const copiedPages = await newPdf.copyPages(sourcePdf, pageIndices);
+                        copiedPages.forEach(page => newPdf.addPage(page));
+                        const pdfBytes = await newPdf.save();
+                        splitPdfs.push({
+                            name: `chunk_${Math.floor(i / chunkSize) + 1}.pdf`,
+                            data: pdfBytes
+                        });
+                    }
+                }
+
+                // ZIP으로 다운로드
+                const zip = new JSZip();
+                splitPdfs.forEach(pdf => {
+                    zip.file(pdf.name, pdf.data);
+                });
+
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'split_pdfs.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // 성공 시 조용히 다운로드만 (알림 없음)
+            } catch (error) {
+                console.error('분할 오류:', error);
+                alert('PDF 분할 중 오류가 발생했습니다: ' + error.message);
+            } finally {
+                document.getElementById('splitBtn').disabled = false;
+                document.getElementById('splitBtn').textContent = '✂️ PDF 분할하기';
+            }
+        };
+
+        function parsePageRanges(text, maxPages) {
+            const ranges = [];
+            const parts = text.split(',').map(s => s.trim());
+
+            for (const part of parts) {
+                if (part.includes('-')) {
+                    const [start, end] = part.split('-').map(s => parseInt(s.trim()));
+                    if (isNaN(start) || isNaN(end) || start < 1 || end > maxPages || start > end) {
+                        throw new Error(`잘못된 범위: ${part}`);
+                    }
+                    const pageIndices = [];
+                    for (let i = start - 1; i < end; i++) {
+                        pageIndices.push(i);
+                    }
+                    ranges.push(pageIndices);
+                } else {
+                    const pageNum = parseInt(part);
+                    if (isNaN(pageNum) || pageNum < 1 || pageNum > maxPages) {
+                        throw new Error(`잘못된 페이지 번호: ${part}`);
+                    }
+                    ranges.push([pageNum - 1]);
+                }
+            }
+
+            return ranges;
+        }
+
+        // ========================================
+        // 회전 기능
+        // ========================================
+
+        // pdf.js 워커 설정
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // 회전 파일 선택
+        window.selectRotateFile = function() {
+            document.getElementById('rotateFileInput').click();
+        };
+
+        document.getElementById('rotateFileInput').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                rotateFile = file;
+                document.getElementById('rotateFileNameText').textContent = file.name;
+                document.getElementById('rotateFileNameContainer').style.display = 'block';
+
+                // PDF 로드 및 미리보기
+                await loadRotatePDF(file);
+
+                // 미리보기 섹션 표시
+                document.getElementById('rotatePreviewSection').style.display = 'block';
+            }
+        });
+
+        // 회전 드래그 앤 드롭
+        const rotateDropZone = document.getElementById('rotateDropZone');
+
+        rotateDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            rotateDropZone.classList.add('drag-over');
+        });
+
+        rotateDropZone.addEventListener('dragleave', () => {
+            rotateDropZone.classList.remove('drag-over');
+        });
+
+        rotateDropZone.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            rotateDropZone.classList.remove('drag-over');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === 'application/pdf') {
+                rotateFile = files[0];
+                document.getElementById('rotateFileNameText').textContent = files[0].name;
+                document.getElementById('rotateFileNameContainer').style.display = 'block';
+
+                // PDF 로드 및 미리보기
+                await loadRotatePDF(files[0]);
+
+                // 미리보기 섹션 표시
+                document.getElementById('rotatePreviewSection').style.display = 'block';
+            }
+        });
+
+        // 회전 파일 삭제
+        window.removeRotateFile = function() {
+            rotateFile = null;
+            rotateFileData = null;
+            rotatePdfDoc = null;
+            pdfPage = null;
+            currentRotation = 0;
+            document.getElementById('rotateFileNameContainer').style.display = 'none';
+            document.getElementById('rotatePreviewSection').style.display = 'none';
+            document.getElementById('rotateFileInput').value = '';
+        };
+
+        // PDF 로드 및 미리보기
+        async function loadRotatePDF(file) {
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+
+                // 원본 파일 데이터 복사본 저장 (다운로드 시 재사용)
+                rotateFileData = arrayBuffer.slice(0);
+
+                // pdf-lib로 로드 (실제 회전용)
+                rotatePdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+
+                // pdf.js로 로드 (미리보기용)
+                const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+                const pdf = await loadingTask.promise;
+                pdfPage = await pdf.getPage(1); // 첫 페이지만 미리보기
+
+                // 회전 초기화
+                currentRotation = 0;
+                document.getElementById('rotationAngle').textContent = '0°';
+
+                // 미리보기 렌더링
+                renderPreview();
+
+            } catch (error) {
+                console.error('PDF 로드 오류:', error);
+                if (error.message && error.message.includes('encrypted')) {
+                    alert('암호화된 PDF는 회전할 수 없습니다.\n\n먼저 "암호 해제" 탭에서 암호를 해제한 후 사용해주세요.');
+                } else {
+                    alert('PDF 로드 중 오류가 발생했습니다: ' + error.message);
+                }
+                document.getElementById('rotatePreviewSection').style.display = 'none';
+            }
+        }
+
+        // 미리보기 렌더링
+        function renderPreview() {
+            const canvas = document.getElementById('rotateCanvas');
+            const context = canvas.getContext('2d');
+
+            // 회전 각도에 따른 뷰포트 설정
+            const rotation = currentRotation % 360;
+            const viewport = pdfPage.getViewport({ scale: 1.5, rotation: rotation });
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+
+            pdfPage.render(renderContext);
+        }
+
+        // 미리보기 회전
+        window.rotatePreview = function(angle) {
+            currentRotation = (currentRotation + angle) % 360;
+            if (currentRotation < 0) currentRotation += 360;
+
+            document.getElementById('rotationAngle').textContent = currentRotation + '°';
+            renderPreview();
+        };
+
+        // 회전된 PDF 다운로드
+        window.downloadRotatedPDF = async function() {
+            if (!rotateFileData || !rotateFile) {
+                alert('회전할 PDF 파일을 선택해주세요.');
+                return;
+            }
+
+            try {
+                document.getElementById('downloadRotatedBtn').disabled = true;
+                document.getElementById('downloadRotatedBtn').textContent = '💾 처리 중...';
+
+                // 원본에서 새로 로드 (누적 회전 방지)
+                const freshPdfDoc = await PDFLib.PDFDocument.load(rotateFileData);
+
+                // 현재 회전 각도만 적용
+                const pages = freshPdfDoc.getPages();
+                const rotationDegrees = currentRotation;
+
+                pages.forEach(page => {
+                    const originalRotation = page.getRotation().angle;
+                    page.setRotation(PDFLib.degrees(originalRotation + rotationDegrees));
+                });
+
+                // PDF 저장
+                const pdfBytes = await freshPdfDoc.save();
+
+                // 다운로드
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                const originalName = rotateFile.name.replace('.pdf', '');
+                a.download = `${originalName}_rotated_${currentRotation}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // 성공 시 조용히 다운로드만 (알림 없음)
+            } catch (error) {
+                console.error('PDF 회전 오류:', error);
+                alert('PDF 회전 중 오류가 발생했습니다: ' + error.message);
+            } finally {
+                document.getElementById('downloadRotatedBtn').disabled = false;
+                document.getElementById('downloadRotatedBtn').textContent = '💾 회전된 PDF 다운로드';
+            }
+        };
+
+        // ========================================
+        // 변환 기능
+        // ========================================
+
+        // 변환 모드 선택
+        window.selectConvertMode = function(mode) {
+            convertMode = mode;
+            document.querySelectorAll('input[name="convertMode"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            // 컨텐츠 표시/숨김
+            document.getElementById('convert-pdf-to-image').style.display = mode === 'pdf-to-image' ? 'block' : 'none';
+            document.getElementById('convert-image-to-pdf').style.display = mode === 'image-to-pdf' ? 'block' : 'none';
+        };
+
+        // 이미지 포맷 선택
+        window.selectImageFormat = function(format) {
+            imageFormat = format;
+            document.querySelectorAll('input[name="imageFormat"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        };
+
+        // PDF 파일 선택 (PDF → 이미지)
+        window.selectConvertPdfFile = function() {
+            document.getElementById('convertPdfFileInput').click();
+        };
+
+        document.getElementById('convertPdfFileInput').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                convertPdfFile = file;
+                document.getElementById('convertPdfFileNameText').textContent = file.name;
+
+                // 페이지 수 확인
+                try {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+                    const pdf = await loadingTask.promise;
+                    const pageCount = pdf.numPages;
+                    document.getElementById('convertPdfPageCount').textContent = ` (${pageCount} 페이지)`;
+                } catch (error) {
+                    document.getElementById('convertPdfPageCount').textContent = '';
+                }
+
+                document.getElementById('convertPdfFileNameContainer').style.display = 'block';
+                document.getElementById('pdfToImageBtn').disabled = false;
+            }
+        });
+
+        // PDF 드래그 앤 드롭
+        const convertPdfDropZone = document.getElementById('convertPdfDropZone');
+
+        convertPdfDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            convertPdfDropZone.classList.add('drag-over');
+        });
+
+        convertPdfDropZone.addEventListener('dragleave', () => {
+            convertPdfDropZone.classList.remove('drag-over');
+        });
+
+        convertPdfDropZone.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            convertPdfDropZone.classList.remove('drag-over');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === 'application/pdf') {
+                convertPdfFile = files[0];
+                document.getElementById('convertPdfFileNameText').textContent = files[0].name;
+
+                // 페이지 수 확인
+                try {
+                    const arrayBuffer = await files[0].arrayBuffer();
+                    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+                    const pdf = await loadingTask.promise;
+                    const pageCount = pdf.numPages;
+                    document.getElementById('convertPdfPageCount').textContent = ` (${pageCount} 페이지)`;
+                } catch (error) {
+                    document.getElementById('convertPdfPageCount').textContent = '';
+                }
+
+                document.getElementById('convertPdfFileNameContainer').style.display = 'block';
+                document.getElementById('pdfToImageBtn').disabled = false;
+            }
+        });
+
+        // PDF 파일 삭제 (PDF → 이미지)
+        window.removeConvertPdfFile = function() {
+            convertPdfFile = null;
+            document.getElementById('convertPdfFileNameContainer').style.display = 'none';
+            document.getElementById('convertPdfFileInput').value = '';
+            document.getElementById('pdfToImageBtn').disabled = true;
+        };
+
+        // PDF → 이미지 변환
+        window.convertPdfToImage = async function() {
+            if (!convertPdfFile) {
+                alert('변환할 PDF 파일을 선택해주세요.');
+                return;
+            }
+
+            try {
+                document.getElementById('pdfToImageBtn').disabled = true;
+                document.getElementById('pdfToImageBtn').textContent = '🖼️ 변환 중...';
+
+                const arrayBuffer = await convertPdfFile.arrayBuffer();
+                const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+                const pdf = await loadingTask.promise;
+                const totalPages = pdf.numPages;
+
+                const images = [];
+                const scale = 2; // 해상도 (높을수록 품질 좋음)
+
+                for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const viewport = page.getViewport({ scale: scale });
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+
+                    // Canvas를 이미지로 변환
+                    const mimeType = imageFormat === 'jpg' ? 'image/jpeg' : 'image/png';
+                    const quality = imageFormat === 'jpg' ? 0.92 : 1.0;
+                    const blob = await new Promise(resolve => canvas.toBlob(resolve, mimeType, quality));
+
+                    const extension = imageFormat === 'jpg' ? 'jpg' : 'png';
+                    images.push({
+                        name: `page_${pageNum}.${extension}`,
+                        data: blob
+                    });
+                }
+
+                // ZIP으로 다운로드
+                const zip = new JSZip();
+                images.forEach(img => {
+                    zip.file(img.name, img.data);
+                });
+
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                const originalName = convertPdfFile.name.replace('.pdf', '');
+                a.download = `${originalName}_images.zip`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // 성공 시 조용히 다운로드만 (알림 없음)
+            } catch (error) {
+                console.error('PDF → 이미지 변환 오류:', error);
+                if (error.message && error.message.includes('encrypted')) {
+                    alert('암호화된 PDF는 변환할 수 없습니다.\n\n먼저 "암호 해제" 탭에서 암호를 해제한 후 사용해주세요.');
+                } else {
+                    alert('PDF → 이미지 변환 중 오류가 발생했습니다: ' + error.message);
+                }
+            } finally {
+                document.getElementById('pdfToImageBtn').disabled = false;
+                document.getElementById('pdfToImageBtn').textContent = '🖼️ 이미지로 변환';
+            }
+        };
+
+        // 이미지 파일 선택 (이미지 → PDF)
+        window.selectConvertImageFiles = function() {
+            document.getElementById('convertImageFileInput').click();
+        };
+
+        document.getElementById('convertImageFileInput').addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            addConvertImages(files);
+            e.target.value = '';
+        });
+
+        // 이미지 드래그 앤 드롭
+        const convertImageDropZone = document.getElementById('convertImageDropZone');
+
+        convertImageDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            convertImageDropZone.classList.add('drag-over');
+        });
+
+        convertImageDropZone.addEventListener('dragleave', () => {
+            convertImageDropZone.classList.remove('drag-over');
+        });
+
+        convertImageDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            convertImageDropZone.classList.remove('drag-over');
+
+            const files = Array.from(e.dataTransfer.files).filter(f =>
+                f.type === 'image/jpeg' || f.type === 'image/png' || f.type === 'image/jpg'
+            );
+            addConvertImages(files);
+        });
+
+        // 이미지 추가
+        function addConvertImages(files) {
+            convertImageFiles = convertImageFiles.concat(files);
+            updateConvertImageList();
+        }
+
+        // 이미지 목록 업데이트
+        function updateConvertImageList() {
+            const listElement = document.getElementById('convertImageFileList');
+
+            if (convertImageFiles.length === 0) {
+                listElement.innerHTML = '<div class="empty-state">선택된 이미지가 없습니다</div>';
+                document.getElementById('imageToPdfBtn').disabled = true;
+                return;
+            }
+
+            listElement.innerHTML = convertImageFiles.map((file, index) => `
+                <div class="file-item">
+                    <span class="file-name">🖼️ ${index + 1}. ${file.name} <span style="color: #6B7280; font-size: 12px;">(${(file.size / 1024).toFixed(1)} KB)</span></span>
+                    <button class="file-remove" onclick="removeConvertImage(${index})" title="파일 제거">×</button>
+                </div>
+            `).join('');
+
+            document.getElementById('imageToPdfBtn').disabled = false;
+        }
+
+        // 이미지 개별 삭제
+        window.removeConvertImage = function(index) {
+            convertImageFiles.splice(index, 1);
+            updateConvertImageList();
+        };
+
+        // 이미지 목록 지우기
+        window.clearConvertImages = function() {
+            convertImageFiles = [];
+            updateConvertImageList();
+        };
+
+        // 이미지 → PDF 변환
+        window.convertImageToPdf = async function() {
+            if (convertImageFiles.length === 0) {
+                alert('변환할 이미지 파일을 선택해주세요.');
+                return;
+            }
+
+            try {
+                document.getElementById('imageToPdfBtn').disabled = true;
+                document.getElementById('imageToPdfBtn').textContent = '📄 변환 중...';
+
+                const pdfDoc = await PDFLib.PDFDocument.create();
+
+                for (let i = 0; i < convertImageFiles.length; i++) {
+                    const file = convertImageFiles[i];
+                    const arrayBuffer = await file.arrayBuffer();
+
+                    let image;
+                    if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
+                        image = await pdfDoc.embedJpg(arrayBuffer);
+                    } else if (file.type === 'image/png') {
+                        image = await pdfDoc.embedPng(arrayBuffer);
+                    } else {
+                        continue;
+                    }
+
+                    const page = pdfDoc.addPage([image.width, image.height]);
+                    page.drawImage(image, {
+                        x: 0,
+                        y: 0,
+                        width: image.width,
+                        height: image.height
+                    });
+                }
+
+                const pdfBytes = await pdfDoc.save();
+
+                // 다운로드
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'converted.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // 성공 시 조용히 다운로드만 (알림 없음)
+            } catch (error) {
+                console.error('이미지 → PDF 변환 오류:', error);
+                alert('이미지 → PDF 변환 중 오류가 발생했습니다: ' + error.message);
+            } finally {
+                document.getElementById('imageToPdfBtn').disabled = false;
+                document.getElementById('imageToPdfBtn').textContent = '📄 PDF로 변환';
+            }
+        };
+
+        // ===== 암호 설정 기능 =====
+
+        // 암호 설정용 파일 선택
+        window.selectLockFiles = function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.multiple = true;
+            input.accept = '.pdf';
+            input.onchange = (e) => {
+                const files = Array.from(e.target.files);
+                lockFiles = [...lockFiles, ...files];
+                updateLockFileList();
+            };
+            input.click();
+        };
+
+        // 암호 설정용 파일 목록 업데이트
+        function updateLockFileList() {
+            const fileList = document.getElementById('lockFileList');
+            const fileBadge = document.getElementById('lockFileBadge');
+            const processBtn = document.getElementById('lockProcessBtn');
+
+            fileBadge.textContent = `${lockFiles.length}개`;
+
+            if (lockFiles.length === 0) {
+                fileList.innerHTML = '<div class="empty-state">선택된 파일이 없습니다</div>';
+                processBtn.disabled = true;
+                return;
+            }
+
+            processBtn.disabled = false;
+
+            fileList.innerHTML = lockFiles.map((file, index) => `
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-name">📄 ${file.name}</div>
+                        <div class="file-size">${(file.size / 1024).toFixed(1)} KB</div>
+                    </div>
+                    <button class="btn-icon" onclick="removeLockFile(${index})" title="파일 삭제">
+                        <span>×</span>
+                    </button>
+                </div>
+            `).join('');
+
+            // 개별 암호 모드일 경우 암호 입력 칸도 업데이트
+            if (lockPasswordMode === 'individual') {
+                updateIndividualPasswordInputs();
+            }
+        }
+
+        // 개별 암호 입력 칸 업데이트
+        function updateIndividualPasswordInputs() {
+            const individualPasswordList = document.getElementById('individualPasswordList');
+
+            if (lockFiles.length === 0) {
+                individualPasswordList.innerHTML = `
+                    <div style="text-align: center; color: #6B7280; padding: 20px;">
+                        먼저 파일을 추가해주세요
+                    </div>
+                `;
+                return;
+            }
+
+            individualPasswordList.innerHTML = lockFiles.map((file, index) => `
+                <div style="margin-bottom: 20px; padding: 15px; background: #F9FAFB; border-radius: 12px; border: 1px solid #E5E7EB;">
+                    <div style="font-weight: 600; color: #1F2937; margin-bottom: 10px; font-size: 14px;">
+                        📄 ${file.name}
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="display: block; font-weight: 500; color: #4B5563; margin-bottom: 5px; font-size: 13px;">
+                            암호 입력
+                        </label>
+                        <input type="password" id="individualPassword_${index}" placeholder="암호 입력 (최소 4자)"
+                               style="width: 100%; padding: 10px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 14px;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 500; color: #4B5563; margin-bottom: 5px; font-size: 13px;">
+                            암호 확인
+                        </label>
+                        <input type="password" id="individualPasswordConfirm_${index}" placeholder="암호 다시 입력"
+                               style="width: 100%; padding: 10px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 14px;">
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 암호 설정용 개별 파일 삭제
+        window.removeLockFile = function(index) {
+            lockFiles.splice(index, 1);
+            updateLockFileList();
+        };
+
+        // 암호 설정용 전체 파일 삭제
+        window.clearLockFiles = function() {
+            lockFiles = [];
+            updateLockFileList();
+        };
+
+        // 암호 설정 방식 선택
+        window.selectLockPasswordMode = function(mode) {
+            lockPasswordMode = mode;
+            document.querySelectorAll('input[name="lockPasswordMode"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            // UI 전환
+            const samePasswordInput = document.getElementById('samePasswordInput');
+            const individualPasswordInput = document.getElementById('individualPasswordInput');
+
+            if (mode === 'same') {
+                samePasswordInput.style.display = 'block';
+                individualPasswordInput.style.display = 'none';
+            } else {
+                samePasswordInput.style.display = 'none';
+                individualPasswordInput.style.display = 'block';
+                updateIndividualPasswordInputs();
+            }
+        };
+
+        // 암호 설정 다운로드 방식 선택
+        window.selectLockDownloadMode = function(mode) {
+            lockDownloadMode = mode;
+            document.querySelectorAll('input[name="lockDownloadMode"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        };
+
+        // 암호 설정 드래그 앤 드롭
+        const lockDropZone = document.getElementById('lockDropZone');
+        if (lockDropZone) {
+            lockDropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                lockDropZone.classList.add('drag-over');
+            });
+
+            lockDropZone.addEventListener('dragleave', () => {
+                lockDropZone.classList.remove('drag-over');
+            });
+
+            lockDropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                lockDropZone.classList.remove('drag-over');
+                const files = Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf');
+                lockFiles = [...lockFiles, ...files];
+                updateLockFileList();
+            });
+        }
+
+        // 암호 설정 실행
+        window.lockFiles = async function() {
+            if (lockFiles.length === 0) {
+                alert('파일을 선택해주세요.');
+                return;
+            }
+
+            // 동일 암호 모드 유효성 검사
+            if (lockPasswordMode === 'same') {
+                const password = document.getElementById('lockPasswordInput').value;
+                const passwordConfirm = document.getElementById('lockPasswordConfirm').value;
+
+                if (!password) {
+                    alert('암호를 입력해주세요.');
+                    return;
+                }
+
+                if (password !== passwordConfirm) {
+                    alert('암호가 일치하지 않습니다.');
+                    return;
+                }
+
+                if (password.length < 4) {
+                    alert('암호는 최소 4자 이상이어야 합니다.');
+                    return;
+                }
+            }
+
+            const processBtn = document.getElementById('lockProcessBtn');
+            processBtn.disabled = true;
+            processBtn.textContent = '🔒 암호 설정 중...';
+
+            try {
+                const processedFiles = [];
+
+                for (let i = 0; i < lockFiles.length; i++) {
+                    const file = lockFiles[i];
+
+                    // 개별 암호 모드일 때 각 파일의 입력 칸에서 암호 가져오기
+                    let filePassword;
+                    if (lockPasswordMode === 'individual') {
+                        const passwordInput = document.getElementById(`individualPassword_${i}`);
+                        const confirmInput = document.getElementById(`individualPasswordConfirm_${i}`);
+
+                        if (!passwordInput || !confirmInput) {
+                            throw new Error('암호 입력 칸을 찾을 수 없습니다.');
+                        }
+
+                        filePassword = passwordInput.value;
+                        const confirmPassword = confirmInput.value;
+
+                        if (!filePassword) {
+                            alert(`📄 ${file.name}\n\n암호를 입력해주세요.`);
+                            throw new Error('암호 입력 필요');
+                        }
+
+                        if (filePassword.length < 4) {
+                            alert(`📄 ${file.name}\n\n암호는 최소 4자 이상이어야 합니다.`);
+                            throw new Error('암호 길이 부족');
+                        }
+
+                        if (filePassword !== confirmPassword) {
+                            alert(`📄 ${file.name}\n\n암호가 일치하지 않습니다.`);
+                            throw new Error('암호 불일치');
+                        }
+                    } else {
+                        // 동일 암호 모드
+                        filePassword = document.getElementById('lockPasswordInput').value;
+                    }
+
+                    const arrayBuffer = await file.arrayBuffer();
+                    const uint8Array = new Uint8Array(arrayBuffer);
+
+                    // qpdf로 암호 설정
+                    const FS = qpdfModule.FS;
+                    const inputFileName = `input_${i}.pdf`;
+                    const outputFileName = `output_${i}.pdf`;
+
+                    FS.writeFile(inputFileName, uint8Array);
+
+                    // qpdf --encrypt user-password owner-password 256 -- input.pdf output.pdf
+                    const args = [
+                        '--encrypt',
+                        filePassword,
+                        filePassword,
+                        '256',
+                        '--',
+                        inputFileName,
+                        outputFileName
+                    ];
+
+                    const exitCode = qpdfModule.callMain(args);
+
+                    if (exitCode !== 0) {
+                        throw new Error(`${file.name} 암호 설정 실패`);
+                    }
+
+                    const outputData = FS.readFile(outputFileName);
+                    processedFiles.push({
+                        name: file.name.replace('.pdf', '_locked.pdf'),
+                        data: outputData
+                    });
+
+                    // 정리
+                    FS.unlink(inputFileName);
+                    FS.unlink(outputFileName);
+                }
+
+                // 다운로드
+                if (lockDownloadMode === 'zip') {
+                    // ZIP으로 다운로드
+                    const zip = new JSZip();
+                    processedFiles.forEach(file => {
+                        zip.file(file.name, file.data);
+                    });
+
+                    const zipBlob = await zip.generateAsync({ type: 'blob' });
+                    const url = URL.createObjectURL(zipBlob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'locked_pdfs.zip';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                } else {
+                    // 개별 다운로드
+                    for (const file of processedFiles) {
+                        const blob = new Blob([file.data], { type: 'application/pdf' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = file.name;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                    }
+                }
+
+                // 성공 시 조용히 다운로드만 (알림 없음)
+            } catch (error) {
+                console.error('암호 설정 오류:', error);
+                alert('암호 설정 중 오류가 발생했습니다: ' + error.message);
+            } finally {
+                processBtn.disabled = false;
+                processBtn.textContent = '🔒 암호 설정 시작';
+            }
+        };
+
+        // URL 파라미터로 탭 자동 전환
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+
+            if (tab) {
+                // 탭 버튼 숨기기
+                const tabsElement = document.querySelector('.tabs');
+                if (tabsElement) {
+                    tabsElement.classList.add('hidden');
+                }
+
+                // 홈 버튼 표시
+                const homeButton = document.getElementById('homeButton');
+                if (homeButton) {
+                    homeButton.classList.add('show');
+                }
+
+                const tabMapping = {
+                    'password': { tab: 'password' },
+                    'unlock': { tab: 'password' }, // 하위 호환성
+                    'merge-split': { tab: 'merge-split' },
+                    'rotate': { tab: 'rotate' },
+                    'convert': { tab: 'convert' },
+                    'convert-to-image': { tab: 'convert', mode: 'pdf-to-image' },
+                    'convert-to-pdf': { tab: 'convert', mode: 'image-to-pdf' },
+                    'excel': { tab: 'excel' }
+                };
+
+                const config = tabMapping[tab];
+
+                if (config) {
+                    // 탭 전환
+                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                    // 해당 탭 버튼 찾기 및 활성화
+                    const tabButtons = document.querySelectorAll('.tab-button');
+                    tabButtons.forEach(btn => {
+                        const btnText = btn.textContent.trim();
+                        if ((config.tab === 'password' && btnText.includes('암호 관리')) ||
+                            (config.tab === 'merge-split' && btnText.includes('병합/분할')) ||
+                            (config.tab === 'rotate' && btnText.includes('회전')) ||
+                            (config.tab === 'convert' && btnText.includes('변환') && !btnText.includes('Excel')) ||
+                            (config.tab === 'excel' && btnText.includes('Excel'))) {
+                            btn.classList.add('active');
+                        }
+                    });
+
+                    // 탭 컨텐츠 활성화
+                    const tabContent = document.getElementById('tab-' + config.tab);
+                    if (tabContent) {
+                        tabContent.classList.add('active');
+                    }
+
+                    // 제목 업데이트
+                    updatePageTitle(config.tab);
+
+                    // 서브 모드가 있는 경우 처리
+                    if (config.mode) {
+                        if (config.tab === 'convert') {
+                            // 변환 모드 설정
+                            convertMode = config.mode;
+                            document.querySelectorAll('input[name="convertMode"]').forEach(radio => {
+                                const label = radio.parentElement;
+                                if (radio.value === config.mode) {
+                                    label.classList.add('selected');
+                                    radio.checked = true;
+                                } else {
+                                    label.classList.remove('selected');
+                                }
+                            });
+                            document.getElementById('pdf-to-image-content').style.display = config.mode === 'pdf-to-image' ? 'block' : 'none';
+                            document.getElementById('image-to-pdf-content').style.display = config.mode === 'image-to-pdf' ? 'block' : 'none';
+                        }
+                    }
+                }
+            }
+        })();
+
+        // ===== Excel 변환 기능 =====
+
+        // 민감도 라벨 업데이트
+        window.updateSensitivityLabel = function(value) {
+            const labels = {
+                '1': '느슨하게',
+                '2': '보통',
+                '3': '정교하게'
+            };
+            document.getElementById('sensitivityLabel').textContent = labels[value] || '보통';
+        };
+
+        // Excel 모드 선택
+        window.selectExcelMode = function(mode) {
+            excelMode = mode;
+            document.querySelectorAll('input[name="excelMode"]').forEach(radio => {
+                radio.parentElement.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            document.getElementById('excel-pdf-to-excel').style.display = mode === 'pdf-to-excel' ? 'block' : 'none';
+            document.getElementById('excel-excel-to-pdf').style.display = mode === 'excel-to-pdf' ? 'block' : 'none';
+        };
+
+        // PDF 파일 선택 (PDF → Excel)
+        window.selectExcelPdfFile = function() {
+            document.getElementById('excelPdfFileInput').click();
+        };
+
+        document.getElementById('excelPdfFileInput').addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            excelPdfFile = file;
+            document.getElementById('excelPdfFileNameText').textContent = file.name;
+            document.getElementById('excelPdfFileNameContainer').style.display = 'block';
+            document.getElementById('pdfToExcelBtn').disabled = false;
+
+            // 페이지 수 표시
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const loadingTask = pdfjsLib.getDocument({data: arrayBuffer});
+                const pdf = await loadingTask.promise;
+                document.getElementById('excelPdfPageCount').textContent = `(${pdf.numPages} 페이지)`;
+            } catch (error) {
+                console.error('PDF 로딩 실패:', error);
+            }
+        });
+
+        // PDF 파일 제거
+        window.removeExcelPdfFile = function() {
+            excelPdfFile = null;
+            document.getElementById('excelPdfFileInput').value = '';
+            document.getElementById('excelPdfFileNameContainer').style.display = 'none';
+            document.getElementById('pdfToExcelBtn').disabled = true;
+        };
+
+        // Excel 파일 선택 (Excel → PDF)
+        window.selectExcelFile = function() {
+            document.getElementById('excelFileInput').click();
+        };
+
+        document.getElementById('excelFileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            excelFile = file;
+            document.getElementById('excelFileNameText').textContent = file.name;
+            document.getElementById('excelFileNameContainer').style.display = 'block';
+            document.getElementById('excelToPdfBtn').disabled = false;
+        });
+
+        // Excel 파일 제거
+        window.removeExcelFile = function() {
+            excelFile = null;
+            document.getElementById('excelFileInput').value = '';
+            document.getElementById('excelFileNameContainer').style.display = 'none';
+            document.getElementById('excelToPdfBtn').disabled = true;
+        };
+
+        // PDF → Excel 변환 (V5 - 간격 기반 컬럼 감지!)
+        window.convertPdfToExcel = async function() {
+            if (!excelPdfFile) {
+                alert('PDF 파일을 선택해주세요.');
+                return;
+            }
+
+            const btn = document.getElementById('pdfToExcelBtn');
+            btn.disabled = true;
+            btn.textContent = '📊 변환 중...';
+
+            try {
+                // 옵션 읽기
+                const sensitivity = parseInt(document.getElementById('excelSensitivity').value);
+
+                // 민감도에 따른 설정
+                const settings = {
+                    1: { yTolerance: 10, minGap: 60 },  // 느슨하게 (큰 간격만 컬럼 구분)
+                    2: { yTolerance: 6, minGap: 40 },   // 보통
+                    3: { yTolerance: 4, minGap: 25 }    // 정교하게 (작은 간격도 컬럼 구분)
+                };
+                const setting = settings[sensitivity];
+
+                // PDF 로드
+                const arrayBuffer = await excelPdfFile.arrayBuffer();
+                const loadingTask = pdfjsLib.getDocument({data: arrayBuffer});
+                const pdf = await loadingTask.promise;
+
+                // Excel 워크북 생성
+                const workbook = new ExcelJS.Workbook();
+
+                // 각 페이지 처리
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const textContent = await page.getTextContent();
+
+                    // 시트 생성
+                    const worksheet = workbook.addWorksheet(`Page ${pageNum}`);
+
+                    if (textContent.items.length === 0) continue;
+
+                    // 텍스트 아이템 추출
+                    const items = textContent.items.map(item => ({
+                        text: item.str.trim(),
+                        x: Math.round(item.transform[4]),
+                        y: Math.round(item.transform[5]),
+                        width: item.width,
+                        height: item.height
+                    })).filter(item => item.text.length > 0);
+
+                    if (items.length === 0) continue;
+
+                    // === 1단계: Y 좌표 그룹핑 (행 감지) ===
+                    const yGroups = [];
+                    items.forEach(item => {
+                        let foundGroup = false;
+                        for (let group of yGroups) {
+                            const avgY = group.items.reduce((sum, g) => sum + g.y, 0) / group.items.length;
+                            if (Math.abs(avgY - item.y) <= setting.yTolerance) {
+                                group.items.push(item);
+                                foundGroup = true;
+                                break;
+                            }
+                        }
+                        if (!foundGroup) {
+                            yGroups.push({ items: [item] });
+                        }
+                    });
+
+                    yGroups.forEach(group => {
+                        group.y = group.items.reduce((sum, item) => sum + item.y, 0) / group.items.length;
+                    });
+                    yGroups.sort((a, b) => b.y - a.y);
+
+                    // === 2단계: 간격 기반 컬럼 감지 (새로운 방식!) ===
+                    // 모든 고유한 X 위치 수집
+                    const allXPositions = [...new Set(items.map(item => item.x))].sort((a, b) => a - b);
+
+                    // X 위치 간 간격 계산 및 큰 간격 찾기
+                    const gaps = [];
+                    for (let i = 1; i < allXPositions.length; i++) {
+                        const gap = allXPositions[i] - allXPositions[i-1];
+                        if (gap > setting.minGap) {
+                            gaps.push({
+                                position: (allXPositions[i-1] + allXPositions[i]) / 2,
+                                size: gap
+                            });
+                        }
+                    }
+
+                    // 간격으로 컬럼 범위 정의
+                    const columnRanges = [];
+                    let startX = allXPositions[0];
+
+                    gaps.forEach(gap => {
+                        columnRanges.push({ start: startX, end: gap.position });
+                        startX = gap.position;
+                    });
+                    columnRanges.push({ start: startX, end: allXPositions[allXPositions.length - 1] + 100 });
+
+                    // === 3단계: 각 행을 컬럼 범위에 따라 분할 ===
+                    yGroups.forEach((yGroup, rowIndex) => {
+                        const rowItems = yGroup.items.sort((a, b) => a.x - b.x);
+                        const rowData = new Array(columnRanges.length).fill('');
+
+                        // 각 아이템을 해당 컬럼 범위에 배치
+                        rowItems.forEach(item => {
+                            for (let colIdx = 0; colIdx < columnRanges.length; colIdx++) {
+                                const range = columnRanges[colIdx];
+                                if (item.x >= range.start && item.x < range.end) {
+                                    if (rowData[colIdx] === '') {
+                                        rowData[colIdx] = item.text;
+                                    } else {
+                                        // 같은 컬럼 내에서는 공백으로 연결
+                                        rowData[colIdx] += ' ' + item.text;
+                                    }
+                                    break;
+                                }
+                            }
+                        });
+
+                        // Excel 행에 데이터 쓰기
+                        rowData.forEach((cellValue, colIndex) => {
+                            if (cellValue) {
+                                const cell = worksheet.getCell(rowIndex + 1, colIndex + 1);
+                                cell.value = cellValue.trim();
+                                cell.alignment = { vertical: 'middle', horizontal: 'left', wrapText: false };
+                            }
+                        });
+                    });
+
+                    // === 4단계: 열 너비 자동 조정 ===
+                    for (let colIndex = 0; colIndex < columnRanges.length; colIndex++) {
+                        const column = worksheet.getColumn(colIndex + 1);
+                        let maxLength = 10;
+
+                        column.eachCell({ includeEmpty: false }, cell => {
+                            const cellValue = cell.value ? cell.value.toString() : '';
+                            if (cellValue.length > maxLength) {
+                                maxLength = cellValue.length;
+                            }
+                        });
+
+                        column.width = Math.min(maxLength + 2, 60);
+                    }
+
+                    // === 5단계: 빈 행/열 제거 ===
+                    // 빈 행 제거
+                    const rowsToDelete = [];
+                    worksheet.eachRow((row, rowNumber) => {
+                        let hasContent = false;
+                        row.eachCell((cell) => {
+                            if (cell.value && cell.value.toString().trim()) {
+                                hasContent = true;
+                            }
+                        });
+                        if (!hasContent) {
+                            rowsToDelete.push(rowNumber);
+                        }
+                    });
+
+                    // 뒤에서부터 삭제 (인덱스 변경 방지)
+                    for (let i = rowsToDelete.length - 1; i >= 0; i--) {
+                        worksheet.spliceRows(rowsToDelete[i], 1);
+                    }
+
+                    // 빈 열 제거
+                    const columnsToDelete = [];
+                    for (let colNumber = 1; colNumber <= columnRanges.length; colNumber++) {
+                        let hasContent = false;
+                        worksheet.getColumn(colNumber).eachCell((cell) => {
+                            if (cell.value && cell.value.toString().trim()) {
+                                hasContent = true;
+                            }
+                        });
+                        if (!hasContent) {
+                            columnsToDelete.push(colNumber);
+                        }
+                    }
+
+                    // 뒤에서부터 삭제
+                    for (let i = columnsToDelete.length - 1; i >= 0; i--) {
+                        worksheet.spliceColumns(columnsToDelete[i], 1);
+                    }
+
+                    // === 6단계: 표 스타일 적용 (첫 행을 헤더로 가정) ===
+                    const firstRow = worksheet.getRow(1);
+                    firstRow.eachCell(cell => {
+                        cell.font = { bold: true };
+                        cell.fill = {
+                            type: 'pattern',
+                            pattern: 'solid',
+                            fgColor: { argb: 'FFE0E0E0' }
+                        };
+                        cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                    });
+
+                    // 모든 셀에 테두리 추가
+                    worksheet.eachRow((row, rowNumber) => {
+                        row.eachCell((cell, colNumber) => {
+                            cell.border = {
+                                top: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                                left: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                                bottom: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                                right: { style: 'thin', color: { argb: 'FFCCCCCC' } }
+                            };
+                        });
+                    });
+                }
+
+                // Excel 파일 생성 및 다운로드
+                const buffer = await workbook.xlsx.writeBuffer();
+                const blob = new Blob([buffer], {
+                    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                });
+
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = excelPdfFile.name.replace('.pdf', '.xlsx');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error('PDF → Excel 변환 실패:', error);
+                alert('❌ 변환 중 오류가 발생했습니다.\n\n' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '📊 Excel로 변환';
+            }
+        };
+
+        // Excel → PDF 변환
+        window.convertExcelToPdf = async function() {
+            if (!excelFile) {
+                alert('Excel 파일을 선택해주세요.');
+                return;
+            }
+
+            const btn = document.getElementById('excelToPdfBtn');
+            btn.disabled = true;
+            btn.textContent = '📄 변환 중...';
+
+            try {
+                // Excel 파일 읽기
+                const arrayBuffer = await excelFile.arrayBuffer();
+                const workbook = new ExcelJS.Workbook();
+                await workbook.xlsx.load(arrayBuffer);
+
+                // jsPDF 초기화
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+
+                let isFirstSheet = true;
+
+                // 각 시트를 PDF 페이지로 변환
+                workbook.eachSheet((worksheet, sheetId) => {
+                    if (!isFirstSheet) {
+                        pdf.addPage();
+                    }
+                    isFirstSheet = false;
+
+                    // 시트 제목
+                    pdf.setFontSize(16);
+                    pdf.text(worksheet.name, 14, 15);
+
+                    // 데이터 추출
+                    const tableData = [];
+                    worksheet.eachRow((row, rowNumber) => {
+                        const rowData = [];
+                        row.eachCell({ includeEmpty: true }, (cell, colNumber) => {
+                            rowData.push(cell.value ? cell.value.toString() : '');
+                        });
+                        tableData.push(rowData);
+                    });
+
+                    // 표 그리기
+                    if (tableData.length > 0) {
+                        pdf.autoTable({
+                            head: [tableData[0]], // 첫 행을 헤더로
+                            body: tableData.slice(1), // 나머지를 바디로
+                            startY: 20,
+                            styles: {
+                                fontSize: 9,
+                                cellPadding: 2,
+                                overflow: 'linebreak',
+                                font: 'helvetica'
+                            },
+                            headStyles: {
+                                fillColor: [100, 100, 100],
+                                textColor: 255,
+                                fontStyle: 'bold'
+                            },
+                            margin: { top: 20 }
+                        });
+                    }
+                });
+
+                // PDF 다운로드
+                pdf.save(excelFile.name.replace(/\.(xlsx|xls)$/i, '.pdf'));
+
+            } catch (error) {
+                console.error('Excel → PDF 변환 실패:', error);
+                alert('❌ 변환 중 오류가 발생했습니다.\n\n' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '📄 PDF로 변환';
+            }
+        };
+
+    </script>
+</body>
+</html>
