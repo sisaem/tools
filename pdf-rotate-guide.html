@@ -75,6 +75,29 @@ input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;
 input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
 @media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
 
+
+
+/* Guide/detail and final tool layout fixes */
+.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
+.image-tool-main .form-row{min-width:0!important}
+.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
+.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
+.image-tool-main .tool-section h2{margin-top:24px!important}
+.image-tool-main .tool-section.active{min-height:170px!important}
+.image-tool-main .tool-actions{margin-top:18px!important}
+.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
+.preview-box{min-height:220px!important}
+.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
+.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.guide-detail .guide-block{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
+.guide-detail .guide-block h3{margin-top:0!important}
+.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
+.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
+.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.guide-detail th{background:#eef6ff}
+@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html" aria-current="page">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header><section class="article"><span class="badge">PDF Guide</span><h1>PDF 페이지 회전 가이드</h1><p>스캔한 문서가 옆으로 누워 있거나 일부 페이지만 뒤집혀 있을 때 PDF 회전 기능을 사용하면 읽기 쉬운 방향으로 정리할 수 있습니다.</p><div class="note">이 안내는 일반적인 PDF 작업을 돕기 위한 설명입니다. 중요한 문서는 원본을 별도로 보관하고, 결과 파일을 직접 확인한 뒤 사용하세요.</div><h2>회전 기능이 필요한 경우</h2><p>복합기나 스캐너로 문서를 스캔하면 세로 문서와 가로 문서가 섞이거나 일부 페이지가 180도 뒤집힌 상태로 저장되는 경우가 있습니다. 이런 파일은 읽기 어렵고, 제출받는 사람이 다시 조정해야 하므로 미리 회전해 두는 것이 좋습니다.</p><h2>전체 회전과 일부 회전</h2><p>모든 페이지가 같은 방향으로 잘못된 경우 전체 페이지를 한 번에 회전하면 됩니다. 하지만 일부 페이지만 잘못된 경우에는 해당 페이지만 선택해 회전해야 합니다. 결과 저장 전에 미리보기에서 페이지별 방향을 확인하세요.</p><h2>회전 후 확인할 부분</h2><p>회전된 PDF는 페이지 내용뿐 아니라 서명 위치, 도장 위치, 표 방향이 자연스러운지 확인해야 합니다. 특히 가로 표가 포함된 문서는 모든 페이지를 세로 방향으로 맞추는 것이 항상 좋은 결과는 아닐 수 있습니다.</p><h2>스캔 품질과 회전</h2><p>회전은 페이지 방향을 바꾸는 기능이지 스캔 품질을 개선하는 기능은 아닙니다. 글자가 흐리거나 기울어진 문서는 회전만으로 해결되지 않을 수 있습니다. 중요한 문서는 스캔 단계에서 해상도와 방향을 다시 확인하는 것이 더 좋은 결과를 만듭니다.</p><div class="cta"><a class="btn primary" href="standalone.html?tab=rotate">PDF 도구 실행</a><a class="btn" href="guide.html">전체 가이드</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>

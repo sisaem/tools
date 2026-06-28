@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QR 코드 생성기 사용 가이드</title>
-<meta name="description" content="URL, Wi-Fi, 명함, 여러 줄 QR을 만들 때 확인해야 할 사항입니다.">
+<title>QR 코드 상세 사용 가이드</title>
+<meta name="description" content="URL, Wi-Fi, 명함, 일괄 QR 코드를 만들 때 확인해야 할 내용을 단계별로 설명합니다.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Sisaemdal Tools">
 <link rel="canonical" href="https://sisaemdal.com/qr-code-guide.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="QR 코드 생성기 사용 가이드">
-<meta property="og:description" content="URL, Wi-Fi, 명함, 여러 줄 QR을 만들 때 확인해야 할 사항입니다.">
+<meta property="og:title" content="QR 코드 상세 사용 가이드">
+<meta property="og:description" content="URL, Wi-Fi, 명함, 일괄 QR 코드를 만들 때 확인해야 할 내용을 단계별로 설명합니다.">
 <meta property="og:url" content="https://sisaemdal.com/qr-code-guide.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QR 코드 생성기 사용 가이드">
-<meta name="twitter:description" content="URL, Wi-Fi, 명함, 여러 줄 QR을 만들 때 확인해야 할 사항입니다.">
+<meta name="twitter:title" content="QR 코드 상세 사용 가이드">
+<meta name="twitter:description" content="URL, Wi-Fi, 명함, 일괄 QR 코드를 만들 때 확인해야 할 내용을 단계별로 설명합니다.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
 
 <style>
@@ -87,8 +87,40 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 :root{--content-w:1000px}
 .grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
 .tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#2458ff;color:#fff;border-color:#2458ff}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#f8fbff;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#f8fbff}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
+
+
+/* Guide/detail and final tool layout fixes */
+.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
+.image-tool-main .form-row{min-width:0!important}
+.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
+.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
+.image-tool-main .tool-section h2{margin-top:24px!important}
+.image-tool-main .tool-section.active{min-height:170px!important}
+.image-tool-main .tool-actions{margin-top:18px!important}
+.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
+.preview-box{min-height:220px!important}
+.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
+.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.guide-detail .guide-block{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
+.guide-detail .guide-block h3{margin-top:0!important}
+.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
+.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
+.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.guide-detail th{background:#eef6ff}
+@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>
-<section class="hero"><span class="badge">사용 가이드</span><h1>QR 코드 가이드</h1><p>URL, Wi-Fi, 명함, 여러 줄 QR을 만들 때 확인해야 할 사항입니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="qr-tools.html">도구 열기</a></div></section><section class="article"><h2>QR 내용 확인</h2><p>QR은 스캔 전 내용을 알기 어려우므로 배포 전 링크와 문구를 반드시 확인하세요. 긴 문장보다 짧은 URL이나 핵심 안내가 안정적입니다.</p><h2>Wi-Fi와 명함 QR</h2><p>Wi-Fi QR에는 네트워크 이름과 비밀번호가 포함될 수 있고, 명함 QR에는 연락처 정보가 포함됩니다. 공개 배포 전 포함 정보를 다시 확인하세요.</p><h2>색상과 인쇄</h2><p>QR 색상과 배경 색상 대비가 낮으면 스캔이 어렵습니다. 인쇄 전 휴대폰 카메라로 실제 스캔 테스트를 하는 것이 좋습니다.</p><div class="cta"><a class="btn primary" href="qr-tools.html">도구 열기</a><a class="btn" href="guide.html">전체 가이드</a></div></section>
+<section class="hero"><span class="badge">사용 가이드</span><h1>QR 코드 상세 사용 가이드</h1><p>URL, Wi-Fi, 명함, 일괄 QR 코드를 만들 때 확인해야 할 내용을 단계별로 설명합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="qr-tools.html">QR 도구 열기</a></div></section><section class="article guide-detail">
+<h2>QR 코드를 만들기 전 확인할 점</h2><p>QR 코드는 카메라로 스캔하면 숨겨진 URL이나 텍스트를 열 수 있게 해주는 도구입니다. 사용자는 QR 안의 내용을 눈으로 직접 확인하기 어렵기 때문에, 배포 전에 연결 대상과 포함 정보를 반드시 확인해야 합니다.</p>
+<div class="toc"><a href="#basic">기본 URL·텍스트 QR</a><a href="#wifi">Wi-Fi QR</a><a href="#vcard">명함 QR</a><a href="#bulk">일괄 생성</a><a href="#color">색상·크기</a><a href="#test">스캔 테스트</a></div>
+<div class="guide-block" id="basic"><h3>기본 URL·텍스트 QR</h3><ol><li>QR 도구에서 <strong>기본 QR</strong> 탭을 선택합니다.</li><li>연결할 URL이나 짧은 안내 문구를 입력합니다.</li><li>QR 생성 버튼을 누릅니다.</li><li>미리보기에 QR이 표시되면 휴대폰 카메라로 테스트합니다.</li><li>정상적으로 열리면 PNG 다운로드를 누릅니다.</li></ol><p>URL은 오타가 나기 쉽기 때문에 가능하면 브라우저에서 실제로 열어본 주소를 복사해 넣는 것이 좋습니다.</p></div>
+<div class="guide-block" id="wifi"><h3>Wi-Fi QR</h3><ol><li><strong>Wi-Fi QR</strong> 탭을 선택합니다.</li><li>SSID에는 Wi-Fi 이름을 입력합니다.</li><li>비밀번호와 보안 방식을 입력합니다. 일반 공유기는 WPA/WPA2인 경우가 많습니다.</li><li>숨김 네트워크라면 숨김 네트워크를 체크합니다.</li><li>QR을 생성한 뒤 스마트폰 카메라로 접속 안내가 뜨는지 확인합니다.</li></ol><p>Wi-Fi QR에는 네트워크 접속 정보가 들어갑니다. 공개 장소에 붙여둘 때는 방문자용 네트워크인지, 내부망 접속 권한이 없는지 확인하세요.</p></div>
+<div class="guide-block" id="vcard"><h3>명함 QR</h3><ol><li><strong>명함 QR</strong> 탭을 선택합니다.</li><li>이름, 회사, 직함, 전화번호, 이메일, 웹사이트를 입력합니다.</li><li>입력하지 않은 항목은 QR 내용에서 제외됩니다.</li><li>QR을 생성하고 연락처 앱에서 정상적으로 읽히는지 확인합니다.</li></ol><p>명함 QR에는 개인 연락처가 포함될 수 있습니다. 공개 배포 전 이메일, 전화번호, 웹사이트 주소가 정확한지 확인하세요.</p></div>
+<div class="guide-block" id="bulk"><h3>여러 QR 일괄 생성</h3><p>여러 URL을 한 줄에 하나씩 입력하면 각 줄마다 QR 코드를 만들 수 있습니다. 행사 안내 링크, 문서 링크, 매장별 URL처럼 여러 개의 QR을 한 번에 준비할 때 유용합니다.</p><ul class="check-list"><li>각 줄에 하나의 URL 또는 문구만 입력합니다.</li><li>너무 긴 문장은 QR이 복잡해져 스캔이 어려울 수 있습니다.</li><li>각 QR을 다운로드한 뒤 파일명을 구분해 보관하세요.</li></ul></div>
+<div class="guide-block" id="color"><h3>색상과 크기 설정</h3><p>QR 색상은 코드의 진한 모듈 색상이고, 배경 색상은 뒤쪽 배경입니다. 배경과 QR 색상의 대비가 낮으면 스캔이 어렵습니다. 일반적으로 진한 색 QR과 흰색 배경이 가장 안정적입니다.</p><table><tr><th>항목</th><th>권장값</th></tr><tr><td>인쇄용 크기</td><td>가능하면 256px 이상으로 생성 후 배치합니다.</td></tr><tr><td>배경</td><td>흰색 또는 매우 밝은 색이 안정적입니다.</td></tr><tr><td>QR 색상</td><td>검정, 짙은 남색, 짙은 회색처럼 대비가 높은 색을 권장합니다.</td></tr></table></div>
+<h2 id="test">배포 전 테스트</h2><p>QR을 다운로드한 뒤 실제 사용할 크기로 배치하고, 휴대폰 카메라로 스캔해 보세요. 포스터, 안내문, 화면 공유 환경에서는 여백이 충분해야 인식률이 좋습니다.</p>
+<div class="cta"><a class="btn primary" href="qr-tools.html">QR 도구 열기</a><a class="btn" href="guide.html">전체 가이드</a></div></section>
 <footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>

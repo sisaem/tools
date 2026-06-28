@@ -87,6 +87,29 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 :root{--content-w:1000px}
 .grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
 .tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#2458ff;color:#fff;border-color:#2458ff}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#f8fbff;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#f8fbff}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
+
+
+/* Guide/detail and final tool layout fixes */
+.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
+.image-tool-main .form-row{min-width:0!important}
+.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
+.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
+.image-tool-main .tool-section h2{margin-top:24px!important}
+.image-tool-main .tool-section.active{min-height:170px!important}
+.image-tool-main .tool-actions{margin-top:18px!important}
+.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
+.preview-box{min-height:220px!important}
+.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
+.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.guide-detail .guide-block{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
+.guide-detail .guide-block h3{margin-top:0!important}
+.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
+.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
+.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.guide-detail th{background:#eef6ff}
+@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>
@@ -101,7 +124,30 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 <footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div><script>
 (function(){const $=id=>document.getElementById(id);let lastCsv='',lastNames='';function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}function csvParse(text,delim){if(delim==='auto')delim=text.includes('\t')?'\t':text.includes(';')?';':','; if(delim==='tab')delim='\t'; return text.trim().split(/\r?\n/).map(line=>line.split(delim));}function csvRender(){const rows=csvParse($('csvInput').value,$('csvDelim').value); lastCsv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n'); if(!rows.length){$('csvOut').textContent='입력값이 없습니다.';return;} $('csvOut').innerHTML='<table class="mini-table">'+rows.map((r,i)=>'<tr>'+r.map(c=>`<${i?'td':'th'}>${esc(c)}</${i?'td':'th'}>`).join('')+'</tr>').join('')+'</table>';}function dl(name,text,type='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();}
 function mdToHtml(md){return md.split(/\r?\n/).map(l=>{if(/^###\s+/.test(l))return '<h3>'+esc(l.replace(/^###\s+/,''))+'</h3>';if(/^##\s+/.test(l))return '<h2>'+esc(l.replace(/^##\s+/,''))+'</h2>';if(/^#\s+/.test(l))return '<h1>'+esc(l.replace(/^#\s+/,''))+'</h1>';if(/^[-*]\s+/.test(l))return '<li>'+esc(l.replace(/^[-*]\s+/,''))+'</li>';if(!l.trim())return '';return '<p>'+esc(l).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>')+'</p>'}).join('\n').replace(/(<li>.*<\/li>\n?)+/g,m=>'<ul>'+m+'</ul>');}
-function mdConvert(){const out=mdToHtml($('mdInput').value);$('htmlOut').value=out;const doc=$('htmlPreview').contentDocument;doc.open();doc.write('<!doctype html><meta charset="utf-8"><style>body{font-family:sans-serif;padding:20px;line-height:1.7}</style>'+out);doc.close();}
+function mdConvert(){const out=mdToHtml($('mdInput').value);$('htmlOut').value=out;const doc=$('htmlPreview').contentDocument;doc.open();doc.write('<!doctype html><meta charset="utf-8"><style>body{font-family:sans-serif;padding:20px;line-height:1.7}
+
+/* Guide/detail and final tool layout fixes */
+.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
+.image-tool-main .form-row{min-width:0!important}
+.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
+.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
+.image-tool-main .tool-section h2{margin-top:24px!important}
+.image-tool-main .tool-section.active{min-height:170px!important}
+.image-tool-main .tool-actions{margin-top:18px!important}
+.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
+.preview-box{min-height:220px!important}
+.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
+.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.guide-detail .guide-block{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
+.guide-detail .guide-block h3{margin-top:0!important}
+.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
+.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
+.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.guide-detail th{background:#eef6ff}
+@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
+
+</style>'+out);doc.close();}
 function diffRun(){const a=$('diffA').value.split(/\r?\n/), b=$('diffB').value.split(/\r?\n/), max=Math.max(a.length,b.length);let out='';for(let i=0;i<max;i++){if(a[i]===b[i])out+=`<span class="diff-same">  ${esc(a[i]||'')}</span>`;else{if(a[i]!=null)out+=`<span class="diff-del">- ${esc(a[i])}</span>`;if(b[i]!=null)out+=`<span class="diff-add">+ ${esc(b[i])}</span>`;}}$('diffOut').innerHTML=out||'차이가 없습니다.';}
 function namePlan(){const lines=$('nameInput').value.split(/\r?\n/).filter(Boolean);const start=Number($('nameStart').value)||1;let rows=[['Original','Planned']];lines.forEach((line,i)=>{let ext='',base=line;const m=line.match(/^(.*?)(\.[^.]+)$/);if(m){base=m[1];ext=m[2]}let n=base.trim();if($('nameSpace').checked)n=n.replace(/\s+/g,'-');if($('nameLower').checked)n=n.toLowerCase();if($('nameNumber').checked)n=String(start+i).padStart(3,'0')+'-'+n;n=$('namePrefix').value+n+$('nameSuffix').value+ext;rows.push([line,n]);});lastNames=rows.map(r=>r.map(v=>'"'+v.replace(/"/g,'""')+'"').join(',')).join('\n');$('nameOut').innerHTML='<table class="mini-table">'+rows.map((r,i)=>'<tr>'+r.map(c=>`<${i?'td':'th'}>${esc(c)}</${i?'td':'th'}>`).join('')+'</tr>').join('')+'</table>';}
 document.querySelectorAll('#docTabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#docTabs button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tool-section').forEach(s=>s.classList.remove('active'));b.classList.add('active');$(b.dataset.target).classList.add('active');});$('csvRender').onclick=csvRender;$('csvDownload').onclick=()=>{if(!lastCsv)csvRender();dl('sisaemdal-table.csv',lastCsv,'text/csv;charset=utf-8')};$('mdConvert').onclick=mdConvert;$('htmlCopy').onclick=()=>navigator.clipboard.writeText($('htmlOut').value);$('htmlDownload').onclick=()=>dl('sisaemdal-markdown.html',$('htmlOut').value,'text/html;charset=utf-8');$('diffRun').onclick=diffRun;$('namePlan').onclick=namePlan;$('nameCsv').onclick=()=>{if(!lastNames)namePlan();dl('filename-plan.csv',lastNames,'text/csv;charset=utf-8')};})();</script></body></html>

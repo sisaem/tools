@@ -75,6 +75,29 @@ input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;
 input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
 @media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
 
+
+
+/* Guide/detail and final tool layout fixes */
+.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
+.image-tool-main .form-row{min-width:0!important}
+.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
+.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
+.image-tool-main .tool-section h2{margin-top:24px!important}
+.image-tool-main .tool-section.active{min-height:170px!important}
+.image-tool-main .tool-actions{margin-top:18px!important}
+.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
+.preview-box{min-height:220px!important}
+.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
+.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.guide-detail .guide-block{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
+.guide-detail .guide-block h3{margin-top:0!important}
+.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
+.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
+.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.guide-detail th{background:#eef6ff}
+@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html" aria-current="page">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header><section class="article"><span class="badge">PDF Guide</span><h1>PDF ↔ Excel 변환 가이드</h1><p>PDF와 Excel은 목적이 다른 형식입니다. Excel은 데이터를 계산하고 수정하기 위한 형식이고, PDF는 문서 모양을 고정해 공유하기 위한 형식입니다. 그래서 양방향 변환은 항상 완벽하지 않을 수 있습니다.</p><div class="note">이 안내는 일반적인 PDF 작업을 돕기 위한 설명입니다. 중요한 문서는 원본을 별도로 보관하고, 결과 파일을 직접 확인한 뒤 사용하세요.</div><h2>PDF를 Excel로 변환할 때</h2><p>PDF 안의 표가 실제 텍스트와 선 구조로 되어 있다면 Excel로 옮기기 쉬울 수 있습니다. 하지만 스캔본 PDF처럼 표가 이미지로 들어간 경우에는 셀 구조를 정확히 복원하기 어렵습니다. 이 사이트의 변환 기능은 기본 표 구조 중심의 간단한 변환을 목표로 합니다.</p><h2>Excel을 PDF로 변환할 때</h2><p>Excel 자료를 PDF로 저장하면 받는 사람이 셀 너비나 폰트 차이로 레이아웃이 깨지는 일을 줄일 수 있습니다. 다만 인쇄 영역, 페이지 방향, 여백 설정에 따라 결과 PDF의 페이지 수가 달라질 수 있으므로 저장 후 미리보기를 확인해야 합니다.</p><h2>결과 검토 기준</h2><p>변환 결과에서는 숫자, 날짜, 통화 기호, 병합 셀, 줄바꿈을 특히 확인하세요. 표가 복잡할수록 셀 위치가 어긋날 수 있습니다. 중요한 계산 자료라면 원본 Excel과 변환 결과를 비교한 뒤 사용해야 합니다.</p><h2>변환이 어려운 파일</h2><p>여러 단의 표, 도장이나 이미지가 겹친 표, 회전된 스캔본, 손글씨가 포함된 자료는 자동 변환 품질이 낮을 수 있습니다. 이런 경우에는 PDF를 이미지로 확인하거나 원본 Excel 파일을 확보하는 것이 더 안전합니다.</p><div class="cta"><a class="btn primary" href="standalone.html?tab=excel">PDF 도구 실행</a><a class="btn" href="guide.html">전체 가이드</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
