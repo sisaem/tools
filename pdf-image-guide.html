@@ -39,6 +39,26 @@
 .feature-actions{margin-top:24px}
 @media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
 
+
+
+/* Layout balance update: unified widths, moderate spacing, clearer color controls */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+.tool-page-article{width:100%;max-width:var(--content-w)!important}
+.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:40px!important}
+.article{margin-top:40px!important;margin-bottom:24px!important}
+.hero{margin-bottom:48px!important}
+.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
+.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
+.tool-card{padding-top:34px!important;padding-bottom:34px!important}
+.tool-card .feature-actions{margin-top:22px!important}
+input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
+input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
+input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html" aria-current="page">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header><section class="article"><span class="badge">PDF Guide</span><h1>PDF ↔ 이미지 변환 가이드</h1><p>PDF와 이미지는 비슷해 보이지만 용도가 다릅니다. PDF는 여러 페이지 문서를 보관하고 공유하는 데 적합하고, 이미지는 특정 페이지나 화면을 빠르게 보여줄 때 편리합니다.</p><div class="note">이 안내는 일반적인 PDF 작업을 돕기 위한 설명입니다. 중요한 문서는 원본을 별도로 보관하고, 결과 파일을 직접 확인한 뒤 사용하세요.</div><h2>PDF를 이미지로 변환하는 경우</h2><p>PDF의 특정 페이지를 메신저나 문서에 붙여 넣어야 할 때 이미지 변환이 편리합니다. 예를 들어 안내문 한 페이지, 표지 이미지, 캡처용 자료를 만들 때 사용할 수 있습니다. 다만 이미지로 변환하면 텍스트 선택이나 검색은 어려워질 수 있습니다.</p><h2>이미지를 PDF로 변환하는 경우</h2><p>여러 장의 이미지 영수증, 스캔 이미지, 촬영 문서를 하나의 PDF로 정리해야 할 때 유용합니다. 이미지 파일 이름을 순서대로 정리한 뒤 변환하면 페이지 순서 오류를 줄일 수 있습니다.</p><h2>JPG와 PNG 차이</h2><p>JPG는 사진처럼 색이 많은 이미지에 적합하고 용량이 비교적 작습니다. PNG는 글자, 선, 화면 캡처처럼 경계가 뚜렷한 이미지에 적합하지만 용량이 커질 수 있습니다. 문서 스캔 이미지는 상황에 따라 둘 다 사용할 수 있으므로 결과 용량과 선명도를 비교해 보세요.</p><h2>해상도와 용량</h2><p>해상도가 높을수록 글자는 선명하지만 파일 용량이 커집니다. 이메일이나 웹 업로드용이라면 너무 큰 해상도는 불편할 수 있습니다. 반대로 인쇄용이나 보관용이라면 지나치게 낮은 해상도를 피하는 것이 좋습니다.</p><div class="cta"><a class="btn primary" href="standalone.html?tab=convert">PDF 도구 실행</a><a class="btn" href="guide.html">전체 가이드</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>

@@ -39,6 +39,26 @@
 .feature-actions{margin-top:24px}
 @media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
 
+
+
+/* Layout balance update: unified widths, moderate spacing, clearer color controls */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+.tool-page-article{width:100%;max-width:var(--content-w)!important}
+.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:40px!important}
+.article{margin-top:40px!important;margin-bottom:24px!important}
+.hero{margin-bottom:48px!important}
+.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
+.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
+.tool-card{padding-top:34px!important;padding-bottom:34px!important}
+.tool-card .feature-actions{margin-top:22px!important}
+input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
+input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
+input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html" aria-current="page">이용약관</a><a href="contact.html">문의</a></nav></header>

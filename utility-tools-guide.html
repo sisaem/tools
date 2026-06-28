@@ -45,6 +45,26 @@
 .feature-actions{margin-top:24px}
 @media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
 
+
+
+/* Layout balance update: unified widths, moderate spacing, clearer color controls */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+.tool-page-article{width:100%;max-width:var(--content-w)!important}
+.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:40px!important}
+.article{margin-top:40px!important;margin-bottom:24px!important}
+.hero{margin-bottom:48px!important}
+.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
+.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
+.tool-card{padding-top:34px!important;padding-bottom:34px!important}
+.tool-card .feature-actions{margin-top:22px!important}
+input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
+input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
+input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html" >소개</a><a href="guide.html" aria-current="page">가이드</a><a href="faq.html" >FAQ</a><a href="privacy.html" >개인정보처리방침</a><a href="terms.html" >이용약관</a><a href="contact.html" >문의</a></nav></header><section class="article"><span class="badge">Tool Guide</span><h1>유틸리티 도구 사용 가이드</h1><p>JSON 정리, URL 인코딩, Base64 변환, UUID 생성, 색상 변환 등 보조 작업 도구 사용법을 안내합니다.</p><div class="note">이 안내는 일반적인 도구 사용을 돕기 위한 설명입니다. 중요한 결과는 직접 확인한 뒤 사용하세요.</div><h2>JSON 포맷</h2><p>한 줄로 된 JSON을 보기 좋게 정리하거나 공백을 제거해 압축할 수 있습니다. 오류가 있다면 형식을 확인하라는 메시지가 표시됩니다.</p><h2>URL과 Base64</h2><p>URL 인코딩은 공백, 한글, 특수문자를 주소에 넣을 수 있는 형태로 바꿉니다. Base64는 텍스트를 다른 표현 형식으로 바꾸는 기능이며 암호화가 아닙니다.</p><h2>UUID와 색상</h2><p>UUID는 임시 식별자나 테스트 데이터에 사용할 수 있습니다. 색상 변환은 HEX, RGB, HSL 값을 비교할 때 유용합니다.</p><h2>민감한 값 주의</h2><p>API 키, 계정 비밀번호, 개인정보 같은 민감한 값은 공개 PC나 신뢰할 수 없는 브라우저에서 입력하지 않는 것이 좋습니다.</p><div class="cta"><a class="btn primary" href="more-tools.html">도구 실행</a><a class="btn" href="guide.html">전체 가이드</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>

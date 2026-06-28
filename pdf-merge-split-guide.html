@@ -39,6 +39,26 @@
 .feature-actions{margin-top:24px}
 @media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
 
+
+
+/* Layout balance update: unified widths, moderate spacing, clearer color controls */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+.tool-page-article{width:100%;max-width:var(--content-w)!important}
+.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:40px!important}
+.article{margin-top:40px!important;margin-bottom:24px!important}
+.hero{margin-bottom:48px!important}
+.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
+.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
+.tool-card{padding-top:34px!important;padding-bottom:34px!important}
+.tool-card .feature-actions{margin-top:22px!important}
+input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
+input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
+input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html" aria-current="page">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header><section class="article"><span class="badge">PDF Guide</span><h1>PDF 병합·분할 가이드</h1><p>PDF 병합과 분할은 가장 자주 쓰이는 문서 정리 작업입니다. 회의 자료, 스캔 문서, 제출 서류처럼 여러 파일로 흩어진 문서를 하나로 모으거나 필요한 페이지만 분리할 때 유용합니다.</p><div class="note">이 안내는 일반적인 PDF 작업을 돕기 위한 설명입니다. 중요한 문서는 원본을 별도로 보관하고, 결과 파일을 직접 확인한 뒤 사용하세요.</div><h2>병합이 필요한 상황</h2><p>여러 부서에서 받은 PDF 자료를 하나의 회의 자료로 만들거나, 영수증과 신청서처럼 함께 제출해야 하는 문서를 한 파일로 묶을 때 병합 기능을 사용할 수 있습니다. 병합 전에는 파일 이름을 01, 02, 03처럼 순서대로 정리해 두면 결과 순서를 확인하기 쉽습니다.</p><h2>분할이 필요한 상황</h2><p>전체 문서 중 일부 페이지만 공유해야 하거나, 스캔된 여러 문서가 하나의 PDF로 합쳐진 경우 분할 기능이 필요합니다. 민감한 정보가 포함된 페이지를 제외하고 공유해야 할 때도 분할 후 결과 파일을 반드시 다시 열어 확인하는 것이 중요합니다.</p><h2>페이지 순서 확인</h2><p>PDF 병합에서 가장 많이 발생하는 실수는 페이지 순서 오류입니다. 결과 파일을 만든 뒤 첫 페이지, 중간 페이지, 마지막 페이지를 빠르게 확인하세요. 제출용 문서라면 목차나 표지, 첨부자료 순서가 맞는지도 확인해야 합니다.</p><h2>파일 용량 관리</h2><p>여러 스캔 PDF를 합치면 파일 용량이 커질 수 있습니다. 이메일 첨부 제한이나 업로드 제한이 있는 경우 병합 전에 이미지 해상도와 페이지 수를 고려하세요. 용량이 큰 파일은 전송 전에 열리는 속도와 업로드 가능 여부를 확인하는 것이 좋습니다.</p><div class="cta"><a class="btn primary" href="standalone.html?tab=merge-split">PDF 도구 실행</a><a class="btn" href="guide.html">전체 가이드</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
