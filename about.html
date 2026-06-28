@@ -59,6 +59,22 @@ input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius
 input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
 @media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
 
+
+
+/* Final width and hero correction: equal content width, readable one-line summaries */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:0!important}
+.hero{max-width:1120px!important;margin-bottom:44px!important}
+.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
+.hero .backline,.backline{margin-top:30px!important}
+input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
+input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
+input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html" aria-current="page">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>

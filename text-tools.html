@@ -62,10 +62,26 @@ input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius
 input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
 @media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
 
+
+
+/* Final width and hero correction: equal content width, readable one-line summaries */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:0!important}
+.hero{max-width:1120px!important;margin-bottom:44px!important}
+.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
+.hero .backline,.backline{margin-top:30px!important}
+input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
+input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
+input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
+
 </style>
 
 </head>
-<body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header><section class="hero"><span class="badge">Text Tools</span><h1>텍스트 도구</h1><p>글자 수와 줄 수를 확인하고, 중복 줄 제거, 빈 줄 삭제, 정렬, 대소문자 변환 같은 반복 텍스트 작업을 빠르게 처리합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="text-tools-guide.html">텍스트 가이드</a></div></section>
+<body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header><section class="hero"><span class="badge">Text Tools</span><h1>텍스트 도구</h1><p>글자 수 계산, 줄 정리, 중복 제거와 대소문자 변환을 빠르게 처리합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="text-tools-guide.html">텍스트 가이드</a></div></section>
 <section class="tool-layout"><div class="tool-panel"><h2>텍스트 입력</h2><textarea id="textInput" class="textarea" placeholder="여기에 텍스트를 붙여넣으세요."></textarea><div class="tool-actions"><button class="btn primary" data-act="trim-lines">줄 앞뒤 공백 제거</button><button class="btn" data-act="remove-empty">빈 줄 삭제</button><button class="btn" data-act="dedupe">중복 줄 제거</button><button class="btn" data-act="sort">줄 정렬</button><button class="btn" data-act="upper">대문자</button><button class="btn" data-act="lower">소문자</button><button class="btn" data-act="spaces">연속 공백 정리</button><button class="btn" data-act="copy">복사</button><button class="btn" data-act="download">TXT 다운로드</button></div></div>
 <div class="tool-panel"><h2>텍스트 통계</h2><div class="metric-grid"><div class="metric"><span class="small">전체 글자</span><strong id="chars">0</strong></div><div class="metric"><span class="small">공백 제외</span><strong id="charsNoSpace">0</strong></div><div class="metric"><span class="small">단어 수</span><strong id="words">0</strong></div><div class="metric"><span class="small">줄 수</span><strong id="lines">0</strong></div></div><div class="note">글자 수는 브라우저에서 계산되며, 한글·영문·숫자·기호를 모두 포함합니다. 공백 제외 수는 띄어쓰기와 줄바꿈을 제외한 값입니다.</div></div></section>
 <section class="article"><h2>텍스트 도구 사용 팁</h2><p>목록을 복사해 붙여넣다 보면 빈 줄, 앞뒤 공백, 중복 항목이 섞이는 경우가 많습니다. 이 도구는 간단한 목록 정리, 메모 정리, 제목 후보 정리, CSV로 옮기기 전 기초 정리에 사용할 수 있습니다.</p><p>중복 줄 제거는 완전히 같은 줄을 기준으로 처리합니다. 대소문자 차이나 공백 차이가 있으면 다른 줄로 볼 수 있으므로, 먼저 줄 앞뒤 공백 제거와 연속 공백 정리를 적용한 뒤 중복 제거를 사용하면 더 깔끔합니다.</p><div class="cta"><a class="btn" href="text-tools-guide.html">텍스트 도구 가이드</a><a class="btn" href="index.html">Sisaemdal 홈</a></div></section>

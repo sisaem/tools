@@ -74,10 +74,26 @@ input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius
 input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
 @media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
 
+
+
+/* Final width and hero correction: equal content width, readable one-line summaries */
+:root{--content-w:1000px}
+.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
+section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
+.tool-layout,.split{margin-bottom:0!important}
+.hero{max-width:1120px!important;margin-bottom:44px!important}
+.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
+.hero .backline,.backline{margin-top:30px!important}
+input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
+input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
+input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
+input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
+@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html" >소개</a><a href="guide.html" >가이드</a><a href="faq.html" >FAQ</a><a href="privacy.html" >개인정보처리방침</a><a href="terms.html" >이용약관</a><a href="contact.html" >문의</a></nav></header>
-<section class="hero"><span class="badge">Image Tools</span><h1>이미지 도구</h1><p>이미지를 브라우저에서 불러와 크기를 조정하고, 품질을 낮춰 용량을 줄이거나 JPG·PNG·WebP 형식으로 저장할 수 있습니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="image-tools-guide.html">이미지 가이드</a></div></section>
+<section class="hero"><span class="badge">Image Tools</span><h1>이미지 도구</h1><p>이미지 크기 조정, 압축, JPG·PNG·WebP 변환을 브라우저에서 처리합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="image-tools-guide.html">이미지 가이드</a></div></section>
 <section class="tool-layout">
   <div class="tool-panel">
     <h2>이미지 크기 조정 · 압축 · 변환</h2>
