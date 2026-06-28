@@ -1501,7 +1501,7 @@
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
             // 선택한 탭 활성화
-            event.currentTarget.classList.add('active');
+            if (window.event && window.event.currentTarget) { window.event.currentTarget.classList.add('active'); } else { const targetBtn = Array.from(document.querySelectorAll('.tab-button')).find(btn => btn.textContent.includes({'password':'암호 관리','merge-split':'병합/분할','rotate':'회전','convert':'변환','excel':'Excel'}[tabName] || '')); if (targetBtn) targetBtn.classList.add('active'); }
             document.getElementById('tab-' + tabName).classList.add('active');
 
             // 제목 및 설명 업데이트
@@ -2962,7 +2962,8 @@
         // URL 파라미터로 탭 자동 전환
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const tab = urlParams.get('tab');
+            let tab = urlParams.get('tab');
+            if (!tab && window.location.hash) { tab = window.location.hash.replace('#',''); }
 
             if (tab) {
                 // 탭 버튼 숨기기
