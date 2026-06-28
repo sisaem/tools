@@ -1,78 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개인정보처리방침 | Sisaemdal Tools</title>
-    <meta name="description" content="Sisaemdal Tools의 개인정보 처리 방식과 파일 처리 원칙을 안내합니다.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://sisaemdal.com/privacy.html">
-    <meta property="og:type" content="article">
-    <meta property="og:locale" content="ko_KR">
-    <meta property="og:title" content="개인정보처리방침 | Sisaemdal Tools">
-    <meta property="og:description" content="Sisaemdal Tools의 개인정보 처리 방식과 파일 처리 원칙을 안내합니다.">
-    <meta property="og:url" content="https://sisaemdal.com/privacy.html">
-    <meta property="og:site_name" content="Sisaemdal Tools">
-    <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #f6f8fb 0%, #e9eef5 100%); color: #172033; line-height: 1.75; }
-        .container { max-width: 980px; margin: 0 auto; padding: 38px 20px; }
-        header, main, footer { background: rgba(255,255,255,.92); border: 1px solid #e5eaf1; border-radius: 22px; padding: 30px; margin-bottom: 22px; box-shadow: 0 12px 30px rgba(15,23,42,.07); }
-        .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: #eef4ff; color: #4263a8; border-radius: 999px; padding: 8px 13px; font-size: 13px; font-weight: 800; margin-bottom: 14px; }
-        h1 { margin: 0 0 12px; font-size: 36px; letter-spacing: -.04em; color: #0b1b31; }
-        h2 { margin: 30px 0 10px; font-size: 23px; letter-spacing: -.025em; color: #0b1b31; }
-        h3 { margin: 22px 0 8px; color: #172033; }
-        p, li { color: #526174; }
-        a { color: #3f65d4; font-weight: 800; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        nav a { background: #f9fafb; border: 1px solid #e5eaf1; border-radius: 999px; padding: 8px 14px; color: #4e5f76; }
-        ul { padding-left: 22px; }
-        .notice { background: #fff7e5; border-left: 4px solid #f59e0b; border-radius: 12px; padding: 14px 16px; color: #7a4c0f; margin: 16px 0; }
-        .card { background: #f8fafc; border: 1px solid #e5eaf1; border-radius: 16px; padding: 18px; margin: 16px 0; }
-        footer { text-align: center; font-size: 14px; }
-        @media (max-width: 680px) { .container { padding: 22px 14px; } header, main, footer { padding: 22px; } h1 { font-size: 30px; } }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 | Sisaemdal Tools</title>
+<meta name="description" content="Sisaemdal Tools의 개인정보 처리, 파일 처리 방식, 외부 서비스 사용 안내입니다.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Sisaemdal Tools">
+<link rel="canonical" href="https://sisaemdal.com/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Sisaemdal Tools">
+<meta property="og:title" content="개인정보처리방침 | Sisaemdal Tools">
+<meta property="og:description" content="Sisaemdal Tools의 개인정보 처리, 파일 처리 방식, 외부 서비스 사용 안내입니다.">
+<meta property="og:url" content="https://sisaemdal.com/privacy.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="개인정보처리방침 | Sisaemdal Tools">
+<meta name="twitter:description" content="Sisaemdal Tools의 개인정보 처리, 파일 처리 방식, 외부 서비스 사용 안내입니다.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
+
+<style>
+:root{--bg:#eef3f9;--card:#fff;--ink:#0f1f3a;--muted:#64748b;--line:#dbe4ef;--brand:#4f7cff;--brand2:#7c5cff;--soft:#f7faff;--accent:#eef6ff;--good:#16a34a;--warn:#b45309;--shadow:0 22px 60px rgba(15,31,58,.11)}
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#edf6ff;color:#4068a8;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#2f5cdd;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);max-width:920px;margin:0 auto 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#f2f6ff;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#25456d;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#315be8;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#2458ff;color:white;border-color:#2458ff}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#f8fbff}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
 </style>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="eyebrow">Sisaemdal Tools</div>
-            <h1>개인정보처리방침</h1>
-            <p>Sisaemdal Tools의 개인정보 처리 방식과 파일 처리 원칙을 안내합니다.</p>
-            <nav aria-label="주요 메뉴">
-                <a href="index.html">Sisaemdal 홈</a>
-                <a href="pdf-tools.html">PDF Tools</a>
-                <a href="standalone.html">PDF 도구 실행</a>
-                <a href="about.html">소개</a>
-                <a href="privacy.html">개인정보처리방침</a>
-                <a href="terms.html">이용약관</a>
-                <a href="contact.html">문의</a>
-            </nav>
-        </header>
-        <main>
-            <h2>개인정보 처리 원칙</h2>
-            <p>Sisaemdal Tools는 사용자가 웹 도구를 이용할 때 불필요한 개인정보를 요구하지 않는 것을 원칙으로 합니다. 현재 제공되는 PDF Tools는 별도의 회원가입 없이 사용할 수 있습니다.</p>
-            <h2>파일 처리 안내</h2>
-            <p>PDF Tools에서 선택한 파일은 브라우저에서 처리되도록 구성되어 있습니다. 사이트 운영자는 사용자가 선택한 PDF, 이미지, Excel 파일의 원본 내용을 직접 열람하거나 저장하지 않습니다.</p>
-            <div class="notice">브라우저, CDN 라이브러리, 배포 플랫폼의 동작 방식에 따라 접속 로그, IP 주소, User-Agent 등 기본 기술 정보가 처리될 수 있습니다.</div>
-            <h2>수집될 수 있는 정보</h2>
-            <ul>
-                <li>웹사이트 접속 과정에서 생성되는 기본 기술 정보</li>
-                <li>오류 제보 또는 문의를 위해 사용자가 GitHub Issues에 직접 작성한 내용</li>
-                <li>향후 광고 또는 분석 도구 적용 시 해당 서비스가 처리하는 쿠키 및 사용 정보</li>
-            </ul>
-            <h2>광고 및 쿠키</h2>
-            <p>향후 Google AdSense 등 광고 서비스가 적용될 수 있습니다. 광고 서비스가 적용되면 광고 개인화, 빈도 제한, 부정 사용 방지 등을 위해 쿠키 또는 유사 기술이 사용될 수 있습니다. 관련 설정은 사용자의 브라우저 또는 Google 광고 설정에서 관리할 수 있습니다.</p>
-            <h2>문의</h2>
-            <p>개인정보 관련 문의는 <a href="contact.html">문의 페이지</a>를 통해 남겨 주세요. GitHub Issues에 작성한 내용은 공개될 수 있으므로 민감한 개인정보나 원본 파일은 포함하지 마세요.</p>
-            <p>시행일: 2026년 6월 13일</p>
-        </main>
-        <footer>
-            <p>© 2026 Sisaemdal Tools · <a href="sitemap.xml">사이트맵</a></p>
-        </footer>
-    </div>
-</body>
-</html>
+<body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html" aria-current="page">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>
+<section class="article"><span class="badge">Privacy</span><h1>개인정보처리방침</h1><p>Sisaemdal Tools는 회원가입 없이 사용할 수 있는 브라우저 기반 웹 도구입니다. 사이트 이용 과정에서 운영자가 직접 사용자의 PDF, 이미지, Excel 파일 원본을 서버에 저장하거나 열람하는 기능은 제공하지 않습니다.</p><h2>수집하는 정보</h2><p>사이트 자체는 이름, 이메일, 전화번호 같은 개인정보 입력을 요구하지 않습니다. 문의를 GitHub Issues로 남기는 경우 사용자가 직접 작성한 내용과 GitHub 계정 정보가 GitHub 정책에 따라 공개될 수 있습니다.</p><h2>파일 처리</h2><p>PDF 도구의 주요 작업은 사용자의 브라우저에서 처리되도록 구성되어 있습니다. 사용자가 선택한 파일은 작업을 위해 브라우저 메모리에서 읽힐 수 있으며, 작업이 끝난 뒤 결과 파일을 사용자가 직접 다운로드합니다. 민감한 문서는 공용 PC나 신뢰할 수 없는 브라우저 환경에서 사용하지 않는 것이 좋습니다.</p><h2>외부 서비스</h2><p>이 사이트는 광고 게재와 사이트 분석, 라이브러리 로딩을 위해 Google AdSense 및 외부 CDN 스크립트를 사용할 수 있습니다. 이 과정에서 브라우저, 기기, 쿠키, 광고 식별자 등 일반적인 웹 이용 정보가 각 서비스의 정책에 따라 처리될 수 있습니다.</p><h2>문의</h2><p>개인정보 관련 문의나 오류 제보는 문의 페이지의 GitHub Issues 링크를 통해 남길 수 있습니다. 공개 게시판이므로 민감한 정보는 포함하지 마세요.</p></section>
+<footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
