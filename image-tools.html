@@ -193,6 +193,36 @@ section.article{
   .two-col{grid-template-columns:1fr!important;max-width:100%!important;}
 }
 
+
+/* Image metrics readability fix: use two wider columns and keep dimension numbers on one line. */
+.two-col .metric-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+.two-col .metric{
+  min-width:0!important;
+  min-height:94px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+.two-col .metric strong{
+  display:block!important;
+  font-size:clamp(20px,2vw,24px)!important;
+  line-height:1.18!important;
+  white-space:nowrap!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  letter-spacing:-0.035em!important;
+}
+.two-col .metric .small{
+  white-space:nowrap!important;
+}
+@media(max-width:520px){
+  .two-col .metric-grid{grid-template-columns:1fr!important;}
+}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>
