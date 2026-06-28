@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>무료 QR 코드 생성기 - URL·Wi-Fi·명함 QR 만들기</title>
-<meta name="description" content="URL, 텍스트, Wi-Fi, 명함 정보를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
+<title>무료 QR 코드 생성기 - URL·텍스트 QR 만들기</title>
+<meta name="description" content="URL과 텍스트를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Sisaemdal Tools">
 <link rel="canonical" href="https://sisaemdal.com/qr-tools.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="무료 QR 코드 생성기 - URL·Wi-Fi·명함 QR 만들기">
-<meta property="og:description" content="URL, 텍스트, Wi-Fi, 명함 정보를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
+<meta property="og:title" content="무료 QR 코드 생성기 - URL·텍스트 QR 만들기">
+<meta property="og:description" content="URL과 텍스트를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
 <meta property="og:url" content="https://sisaemdal.com/qr-tools.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="무료 QR 코드 생성기 - URL·Wi-Fi·명함 QR 만들기">
-<meta name="twitter:description" content="URL, 텍스트, Wi-Fi, 명함 정보를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
+<meta name="twitter:title" content="무료 QR 코드 생성기 - URL·텍스트 QR 만들기">
+<meta name="twitter:description" content="URL과 텍스트를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
 
 <style>
@@ -113,116 +113,44 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>
-<section class="hero"><span class="badge">QR Code Tools</span><h1>QR 코드 생성기</h1><p>URL, 텍스트, Wi-Fi, 명함 정보를 QR 코드로 만들고 PNG로 저장합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="qr-code-guide.html">QR 코드 가이드</a></div></section>
+<section class="hero"><span class="badge">QR Code Tools</span><h1>QR 코드 생성기</h1><p>URL과 텍스트를 QR 코드로 만들고 PNG로 저장합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="qr-code-guide.html">QR 코드 가이드</a></div></section>
 <section class="tool-panel">
-  <div class="tool-tabs" id="qrTabs"><button class="active" data-target="qrBasic">기본 QR</button><button data-target="qrWifi">Wi-Fi QR</button><button data-target="qrVcard">명함 QR</button><button data-target="qrBulk">일괄 생성</button></div>
+  <div class="tool-tabs" id="qrTabs"><button class="active" data-target="qrBasic">기본 QR</button><button data-target="qrBulk">일괄 생성</button></div>
   <div class="two-col"><div>
     <div class="tool-section active" id="qrBasic"><h2>URL·텍스트 QR</h2><div class="form-row"><label>QR 코드에 넣을 내용</label><textarea id="qrText" class="textarea" placeholder="https://sisaemdal.com"></textarea></div></div>
-    <div class="tool-section" id="qrWifi"><h2>Wi-Fi QR</h2><div class="inline-grid"><div class="form-row"><label>SSID</label><input id="wifiSsid" class="input"></div><div class="form-row"><label>비밀번호</label><input id="wifiPass" class="input"></div><div class="form-row"><label>보안 방식</label><select id="wifiSec" class="select"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">비밀번호 없음</option></select></div><label class="notice-row"><input id="wifiHidden" type="checkbox"> 숨김 네트워크</label></div></div>
-    <div class="tool-section" id="qrVcard"><h2>명함 QR</h2><div class="inline-grid"><div class="form-row"><label>이름</label><input id="vcName" class="input"></div><div class="form-row"><label>회사</label><input id="vcOrg" class="input"></div><div class="form-row"><label>직함</label><input id="vcTitle" class="input"></div><div class="form-row"><label>전화번호</label><input id="vcPhone" class="input"></div><div class="form-row"><label>이메일</label><input id="vcEmail" class="input"></div><div class="form-row"><label>웹사이트</label><input id="vcUrl" class="input"></div></div></div>
-    <div class="tool-section" id="qrBulk"><h2>여러 QR 일괄 생성</h2><div class="form-row"><label>한 줄에 하나씩 입력</label><textarea id="bulkText" class="textarea" placeholder="https://example.com/page1&#10;https://example.com/page2"></textarea></div></div>
+    <div class="tool-section" id="qrBulk"><h2>여러 QR 일괄 생성</h2><div class="form-row"><label>한 줄에 하나씩 입력</label><textarea id="bulkText" class="textarea" placeholder="https://example.com/page1&#10;https://example.com/page2"></textarea></div><p class="small">각 줄이 하나의 QR 코드로 생성됩니다.</p></div>
     <div class="inline-grid" style="margin-top:18px"><div class="form-row"><label>크기(px)</label><input id="qrSize" class="input" type="number" value="256" min="128" max="1024"></div><div class="form-row"><label>QR 색상</label><input id="qrColor" class="input color-picker" type="color" value="#111827"></div><div class="form-row"><label>배경 색상</label><input id="qrBg" class="input color-picker" type="color" value="#ffffff"></div></div><div class="tool-actions"><button class="btn primary" id="makeQr">QR 생성</button><button class="btn" id="downloadQr" disabled>PNG 다운로드</button></div>
-  </div><div><h2>미리보기</h2><div class="preview-box" id="qrPreview">내용을 입력하고 QR 생성을 누르세요.</div><div class="note">색상은 QR의 모듈과 배경 색상을 바꾸는 기능입니다. 배경과 대비가 낮으면 스캔이 어려울 수 있습니다.</div></div></div>
+  </div><div><h2>미리보기</h2><div class="preview-box" id="qrPreview">내용을 입력하고 QR 생성을 누르세요.</div><div class="note">색상은 QR의 모듈과 배경 색상을 바꾸는 기능입니다. 가장 안정적인 조합은 어두운 QR 색상과 밝은 배경입니다.</div></div></div>
 </section>
-<section class="article"><h2>QR 코드 사용 시 주의</h2><p>QR 코드는 사용자가 눈으로 내용을 확인하기 어렵기 때문에, 배포 전 연결 대상과 문구를 반드시 확인해야 합니다. URL을 넣는 경우에는 오타와 접근 권한을 확인하세요.</p><p>Wi-Fi QR과 명함 QR에는 개인 정보가 포함될 수 있으므로 공개 장소에 배포하기 전 포함 내용을 다시 확인하는 것이 좋습니다.</p><div class="cta"><a class="btn" href="qr-code-guide.html">QR 코드 가이드</a><a class="btn" href="index.html">Sisaemdal 홈</a></div></section>
-
+<section class="article"><h2>QR 코드 사용 시 주의</h2><p>QR 코드는 사용자가 눈으로 내용을 확인하기 어렵기 때문에, 배포 전 연결 대상과 문구를 반드시 확인해야 합니다. URL을 넣는 경우에는 오타, 만료된 링크, 접근 권한을 확인하세요.</p><p>인쇄하거나 배포하기 전에는 휴대폰 카메라로 실제 스캔 테스트를 해보는 것이 좋습니다.</p><div class="cta"><a class="btn" href="qr-code-guide.html">QR 코드 가이드</a><a class="btn" href="index.html">Sisaemdal 홈</a></div></section>
 <footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script><script>
 (function(){
   const $ = id => document.getElementById(id);
   const NL = String.fromCharCode(10);
   let mode = 'qrBasic';
   function size(){ return Math.max(128, Math.min(1024, parseInt($('qrSize').value, 10) || 256)); }
-  function escWifi(s){ return String(s || '').replace(/[\\;,:\"]/g, function(m){ return '\\' + m; }); }
-  function cleanLine(s){ return String(s || '').replace(/\s+/g, ' ').trim(); }
   function currentText(){
     if(mode === 'qrBasic') return $('qrText').value.trim();
-    if(mode === 'qrWifi'){
-      const sec = $('wifiSec').value;
-      const ssid = escWifi($('wifiSsid').value.trim());
-      const pass = sec === 'nopass' ? '' : escWifi($('wifiPass').value);
-      const hid = $('wifiHidden').checked ? 'true' : 'false';
-      if(!ssid) return '';
-      return 'WIFI:T:' + sec + ';S:' + ssid + ';P:' + pass + ';H:' + hid + ';;';
-    }
-    if(mode === 'qrVcard'){
-      const rows = [
-        'BEGIN:VCARD', 'VERSION:3.0',
-        'FN:' + cleanLine($('vcName').value),
-        'ORG:' + cleanLine($('vcOrg').value),
-        'TITLE:' + cleanLine($('vcTitle').value),
-        'TEL:' + cleanLine($('vcPhone').value),
-        'EMAIL:' + cleanLine($('vcEmail').value),
-        'URL:' + cleanLine($('vcUrl').value),
-        'END:VCARD'
-      ];
-      const hasValue = rows.some(function(r){ return /^(FN|ORG|TITLE|TEL|EMAIL|URL):.+/.test(r); });
-      return hasValue ? rows.filter(function(r){ return !r.match(/^(FN|ORG|TITLE|TEL|EMAIL|URL):$/); }).join(NL) : '';
-    }
-    return $('bulkText').value.split(NL).map(function(x){ return x.trim(); }).filter(Boolean);
+    return $('bulkText').value.split(NL).map(x => x.trim()).filter(Boolean);
   }
-  function options(){
-    return { width:size(), margin:2, errorCorrectionLevel:'M', color:{ dark:$('qrColor').value, light:$('qrBg').value } };
-  }
-  async function makeCanvas(text){
-    const canvas = document.createElement('canvas');
-    await QRCode.toCanvas(canvas, text, options());
-    return canvas;
-  }
+  function options(){ return { width:size(), margin:2, errorCorrectionLevel:'M', color:{ dark:$('qrColor').value || '#111827', light:$('qrBg').value || '#ffffff' } }; }
+  async function makeCanvas(text){ const canvas=document.createElement('canvas'); await QRCode.toCanvas(canvas, text, options()); return canvas; }
+  function downloadCanvas(canvas, name){ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download=(name||'sisaemdal-qr')+'.png'; a.click(); }
   async function makeQr(){
-    const t = currentText();
-    const outBox = $('qrPreview');
-    outBox.innerHTML = '';
-    $('downloadQr').disabled = true;
+    const t = currentText(); const box=$('qrPreview'); box.innerHTML=''; $('downloadQr').disabled=true;
     try{
       if(Array.isArray(t)){
         if(!t.length){ alert('한 줄에 하나씩 QR 내용을 입력해 주세요.'); return; }
-        const list = document.createElement('div');
-        list.className = 'canvas-list';
-        for(let i=0; i<t.length; i++){
-          const box = document.createElement('div');
-          box.className = 'canvas-item';
-          const canvas = await makeCanvas(t[i]);
-          const label = document.createElement('p');
-          label.textContent = t[i];
-          const btn = document.createElement('button');
-          btn.className = 'btn';
-          btn.textContent = 'PNG 다운로드';
-          btn.onclick = function(){ downloadCanvas(canvas, 'qr-' + (i+1)); };
-          box.appendChild(canvas); box.appendChild(label); box.appendChild(btn); list.appendChild(box);
-        }
-        outBox.appendChild(list);
-        return;
+        const list=document.createElement('div'); list.className='canvas-list';
+        for(let i=0;i<t.length;i++){ const item=document.createElement('div'); item.className='canvas-item'; const canvas=await makeCanvas(t[i]); const label=document.createElement('p'); label.textContent=t[i]; const btn=document.createElement('button'); btn.className='btn'; btn.textContent='PNG 다운로드'; btn.onclick=()=>downloadCanvas(canvas,'qr-'+(i+1)); item.appendChild(canvas); item.appendChild(label); item.appendChild(btn); list.appendChild(item); }
+        box.appendChild(list); return;
       }
       if(!t){ alert('QR 코드에 넣을 내용을 입력해 주세요.'); return; }
-      const canvas = await makeCanvas(t);
-      outBox.appendChild(canvas);
-      $('downloadQr').disabled = false;
-    }catch(err){
-      outBox.innerHTML = '<div class="danger result-card">QR 생성 중 오류가 발생했습니다. 입력 내용을 줄이거나 특수문자를 확인해 주세요.</div>';
-      console.error(err);
-    }
+      const canvas=await makeCanvas(t); box.appendChild(canvas); $('downloadQr').disabled=false;
+    }catch(err){ box.innerHTML='<div class="danger result-card">QR 생성 중 오류가 발생했습니다. 입력 내용을 줄이거나 색상 값을 확인해 주세요.</div>'; console.error(err); }
   }
-  function downloadCanvas(canvas, name){
-    const a = document.createElement('a');
-    a.href = canvas.toDataURL('image/png');
-    a.download = (name || 'sisaemdal-qr') + '.png';
-    a.click();
-  }
-  document.querySelectorAll('#qrTabs button').forEach(function(b){
-    b.onclick = function(){
-      document.querySelectorAll('#qrTabs button').forEach(function(x){ x.classList.remove('active'); });
-      document.querySelectorAll('.tool-section').forEach(function(s){ s.classList.remove('active'); });
-      b.classList.add('active');
-      mode = b.dataset.target;
-      $(mode).classList.add('active');
-      $('qrPreview').innerHTML = '내용을 입력하고 QR 생성을 누르세요.';
-      $('downloadQr').disabled = true;
-    };
-  });
-  ['qrColor','qrBg','qrSize'].forEach(function(id){
-    $(id).addEventListener('input', function(){ if($('qrPreview').querySelector('canvas')) makeQr(); });
-  });
-  $('makeQr').onclick = makeQr;
-  $('downloadQr').onclick = function(){ const canvas = $('qrPreview').querySelector('canvas'); if(canvas) downloadCanvas(canvas, 'sisaemdal-qr'); };
+  document.querySelectorAll('#qrTabs button').forEach(b=>{ b.onclick=()=>{ document.querySelectorAll('#qrTabs button').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tool-section').forEach(s=>s.classList.remove('active')); b.classList.add('active'); mode=b.dataset.target; $(mode).classList.add('active'); $('qrPreview').innerHTML='내용을 입력하고 QR 생성을 누르세요.'; $('downloadQr').disabled=true; }; });
+  ['qrColor','qrBg','qrSize'].forEach(id=>$(id).addEventListener('input',()=>{ if($('qrPreview').querySelector('canvas')) makeQr(); }));
+  $('makeQr').onclick=makeQr; $('downloadQr').onclick=()=>{ const c=$('qrPreview').querySelector('canvas'); if(c) downloadCanvas(c,'sisaemdal-qr'); };
 })();
 </script></body></html>

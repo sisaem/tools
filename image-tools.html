@@ -110,6 +110,16 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 .guide-detail th{background:#eef6ff}
 @media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
 
+
+
+/* Final image tool column alignment */
+.image-tool-main .tool-section .inline-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important;align-items:start!important}
+.image-tool-main .tool-section .inline-grid>.form-row,.image-tool-main .tool-section .inline-grid>label{width:100%!important;min-width:0!important}
+.image-tool-main .form-row .input,.image-tool-main .form-row .select{width:100%!important;min-width:0!important;height:56px!important}
+.image-tool-main input[type="range"].input{height:56px!important;padding:0 4px!important}
+.image-tool-main .tool-section h2{margin-top:24px!important;margin-bottom:18px!important}
+.image-tool-main .tool-actions{margin-top:20px!important}
+@media(max-width:860px){.image-tool-main .tool-section .inline-grid{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></header>
