@@ -62,10 +62,10 @@
         }
 
         .home-button {
-            position: absolute;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
+            position: static;
+            transform: none;
+            margin: 0 auto 18px;
+            width: fit-content;
             background: white;
             border: 2px solid #E5E7EB;
             color: #6B7280;
@@ -85,7 +85,7 @@
             background: #F9FAFB;
             border-color: #8B5CF6;
             color: #8B5CF6;
-            transform: translateY(-50%) translateX(-2px);
+            transform: translateY(-1px);
         }
 
         .home-button.show {
@@ -639,11 +639,7 @@
                 padding: 30px 20px;
             }
 
-            .home-button {
-                left: 15px;
-                padding: 8px 16px;
-                font-size: 13px;
-            }
+            .home-button { padding: 8px 16px; font-size: 13px; }
 
             h1 {
                 font-size: 28px;
@@ -675,6 +671,7 @@
             <h1 id="pageTitle">🛠️ PDF Tools</h1>
             <p class="subtitle" id="pageSubtitle">PDF 암호 해제, 병합, 분할, 회전, 변환을 한 곳에서</p>
             <nav class="tool-nav" aria-label="주요 메뉴">
+                <a href="index.html">← Sisaemdal 홈</a>
                 <a href="pdf-tools.html">PDF 도구 홈</a>
                 <a href="guide.html">사용 가이드</a>
                 <a href="faq.html">FAQ</a>

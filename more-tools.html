@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>무료 이미지 도구 - 크기 조정·압축·포맷 변환</title>
-<meta name="description" content="이미지를 브라우저에서 자동 미리보기로 크기 조정, 압축, JPG·PNG·WebP 변환할 수 있는 무료 이미지 도구입니다.">
-<meta name="keywords" content="이미지 압축, 이미지 크기 조정, JPG 변환, PNG 변환, WebP 변환">
+<title>무료 유틸리티 도구 - JSON·URL·Base64·UUID·색상 변환</title>
+<meta name="description" content="JSON 포맷, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호 생성 등 브라우저 기반 유틸리티 도구입니다.">
+<meta name="keywords" content="JSON 포맷, URL 인코딩, Base64, UUID 생성, 색상 변환, 비밀번호 생성">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Sisaemdal Tools">
-<link rel="canonical" href="https://sisaemdal.com/image-tools.html">
+<link rel="canonical" href="https://sisaemdal.com/more-tools.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="무료 이미지 도구 - 크기 조정·압축·포맷 변환">
-<meta property="og:description" content="이미지를 브라우저에서 자동 미리보기로 크기 조정, 압축, JPG·PNG·WebP 변환할 수 있는 무료 이미지 도구입니다.">
-<meta property="og:url" content="https://sisaemdal.com/image-tools.html">
+<meta property="og:title" content="무료 유틸리티 도구 - JSON·URL·Base64·UUID·색상 변환">
+<meta property="og:description" content="JSON 포맷, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호 생성 등 브라우저 기반 유틸리티 도구입니다.">
+<meta property="og:url" content="https://sisaemdal.com/more-tools.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="무료 이미지 도구 - 크기 조정·압축·포맷 변환">
-<meta name="twitter:description" content="이미지를 브라우저에서 자동 미리보기로 크기 조정, 압축, JPG·PNG·WebP 변환할 수 있는 무료 이미지 도구입니다.">
+<meta name="twitter:title" content="무료 유틸리티 도구 - JSON·URL·Base64·UUID·색상 변환">
+<meta name="twitter:description" content="JSON 포맷, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호 생성 등 브라우저 기반 유틸리티 도구입니다.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
 
 <style>
@@ -31,43 +31,25 @@
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html" >소개</a><a href="guide.html" >가이드</a><a href="faq.html" >FAQ</a><a href="privacy.html" >개인정보처리방침</a><a href="terms.html" >이용약관</a><a href="contact.html" >문의</a></nav></header>
-<section class="hero"><span class="badge">Image Tools</span><h1>이미지 도구</h1><p>이미지를 브라우저에서 불러와 크기를 조정하고, 품질을 낮춰 용량을 줄이거나 JPG·PNG·WebP 형식으로 저장할 수 있습니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="image-tools-guide.html">이미지 가이드</a></div></section>
-<section class="tool-layout">
-  <div class="tool-panel">
-    <h2>이미지 크기 조정 · 압축 · 변환</h2>
-    <p class="muted">이미지를 선택하면 현재 설정 기준으로 자동 미리보기가 갱신됩니다. 설정을 바꾼 뒤 결과를 확인하고 바로 다운로드할 수 있습니다.</p>
-    <div class="form-grid">
-      <div class="form-row"><label for="imageInput">이미지 선택</label><input id="imageInput" class="input" type="file" accept="image/*"></div>
-      <div class="form-row"><label for="format">저장 형식</label><select id="format" class="select"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div>
-      <div class="form-row"><label for="width">가로 크기(px)</label><input id="width" class="input" type="number" min="1" placeholder="예: 1200"></div>
-      <div class="form-row"><label for="height">세로 크기(px)</label><input id="height" class="input" type="number" min="1" placeholder="자동 계산"></div>
-      <div class="form-row"><label for="quality">품질: <span id="qualityLabel">80</span>%</label><input id="quality" type="range" min="10" max="100" value="80"></div>
-      <div class="form-row"><label><input id="keepRatio" type="checkbox" checked> 원본 비율 유지</label><span class="small">체크하면 한쪽 크기를 바꿀 때 다른 쪽을 자동 계산합니다.</span></div>
-    </div>
-    <div class="tool-actions"><button class="btn" id="refreshImage" disabled>미리보기 다시 계산</button><button class="btn primary" id="downloadImage" disabled>결과 다운로드</button><button class="btn" id="resetImage">초기화</button></div>
-    <p class="mini-note">JPG와 WebP는 품질 값을 낮추면 용량이 줄어듭니다. PNG는 투명 배경 보존에 유리하지만 사진에서는 용량이 커질 수 있습니다.</p>
-  </div>
-  <div class="split">
-    <div class="tool-panel"><h3>미리보기</h3><div class="preview-box" id="imagePreview">이미지를 선택하면 자동으로 결과 미리보기가 표시됩니다.</div></div>
-    <div class="tool-panel"><h3>처리 정보</h3><div class="metric-grid"><div class="metric"><span class="small">원본 크기</span><strong id="origDim">-</strong></div><div class="metric"><span class="small">결과 크기</span><strong id="newDim">-</strong></div><div class="metric"><span class="small">원본 용량</span><strong id="origSize">-</strong></div><div class="metric"><span class="small">결과 용량</span><strong id="newSize">-</strong></div></div><div class="note">처리 정보가 길어도 칸 안에서 줄바꿈되도록 조정했습니다. 결과 용량은 브라우저가 만든 실제 다운로드 파일 기준입니다.</div></div>
-  </div>
+<section class="hero"><span class="badge">Utility Tools</span><h1>유틸리티 도구</h1><p>JSON 정리, URL 인코딩, Base64 변환, UUID 생성, 색상 변환처럼 자주 쓰는 보조 작업을 한 곳에서 처리합니다.</p><div class="backline"><a class="btn" href="index.html">← Sisaemdal 홈</a><a class="btn soft" href="utility-tools-guide.html">유틸리티 가이드</a></div></section>
+<section class="tool-panel"><div class="tool-tabs" id="utilTabs"><button class="active" data-target="jsonTool">JSON</button><button data-target="urlTool">URL</button><button data-target="base64Tool">Base64</button><button data-target="uuidTool">UUID</button><button data-target="colorTool">색상</button><button data-target="passwordTool">비밀번호</button></div>
+<div id="jsonTool" class="tool-section active"><h2>JSON 포맷/압축</h2><textarea id="jsonInput" class="textarea" placeholder='{"name":"Sisaemdal"}'></textarea><div class="tool-actions"><button class="btn primary" id="jsonPretty">보기 좋게 정리</button><button class="btn" id="jsonMin">압축</button><button class="btn" id="jsonCopy">결과 복사</button></div><pre id="jsonOutput" class="copy-output"></pre></div>
+<div id="urlTool" class="tool-section"><h2>URL 인코딩/디코딩</h2><textarea id="urlInput" class="textarea" placeholder="텍스트 또는 URL"></textarea><div class="tool-actions"><button class="btn primary" id="urlEnc">인코딩</button><button class="btn" id="urlDec">디코딩</button></div><pre id="urlOutput" class="copy-output"></pre></div>
+<div id="base64Tool" class="tool-section"><h2>Base64 인코딩/디코딩</h2><textarea id="b64Input" class="textarea" placeholder="텍스트 입력"></textarea><div class="tool-actions"><button class="btn primary" id="b64Enc">인코딩</button><button class="btn" id="b64Dec">디코딩</button></div><pre id="b64Output" class="copy-output"></pre></div>
+<div id="uuidTool" class="tool-section"><h2>UUID 생성</h2><div class="tool-actions"><button class="btn primary" id="uuidMake">UUID v4 생성</button><button class="btn" id="uuidCopy">복사</button></div><pre id="uuidOutput" class="copy-output"></pre></div>
+<div id="colorTool" class="tool-section"><h2>색상 변환</h2><div class="inline-grid"><div class="form-row"><label>HEX 색상</label><input id="hexInput" class="input" value="#2458ff"></div><div class="form-row"><label>색상 선택</label><input id="colorPick" class="input" type="color" value="#2458ff"></div></div><div class="tool-actions"><button class="btn primary" id="colorConvert">변환</button></div><div class="color-swatch" id="swatch"></div><pre id="colorOutput" class="copy-output"></pre></div>
+<div id="passwordTool" class="tool-section"><h2>임시 비밀번호 생성</h2><div class="inline-grid"><div class="form-row"><label>길이</label><input id="pwLen" class="input" type="number" min="8" max="64" value="16"></div><div class="form-row"><label><input id="pwSymbols" type="checkbox" checked> 특수문자 포함</label><span class="small">브라우저에서 생성됩니다. 중요한 계정은 전용 비밀번호 관리자를 권장합니다.</span></div></div><div class="tool-actions"><button class="btn primary" id="pwMake">생성</button><button class="btn" id="pwCopy">복사</button></div><pre id="pwOutput" class="copy-output"></pre></div>
 </section>
-<section class="article"><h2>이미지 도구 사용 팁</h2><p>웹 업로드나 메신저 공유용 이미지는 너무 큰 해상도가 필요하지 않은 경우가 많습니다. 화면 공유용 이미지는 가로 1200~1600px 정도로 줄여도 충분할 수 있습니다. 반대로 인쇄나 보관 목적이라면 지나치게 낮은 해상도로 줄이지 않는 것이 좋습니다.</p><div class="cta"><a class="btn" href="image-tools-guide.html">이미지 도구 가이드</a><a class="btn" href="index.html">Sisaemdal 홈</a></div></section>
+<section class="article"><h2>유틸리티 도구 사용 안내</h2><p>이 페이지의 도구는 입력값을 브라우저에서 처리합니다. API 키, 비밀번호, 주민등록번호 같은 민감한 값은 공개 PC나 신뢰할 수 없는 환경에서 입력하지 않는 것이 좋습니다.</p></section>
 <script>
-(function(){
-let img=new Image(), fileName='image', resultUrl=null, resultBlob=null, originalW=0, originalH=0, originalSize=0, busy=false, debounce=null;
-const $=id=>document.getElementById(id);
-function fmt(bytes){ if(!bytes) return '-'; const u=['B','KB','MB']; let i=0,n=bytes; while(n>=1024&&i<u.length-1){n/=1024;i++;} return n.toFixed(i?1:0)+u[i]; }
-function schedule(){ clearTimeout(debounce); debounce=setTimeout(processImage, 220); }
-function setDownload(enabled){ $('downloadImage').disabled=!enabled; $('refreshImage').disabled=!img.src; }
-function processImage(){ if(!img.src||busy) return; const w=parseInt($('width').value,10), h=parseInt($('height').value,10); if(!w||!h) return; busy=true; const canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h; const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,w,h); const type=$('format').value, q=Number($('quality').value)/100; canvas.toBlob(blob=>{ busy=false; if(!blob){return;} if(resultUrl) URL.revokeObjectURL(resultUrl); resultBlob=blob; resultUrl=URL.createObjectURL(blob); $('imagePreview').innerHTML=''; const out=new Image(); out.alt='처리된 이미지 미리보기'; out.src=resultUrl; $('imagePreview').appendChild(out); $('newDim').textContent=w+'×'+h; $('newSize').textContent=fmt(blob.size); setDownload(true); }, type, q); }
-$('quality').addEventListener('input',()=>{$('qualityLabel').textContent=$('quality').value; schedule();});
-$('format').addEventListener('change',schedule); $('keepRatio').addEventListener('change',schedule); $('refreshImage').addEventListener('click',processImage);
-$('imageInput').addEventListener('change',e=>{const f=e.target.files[0]; if(!f)return; fileName=f.name.replace(/\.[^.]+$/,'')||'image'; originalSize=f.size; const url=URL.createObjectURL(f); img.onload=()=>{originalW=img.naturalWidth; originalH=img.naturalHeight; $('width').value=originalW; $('height').value=originalH; $('origDim').textContent=originalW+'×'+originalH; $('origSize').textContent=fmt(originalSize); URL.revokeObjectURL(url); schedule();}; img.src=url;});
-$('width').addEventListener('input',()=>{ if($('keepRatio').checked && originalW){ $('height').value=Math.round(Number($('width').value)*originalH/originalW)||'';} schedule(); });
-$('height').addEventListener('input',()=>{ if($('keepRatio').checked && originalH){ $('width').value=Math.round(Number($('height').value)*originalW/originalH)||'';} schedule(); });
-$('downloadImage').addEventListener('click',()=>{ if(!resultBlob){alert('이미지를 먼저 선택해 주세요.');return;} const ext=$('format').value.split('/')[1].replace('jpeg','jpg'); const a=document.createElement('a'); a.href=resultUrl; a.download=fileName+'_sisaemdal.'+ext; a.click(); });
-$('resetImage').addEventListener('click',()=>location.reload());
-})();
+(function(){const $=id=>document.getElementById(id);document.querySelectorAll('#utilTabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#utilTabs button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tool-section').forEach(s=>s.classList.remove('active'));b.classList.add('active');$(b.dataset.target).classList.add('active');});
+function copy(id){navigator.clipboard&&navigator.clipboard.writeText($(id).textContent||'');}
+$('jsonPretty').onclick=()=>{try{$('jsonOutput').textContent=JSON.stringify(JSON.parse($('jsonInput').value),null,2);}catch(e){$('jsonOutput').textContent='JSON 형식을 확인해 주세요.';}}; $('jsonMin').onclick=()=>{try{$('jsonOutput').textContent=JSON.stringify(JSON.parse($('jsonInput').value));}catch(e){$('jsonOutput').textContent='JSON 형식을 확인해 주세요.';}}; $('jsonCopy').onclick=()=>copy('jsonOutput');
+$('urlEnc').onclick=()=>{$('urlOutput').textContent=encodeURIComponent($('urlInput').value)}; $('urlDec').onclick=()=>{try{$('urlOutput').textContent=decodeURIComponent($('urlInput').value)}catch(e){$('urlOutput').textContent='디코딩할 수 없는 문자열입니다.'}};
+$('b64Enc').onclick=()=>{$('b64Output').textContent=btoa(unescape(encodeURIComponent($('b64Input').value)))}; $('b64Dec').onclick=()=>{try{$('b64Output').textContent=decodeURIComponent(escape(atob($('b64Input').value)))}catch(e){$('b64Output').textContent='Base64 형식을 확인해 주세요.'}};
+$('uuidMake').onclick=()=>{$('uuidOutput').textContent=crypto.randomUUID?crypto.randomUUID():URL.createObjectURL(new Blob()).split('/').pop()}; $('uuidCopy').onclick=()=>copy('uuidOutput');
+function hexToRgb(hex){hex=hex.replace('#','').trim(); if(hex.length===3) hex=hex.split('').map(x=>x+x).join(''); const n=parseInt(hex,16); return [(n>>16)&255,(n>>8)&255,n&255];} function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max===min){h=s=0}else{const d=max-min;s=l>.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return [Math.round(h*360),Math.round(s*100),Math.round(l*100)]}
+function colorConvert(){try{const hex=$('hexInput').value; const [r,g,b]=hexToRgb(hex); const [h,s,l]=rgbToHsl(r,g,b); $('swatch').style.background=hex; $('colorPick').value=hex; $('colorOutput').textContent=`HEX: ${hex}\nRGB: rgb(${r}, ${g}, ${b})\nHSL: hsl(${h}, ${s}%, ${l}%)`;}catch(e){$('colorOutput').textContent='색상 값을 확인해 주세요.'}} $('colorConvert').onclick=colorConvert; $('colorPick').oninput=e=>{$('hexInput').value=e.target.value;colorConvert()}; colorConvert();
+function makePw(){const len=Math.max(8,Math.min(64,Number($('pwLen').value)||16)); const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'+($('pwSymbols').checked?'!@#$%^&*()-_=+[]{}?':''); let out=''; const arr=new Uint32Array(len); crypto.getRandomValues(arr); for(let i=0;i<len;i++) out+=chars[arr[i]%chars.length]; $('pwOutput').textContent=out;} $('pwMake').onclick=makePw; $('pwCopy').onclick=()=>copy('pwOutput'); makePw();})();
 </script>
 <footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
