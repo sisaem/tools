@@ -37,6 +37,23 @@
 @media(max-width:560px){.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.metric strong{font-size:17px;}}
 
 .split + .article,.tool-layout + .article{margin-top:0}
+
+/* Final layout polish: unified content width and comfortable hero spacing */
+.wrap{max-width:1180px}
+.hero{max-width:1020px;margin-bottom:64px}
+.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
+.hero .backline,.backline{margin-top:28px;gap:12px}
+.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
+.article{max-width:1000px;margin-left:auto;margin-right:auto}
+.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
+.tool-layout{margin-bottom:72px}
+.split{margin-bottom:72px}
+.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
+.card p,.article p,.hero p{word-break:keep-all}
+.feature-card p{min-height:84px}
+.feature-actions{margin-top:24px}
+@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
+
 </style>
 </head>
 <body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html" >소개</a><a href="guide.html" >가이드</a><a href="faq.html" >FAQ</a><a href="privacy.html" >개인정보처리방침</a><a href="terms.html" >이용약관</a><a href="contact.html" >문의</a></nav></header>
