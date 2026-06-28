@@ -93,13 +93,35 @@
         }
 
         h1 {
-            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             font-size: 36px;
             font-weight: 800;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #111827;
+            flex-wrap: wrap;
+        }
+
+        h1 .title-icon {
+            width: 56px;
+            height: 56px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #EEF6FF 0%, #F1EAFE 100%);
+            font-size: 30px;
+            line-height: 1;
+            box-shadow: 0 10px 24px rgba(99, 102, 241, 0.12);
+            -webkit-text-fill-color: initial;
+        }
+
+        h1 .title-text {
+            background: linear-gradient(135deg, #6D5DF6 0%, #4F46E5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .subtitle {
@@ -643,6 +665,13 @@
 
             h1 {
                 font-size: 28px;
+                gap: 10px;
+            }
+
+            h1 .title-icon {
+                width: 46px;
+                height: 46px;
+                font-size: 24px;
             }
 
             .main-content {
@@ -668,7 +697,7 @@
                 <span>←</span>
                 <span>Sisaemdal 홈</span>
             </a>
-            <h1 id="pageTitle">🛠️ PDF Tools</h1>
+            <h1 id="pageTitle"><span class="title-icon">🛠️</span><span class="title-text">PDF Tools</span></h1>
             <p class="subtitle" id="pageSubtitle">PDF 암호 해제, 병합, 분할, 회전, 변환을 한 곳에서</p>
             <nav class="tool-nav" aria-label="주요 메뉴">
                 <a href="index.html">← Sisaemdal 홈</a>
@@ -1512,30 +1541,36 @@
 
             const titles = {
                 'password': {
-                    title: '🔐 PDF 암호 관리',
+                    icon: '🔐',
+                    text: 'PDF 암호 관리',
                     subtitle: 'PDF 파일에 암호를 설정하거나 해제하여 보안을 관리하세요'
                 },
                 'merge-split': {
-                    title: '📑 PDF 병합/분할',
+                    icon: '📑',
+                    text: 'PDF 병합/분할',
                     subtitle: '여러 PDF를 하나로 병합하거나, 하나의 PDF를 여러 개로 분할하세요'
                 },
                 'rotate': {
-                    title: '🔄 PDF 회전',
+                    icon: '🔄',
+                    text: 'PDF 회전',
                     subtitle: 'PDF 페이지를 원하는 각도로 회전하고 미리보기로 확인하세요'
                 },
                 'convert': {
-                    title: '🔀 PDF ↔ 이미지 변환',
+                    icon: '🔀',
+                    text: 'PDF ↔ 이미지 변환',
                     subtitle: 'PDF를 이미지로 변환하거나, 이미지를 PDF로 변환하세요'
                 },
                 'excel': {
-                    title: '📊 PDF ↔ Excel 변환',
+                    icon: '📊',
+                    text: 'PDF ↔ Excel 변환',
                     subtitle: 'PDF를 Excel로 변환하거나, Excel을 PDF로 변환하세요'
                 }
             };
 
             if (titles[tabName]) {
-                titleElement.textContent = titles[tabName].title;
-                subtitleElement.textContent = titles[tabName].subtitle;
+                const data = titles[tabName];
+                titleElement.innerHTML = `<span class="title-icon">${data.icon}</span><span class="title-text">${data.text}</span>`;
+                subtitleElement.textContent = data.subtitle;
             }
         }
 
