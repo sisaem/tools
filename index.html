@@ -29,6 +29,16 @@
 .feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#edf6ff,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#2458ff;color:#fff;border-color:#2458ff}.btn.soft{background:#f2f6ff;color:#2458ff;border-color:#dbe7ff}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#2458ff;color:#fff;border-color:#2458ff}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#2458ff}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#edf6ff;color:#315eaf;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .split + .article,.tool-layout + .article{margin-top:0}
 
+.stat-bar{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin:32px auto 0;max-width:720px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.stat-bar .stat{flex:1 1 140px;padding:20px 14px;text-align:center;border-right:1px solid var(--line)}
+.stat-bar .stat:last-child{border-right:none}
+.stat-bar .stat strong{display:block;font-size:26px;letter-spacing:-.03em;color:var(--ink)}
+.stat-bar .stat span{font-size:13px;color:#64748b;font-weight:700}
+.why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.why-card{text-align:left;align-items:flex-start}
+.why-card h3{margin:.3em 0 .4em;font-size:19px;letter-spacing:-.03em}
+@media(max-width:860px){.stat-bar{flex-wrap:wrap}.stat-bar .stat{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--line)}.why-grid{grid-template-columns:1fr}}
+
 /* Final layout polish: unified content width and comfortable hero spacing */
 .wrap{max-width:1180px}
 .hero{max-width:1020px;margin-bottom:64px}
@@ -116,7 +126,30 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 <section class="hero">
   <span class="badge">무료 · 브라우저 기반 · 설치 없음</span>
   <h1>Sisaemdal Tools</h1>
-  <p>PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리, 개발 보조 작업을 빠르게 처리하는 무료 온라인 웹 도구 모음입니다.</p>
+  <p>PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리 작업을 브라우저에서 바로 처리하는 무료 온라인 도구 모음입니다. 회원가입이나 설치 없이, 필요한 순간 바로 열어서 쓰세요.</p>
+  <div class="stat-bar">
+    <div class="stat"><strong>7</strong><span>도구 카테고리</span></div>
+    <div class="stat"><strong>40+</strong><span>무료 기능</span></div>
+    <div class="stat"><strong>0원</strong><span>가입비·이용료</span></div>
+    <div class="stat"><strong>0초</strong><span>설치 대기시간</span></div>
+  </div>
+</section>
+<section class="section why-grid" aria-label="Sisaemdal Tools를 쓰는 이유">
+  <article class="card why-card">
+    <div class="icon">🔒</div>
+    <h3>파일은 브라우저 안에서만</h3>
+    <p>대부분의 기능은 업로드한 파일을 서버로 전송하지 않고 사용자의 브라우저 안에서 바로 처리합니다.</p>
+  </article>
+  <article class="card why-card">
+    <div class="icon">⚡</div>
+    <h3>설치 없이 바로 실행</h3>
+    <p>프로그램을 설치하거나 계정을 만들 필요 없이, 링크를 열면 그 자리에서 바로 작업할 수 있습니다.</p>
+  </article>
+  <article class="card why-card">
+    <div class="icon">📚</div>
+    <h3>기능마다 사용 가이드 제공</h3>
+    <p>도구만 던져두지 않고, 언제 어떤 기능을 쓰면 좋은지, 결과를 어떻게 확인해야 하는지 함께 안내합니다.</p>
+  </article>
 </section>
 <section class="grid" aria-label="도구 목록">
   <article class="card tool-card"><div class="icon">📄</div><h2>PDF Tools</h2><p>암호 관리, 병합, 분할, 회전, 이미지 변환, 기본 Excel 변환을 한 곳에서 사용합니다.</p><div class="feature-actions"><a class="btn primary" href="pdf-tools.html">PDF 도구 열기</a><a class="btn soft" href="guide.html#pdf">가이드</a></div></article>
