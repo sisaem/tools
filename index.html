@@ -18,162 +18,295 @@
 <meta name="twitter:title" content="Sisaemdal Tools - 무료 온라인 웹 도구 모음">
 <meta name="twitter:description" content="PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리를 브라우저에서 처리하는 무료 온라인 도구 모음입니다.">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-
 <style>
-:root{--bg:#f6f5f1;--card:#fff;--ink:#15181e;--muted:#5c6270;--line:#e4e2db;--brand:#e08a1c;--brand2:#c96f10;--soft:#fbf9f5;--accent:#fff4e1;--good:#166534;--warn:#b45309;--shadow:0 20px 50px rgba(21,24,30,.10);--mono:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:0 22px 64px}.topbar-band{background:var(--ink);margin:0 0 44px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;max-width:1120px;margin:0 auto;padding:18px 22px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:900;letter-spacing:-.02em}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--brand);color:#1a1300;box-shadow:none}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav a{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#e7e7ea;border-radius:999px;padding:9px 16px;text-decoration:none;font-weight:700;font-size:13.5px}.nav a:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.09)}.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.btn:hover{border-color:#c9c4b8;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 0;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px;font-family:var(--mono);letter-spacing:-.02em}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(228,226,219,.9);border-radius:20px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.tool-eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--brand);letter-spacing:.04em;margin-bottom:10px}.icon{display:grid;place-items:center;width:70px;height:70px;border-radius:18px;background:var(--accent);font-size:30px;margin-bottom:16px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:var(--accent);color:var(--brand2);border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:var(--brand2);text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:20px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:var(--accent);padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#25456d;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:var(--brand);color:#1a1300;border-color:var(--brand)}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:var(--soft)}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:0 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#f8fbff;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#2458ff;color:#fff;border-color:#2458ff}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#edf6ff,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#2458ff;color:#fff;border-color:#2458ff}.btn.soft{background:#f2f6ff;color:#2458ff;border-color:#dbe7ff}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#2458ff;color:#fff;border-color:#2458ff}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#2458ff}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#edf6ff;color:#315eaf;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-.fact-chips{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:26px auto 0;max-width:820px}
-.fact-chips span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#3a4150;display:inline-flex;align-items:center;gap:7px}
-.fact-chips span b{color:var(--brand2);font-family:var(--mono);font-weight:700}
-.console-strip{max-width:820px;margin:28px auto 0;background:var(--ink);border-radius:16px;padding:18px 22px;text-align:left;box-shadow:var(--shadow)}
-.console-strip .console-label{font-family:var(--mono);font-size:11.5px;color:#8b93a3;letter-spacing:.06em;margin-bottom:8px}
-.console-strip .console-line{font-family:var(--mono);font-size:13.5px;color:#e7e7ea;line-height:1.9;white-space:pre-wrap;word-break:break-word}
-.console-strip .console-line .ok{color:#7bd88f}
-.console-strip .console-line .path{color:#f2c078}
-.why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.why-card{text-align:left;align-items:flex-start}
-.why-card .icon{background:var(--accent)}
-.why-card h3{margin:.3em 0 .4em;font-size:19px;letter-spacing:-.03em}
-@media(max-width:860px){.why-grid{grid-template-columns:1fr}.console-strip{padding:16px}}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#2458ff;color:#fff;border-color:#2458ff}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#f8fbff;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#f8fbff}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
+:root{
+  --paper:#F4F5F0; --ink:#101C16; --ink2:#16261E; --line:#DDE2D9;
+  --accent:#0EA672; --accent-deep:#0A7A54; --accent-soft:#E1F3EA;
+  --muted:#576259; --card:#FFFFFF;
+  --mono:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace;
+  --shadow:0 20px 45px rgba(16,28,22,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;max-width:1160px;margin:0 auto;padding:20px 24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-weight:900;font-size:15px}
+.nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--ink2);font-weight:700;font-size:14.5px}
+.nav a:hover{color:var(--accent-deep)}
+.nav .nav-cta{background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-weight:800}
+.nav .nav-cta:hover{background:var(--accent-deep);color:#fff}
+@media(max-width:820px){.nav{display:none}}
+.hero-band{background:var(--ink);color:#fff;padding:64px 0 0;overflow:hidden;position:relative}
+.hero-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--accent);font-weight:700;text-transform:uppercase}
+.hero-copy h1{font-size:clamp(34px,4.6vw,54px);line-height:1.15;letter-spacing:-.03em;margin:14px 0 20px;font-weight:900;word-break:keep-all;overflow-wrap:normal}
+.hero-copy h1 em{font-style:normal;color:var(--accent)}
+.hero-copy p{font-size:17px;color:#c6cfc9;max-width:520px;margin:0 0 26px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:11px;font-weight:800;font-size:14.5px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-accent{background:var(--accent);color:#052015}
+.btn-accent:hover{background:#12c084}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6)}
+.hero-facts{display:flex;gap:26px;flex-wrap:wrap;padding-bottom:44px}
+.hero-facts .fact{font-size:13px;color:#9fada4;display:flex;align-items:center;gap:7px}
+.hero-facts .fact b{color:#fff;font-weight:800}
+.pegboard{position:relative;height:320px}
+.peg{position:absolute;background:var(--ink2);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 16px;box-shadow:0 18px 34px rgba(0,0,0,.35);display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;color:#eef1ee}
+.peg span.ic{font-size:20px}
+.peg-1{top:0;left:10%;transform:rotate(-6deg)}
+.peg-2{top:60px;left:52%;transform:rotate(4deg)}
+.peg-3{top:130px;left:4%;transform:rotate(3deg)}
+.peg-4{top:150px;left:56%;transform:rotate(-4deg)}
+.peg-5{top:220px;left:22%;transform:rotate(-2deg)}
+.peg-6{top:250px;left:60%;transform:rotate(5deg);background:var(--accent);color:#052015;border-color:transparent}
+@media(max-width:980px){.hero-inner{grid-template-columns:1fr}.pegboard{display:none}}
+.tagstrip{background:var(--card);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0}
+.tagstrip .track{display:flex;gap:14px;width:max-content;animation:scrollx 28s linear infinite}
+.tagstrip:hover .track{animation-play-state:paused}
+.tagstrip span{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink2);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;white-space:nowrap}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.section{padding:72px 0}
+.section-head{max-width:640px;margin:0 auto 40px;text-align:center}
+.section-eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--accent-deep);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.section-head h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.03em;margin:10px 0 12px}
+.section-head p{color:var(--muted);font-size:15.5px}
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:1000px;margin:0 auto;position:relative}
+.timeline:before{content:"";position:absolute;top:20px;left:8%;right:8%;height:2px;background:var(--line)}
+.tl-step{position:relative;text-align:center;padding:0 18px}
+.tl-num{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--accent);display:grid;place-items:center;font-weight:900;font-family:var(--mono);margin:0 auto 18px;position:relative;z-index:1}
+.tl-step h3{font-size:16.5px;margin:0 0 8px;letter-spacing:-.02em}
+.tl-step p{font-size:14px;color:var(--muted);margin:0}
+@media(max-width:820px){.timeline{grid-template-columns:1fr;gap:28px}.timeline:before{display:none}}
+.tool-list{max-width:960px;margin:0 auto;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
+.tool-row{display:flex;align-items:center;gap:14px;padding:22px 28px;border-bottom:1px solid var(--line);transition:.15s}
+.tool-row:last-child{border-bottom:none}
+.tool-row:hover{background:var(--accent-soft)}
+.tool-row .t-main{display:flex;align-items:center;gap:20px;flex:1;min-width:0;text-decoration:none;color:var(--ink)}
+.tool-row .t-num{font-family:var(--mono);font-size:13px;color:var(--muted);width:26px;flex:0 0 26px}
+.tool-row .t-icon{width:52px;height:52px;flex:0 0 52px;border-radius:14px;background:var(--paper);display:grid;place-items:center;font-size:24px}
+.tool-row .t-body{flex:1;min-width:0}
+.tool-row .t-body h3{margin:0 0 4px;font-size:17.5px;letter-spacing:-.02em}
+.tool-row .t-body p{margin:0;font-size:14px;color:var(--muted)}
+.tool-row .t-side{flex:0 0 auto;display:flex;align-items:center;gap:16px}
+.tool-row .t-guide{font-size:13.5px;font-weight:700;color:var(--muted);text-decoration:none;white-space:nowrap}
+.tool-row .t-guide:hover{color:var(--accent-deep)}
+.tool-row .t-arrow{font-size:20px;color:var(--accent-deep);text-decoration:none;line-height:1}
+@media(max-width:700px){.tool-row{flex-wrap:wrap;padding:20px}.tool-row .t-side{width:100%;justify-content:space-between;margin-top:6px;padding-left:46px}}
+.why-band{background:var(--accent-soft)}
+.why-row{display:flex;justify-content:center;gap:0;max-width:1000px;margin:0 auto;flex-wrap:wrap}
+.why-item{flex:1 1 260px;padding:0 28px;text-align:center;border-right:1px solid rgba(10,122,84,.18)}
+.why-item:last-child{border-right:none}
+.why-item .ic{font-size:26px;margin-bottom:10px}
+.why-item h3{font-size:16px;margin:0 0 8px;letter-spacing:-.02em}
+.why-item p{font-size:13.5px;color:var(--accent-deep);margin:0;opacity:.85}
+@media(max-width:820px){.why-item{border-right:none;border-bottom:1px solid rgba(10,122,84,.18);padding-bottom:24px;margin-bottom:24px}.why-item:last-child{border-bottom:none;margin-bottom:0}}
+.info-card{max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:var(--shadow)}
+.info-card h2{font-size:24px;margin:0 0 14px;letter-spacing:-.03em}
+.info-card p{color:#33403a;font-size:15.5px;margin:0 0 14px}
+.info-card .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.info-card .btn-line{border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:10px;font-weight:800;font-size:14px;text-decoration:none}
+.info-card .btn-line:hover{border-color:var(--accent-deep);color:var(--accent-deep)}
+.site-footer{background:var(--ink);color:#c7cfc9;padding:52px 0 24px}
+.footer-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+.footer-brand{display:flex;align-items:center;gap:8px;font-weight:900;color:#fff;font-size:16px;margin-bottom:10px}
+.footer-col p{color:#8f9c93;font-size:13.5px;margin:0}
+.footer-col h4{color:#fff;font-size:13px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;font-family:var(--mono)}
+.footer-col a{display:block;color:#aab6ad;text-decoration:none;font-size:13.5px;margin-bottom:9px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px;color:#6d786f;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:820px){.footer-cols{grid-template-columns:1fr 1fr;gap:24px}}
 </style>
 </head>
-<body><header class="topbar-band"><div class="topbar"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="guide.html">가이드</a><a href="faq.html">FAQ</a><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a></nav></div></header>
-<div class="wrap">
-<section class="hero">
-  <span class="badge">FREE · BROWSER-BASED TOOLKIT</span>
-  <h1>Sisaemdal Tools</h1>
-  <p>PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리 작업을 브라우저에서 바로 처리하는 무료 온라인 도구 모음입니다. 회원가입이나 설치 없이, 필요한 순간 바로 열어서 쓰세요.</p>
-  <div class="fact-chips">
-    <span>🔒 파일은 브라우저에서 처리</span>
-    <span>🙅 회원가입 없음</span>
-    <span>📚 도구마다 사용 가이드 제공</span>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">St</span><span>Sisaemdal Tools</span></a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="#tools">도구</a>
+    <a href="guide.html">가이드</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">소개</a>
+    <a href="contact.html" class="nav-cta">문의하기</a>
+  </nav>
+</header>
+
+<section class="hero-band">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">Free Browser Toolkit</span>
+      <h1>파일 작업을,<br>브라우저에서 <em>바로</em> 끝내세요.</h1>
+      <p>PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리까지 — 설치도 회원가입도 없이, 필요한 순간 열어서 바로 쓰는 무료 도구 모음입니다.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#tools">도구 둘러보기 →</a>
+        <a class="btn btn-ghost" href="guide.html">사용 가이드</a>
+      </div>
+    </div>
+    <div class="pegboard" aria-hidden="true">
+      <div class="peg peg-1"><span class="ic">📄</span>PDF</div>
+      <div class="peg peg-2"><span class="ic">🖼️</span>Image</div>
+      <div class="peg peg-3"><span class="ic">🔤</span>Text</div>
+      <div class="peg peg-4"><span class="ic">▦</span>QR</div>
+      <div class="peg peg-5"><span class="ic">🧮</span>Calc</div>
+      <div class="peg peg-6"><span class="ic">✓</span>브라우저에서 완료</div>
+    </div>
   </div>
-  <div class="console-strip">
-    <div class="console-label">SISAEMDAL / PDF-TOOLS · 실행 예시</div>
-    <div class="console-line">$ merge <span class="path">계약서_1.pdf</span> + <span class="path">계약서_2.pdf</span>
-→ <span class="path">계약서_최종.pdf</span> <span class="ok">✓ 완료</span> · 브라우저에서 처리, 서버 업로드 없음</div>
+  <div class="hero-facts wrap">
+    <span class="fact"><b>7</b>개 카테고리</span>
+    <span class="fact"><b>40+</b>개 무료 기능</span>
+    <span class="fact">🔒 파일은 브라우저에서 처리</span>
+    <span class="fact">🙅 회원가입 불필요</span>
   </div>
 </section>
 
-<section class="section why-grid" aria-label="Sisaemdal Tools를 쓰는 이유">
-  <article class="card why-card">
-    <div class="icon">🔒</div>
-    <h3>파일은 브라우저 안에서만</h3>
-    <p>대부분의 기능은 업로드한 파일을 서버로 전송하지 않고 사용자의 브라우저 안에서 바로 처리합니다.</p>
-  </article>
-  <article class="card why-card">
-    <div class="icon">⚡</div>
-    <h3>설치 없이 바로 실행</h3>
-    <p>프로그램을 설치하거나 계정을 만들 필요 없이, 링크를 열면 그 자리에서 바로 작업할 수 있습니다.</p>
-  </article>
-  <article class="card why-card">
-    <div class="icon">📚</div>
-    <h3>기능마다 사용 가이드 제공</h3>
-    <p>도구만 던져두지 않고, 언제 어떤 기능을 쓰면 좋은지, 결과를 어떻게 확인해야 하는지 함께 안내합니다.</p>
-  </article>
+<div class="tagstrip" aria-hidden="true">
+  <div class="track">
+    <span>PDF 병합</span><span>PDF 암호 해제</span><span>이미지 압축</span><span>배경 워터마크</span><span>QR 코드 생성</span><span>단위 변환</span><span>JSON 정리</span><span>Base64 인코딩</span><span>CSV ↔ 표 변환</span><span>부가세 계산</span><span>Markdown 변환</span><span>파일명 정리</span>
+    <span>PDF 병합</span><span>PDF 암호 해제</span><span>이미지 압축</span><span>배경 워터마크</span><span>QR 코드 생성</span><span>단위 변환</span><span>JSON 정리</span><span>Base64 인코딩</span><span>CSV ↔ 표 변환</span><span>부가세 계산</span><span>Markdown 변환</span><span>파일명 정리</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">How it works</span>
+      <h2>이렇게 사용하세요</h2>
+      <p>복잡한 설정 없이 세 단계면 충분합니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step"><div class="tl-num">01</div><h3>도구 선택</h3><p>필요한 카테고리를 고릅니다.</p></div>
+      <div class="tl-step"><div class="tl-num">02</div><h3>파일 · 값 입력</h3><p>브라우저 안에서 바로 처리됩니다.</p></div>
+      <div class="tl-step"><div class="tl-num">03</div><h3>확인 후 다운로드</h3><p>미리보기로 확인하고 저장합니다.</p></div>
+    </div>
+  </div>
 </section>
-<section class="grid" aria-label="도구 목록">
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 01/07</span><div class="icon">📄</div><h2>PDF Tools</h2><p>암호 관리, 병합, 분할, 회전, 이미지 변환, 기본 Excel 변환을 한 곳에서 사용합니다.</p><div class="feature-actions"><a class="btn primary" href="pdf-tools.html">PDF 도구 열기</a><a class="btn soft" href="guide.html#pdf">가이드</a></div></article>
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 02/07</span><div class="icon">🖼️</div><h2>Image Tools</h2><p>크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 생성을 처리합니다.</p><div class="feature-actions"><a class="btn primary" href="image-tools.html">이미지 도구 열기</a><a class="btn soft" href="image-tools-guide.html">가이드</a></div></article>
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 03/07</span><div class="icon">🔤</div><h2>Text Tools</h2><p>글자 수 계산, 줄 정리, 중복 제거, 대소문자 변환 등 텍스트 작업을 돕습니다.</p><div class="feature-actions"><a class="btn primary" href="text-tools.html">텍스트 도구 열기</a><a class="btn soft" href="text-tools-guide.html">가이드</a></div></article>
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 04/07</span><div class="icon">▦</div><h2>QR Code Tools</h2><p>URL과 텍스트를 QR 코드로 만들고 일괄 생성할 수 있습니다.</p><div class="feature-actions"><a class="btn primary" href="qr-tools.html">QR 도구 열기</a><a class="btn soft" href="qr-code-guide.html">가이드</a></div></article>
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 05/07</span><div class="icon">🧮</div><h2>Calculator Tools</h2><p>날짜, 비율, 단위, 부가세, 할인율, 근무일, 대출 계산을 제공합니다.</p><div class="feature-actions"><a class="btn primary" href="calculator-tools.html">계산 도구 열기</a><a class="btn soft" href="calculator-tools-guide.html">가이드</a></div></article>
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 06/07</span><div class="icon">✨</div><h2>Utility Tools</h2><p>JSON 정리, URL 인코딩, Base64, UUID, 색상 변환, 비밀번호 생성 등 보조 도구입니다.</p><div class="feature-actions"><a class="btn primary" href="more-tools.html">유틸리티 열기</a><a class="btn soft" href="utility-tools-guide.html">가이드</a></div></article>
-  <article class="card tool-card"><span class="tool-eyebrow">TOOL · 07/07</span><div class="icon">📋</div><h2>Document Tools</h2><p>CSV 표 변환, Markdown 변환, 문자열 비교, 파일명 정리 계획을 제공합니다.</p><div class="feature-actions"><a class="btn primary" href="document-tools.html">문서 도구 열기</a><a class="btn soft" href="document-tools-guide.html">가이드</a></div></article>
+
+<section class="section" id="tools" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Toolbox</span>
+      <h2>7개 카테고리, 40개 이상의 도구</h2>
+      <p>필요한 항목을 눌러 바로 실행하세요.</p>
+    </div>
+    <div class="tool-list">
+      <div class="tool-row">
+        <a class="t-main" href="pdf-tools.html">
+          <span class="t-num">01</span><span class="t-icon">📄</span>
+          <span class="t-body"><h3>PDF Tools</h3><p>암호 관리, 병합, 분할, 회전, 이미지·Excel 변환</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="guide.html#pdf">가이드</a><a class="t-arrow" href="pdf-tools.html">→</a></span>
+      </div>
+      <div class="tool-row">
+        <a class="t-main" href="image-tools.html">
+          <span class="t-num">02</span><span class="t-icon">🖼️</span>
+          <span class="t-body"><h3>Image Tools</h3><p>크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 생성</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="image-tools-guide.html">가이드</a><a class="t-arrow" href="image-tools.html">→</a></span>
+      </div>
+      <div class="tool-row">
+        <a class="t-main" href="text-tools.html">
+          <span class="t-num">03</span><span class="t-icon">🔤</span>
+          <span class="t-body"><h3>Text Tools</h3><p>글자 수 계산, 줄 정리, 중복 제거, 대소문자 변환</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="text-tools-guide.html">가이드</a><a class="t-arrow" href="text-tools.html">→</a></span>
+      </div>
+      <div class="tool-row">
+        <a class="t-main" href="qr-tools.html">
+          <span class="t-num">04</span><span class="t-icon">▦</span>
+          <span class="t-body"><h3>QR Code Tools</h3><p>URL·텍스트 QR 생성, 일괄 생성</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="qr-code-guide.html">가이드</a><a class="t-arrow" href="qr-tools.html">→</a></span>
+      </div>
+      <div class="tool-row">
+        <a class="t-main" href="calculator-tools.html">
+          <span class="t-num">05</span><span class="t-icon">🧮</span>
+          <span class="t-body"><h3>Calculator Tools</h3><p>날짜, 비율, 단위, 부가세, 할인율, 근무일, 대출 계산</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="calculator-tools-guide.html">가이드</a><a class="t-arrow" href="calculator-tools.html">→</a></span>
+      </div>
+      <div class="tool-row">
+        <a class="t-main" href="more-tools.html">
+          <span class="t-num">06</span><span class="t-icon">✨</span>
+          <span class="t-body"><h3>Utility Tools</h3><p>JSON, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="utility-tools-guide.html">가이드</a><a class="t-arrow" href="more-tools.html">→</a></span>
+      </div>
+      <div class="tool-row">
+        <a class="t-main" href="document-tools.html">
+          <span class="t-num">07</span><span class="t-icon">📋</span>
+          <span class="t-body"><h3>Document Tools</h3><p>CSV ↔ 표 변환, Markdown 변환, 문자열 비교, 파일명 정리</p></span>
+        </a>
+        <span class="t-side"><a class="t-guide" href="document-tools-guide.html">가이드</a><a class="t-arrow" href="document-tools.html">→</a></span>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="section grid">
-  <article class="card"><h2>브라우저에서 처리하는 도구</h2><p>여러 기능은 선택한 파일이나 입력값을 사용자의 브라우저 안에서 처리하도록 구성했습니다. 서버 저장 방식이 아니므로 간단한 문서·이미지·텍스트 정리에 적합합니다.</p><p><a class="more" href="browser-pdf-security.html">파일 보안 안내 보기 →</a></p></article>
-  <article class="card"><h2>기능별 사용 가이드</h2><p>도구를 바로 제공하는 것뿐 아니라 어떤 상황에서 어떤 기능을 쓰면 좋은지, 결과를 확인할 때 무엇을 봐야 하는지 설명합니다.</p><p><a class="more" href="guide.html">전체 가이드 보기 →</a></p></article>
-  <article class="card"><h2>현재 제공 기능</h2><ul><li>PDF 편집·변환</li><li>이미지 크기 조정·자르기·워터마크</li><li>텍스트·문서 정리</li><li>URL·텍스트 QR 코드 생성</li><li>계산·단위 변환</li><li>JSON·URL·Base64 등 유틸리티</li></ul></article>
+
+<section class="why-band section">
+  <div class="wrap">
+    <div class="why-row">
+      <div class="why-item"><div class="ic">🔒</div><h3>브라우저 안에서만</h3><p>대부분의 기능은 파일을 서버로 보내지 않고 그 자리에서 처리합니다.</p></div>
+      <div class="why-item"><div class="ic">⚡</div><h3>설치 없이 바로</h3><p>계정을 만들 필요 없이 링크만 열면 바로 작업할 수 있습니다.</p></div>
+      <div class="why-item"><div class="ic">📚</div><h3>가이드까지 함께</h3><p>언제 어떤 기능을 쓰면 좋은지도 같이 안내합니다.</p></div>
+    </div>
+  </div>
 </section>
-<section class="article"><h2>처음 방문한 사용자를 위한 안내</h2><p>Sisaemdal Tools는 복잡한 프로그램 설치 없이 작은 작업을 빠르게 처리하려는 사용자를 위한 사이트입니다. PDF 문서를 정리하거나, 이미지 용량을 줄이거나, 텍스트 목록을 정리하거나, URL 공유용 QR 코드를 만들 때 사용할 수 있습니다.</p><p>각 도구는 간단한 작업을 목표로 하며, 전문 편집 프로그램을 완전히 대체하지는 않습니다. 중요한 파일은 원본을 보관하고, 결과 파일은 직접 열어 내용과 품질을 확인한 뒤 사용하세요.</p><div class="cta"><a class="btn primary" href="guide.html">사용 가이드 보기</a><a class="btn" href="faq.html">자주 묻는 질문</a></div></section>
-<footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+
+<section class="section">
+  <div class="wrap">
+    <div class="info-card">
+      <h2>처음 방문한 사용자를 위한 안내</h2>
+      <p>Sisaemdal Tools는 복잡한 프로그램 설치 없이 작은 작업을 빠르게 처리하려는 사용자를 위한 사이트입니다. PDF 문서를 정리하거나, 이미지 용량을 줄이거나, 텍스트 목록을 정리하거나, URL 공유용 QR 코드를 만들 때 사용할 수 있습니다.</p>
+      <p>각 도구는 간단한 작업을 목표로 하며, 전문 편집 프로그램을 완전히 대체하지는 않습니다. 중요한 파일은 원본을 보관하고, 결과 파일은 직접 열어 내용과 품질을 확인한 뒤 사용하세요.</p>
+      <div class="cta-row">
+        <a class="btn-line" href="guide.html">사용 가이드 보기</a>
+        <a class="btn-line" href="faq.html">자주 묻는 질문</a>
+        <a class="btn-line" href="browser-pdf-security.html">파일 보안 안내</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand"><span class="brand-mark">St</span><span>Sisaemdal Tools</span></div>
+        <p>브라우저에서 바로 사용하는 무료 온라인 도구 모음입니다.</p>
+      </div>
+      <div class="footer-col">
+        <h4>도구</h4>
+        <a href="pdf-tools.html">PDF Tools</a>
+        <a href="image-tools.html">Image Tools</a>
+        <a href="text-tools.html">Text Tools</a>
+        <a href="qr-tools.html">QR Code Tools</a>
+        <a href="calculator-tools.html">Calculator Tools</a>
+        <a href="more-tools.html">Utility Tools</a>
+        <a href="document-tools.html">Document Tools</a>
+      </div>
+      <div class="footer-col">
+        <h4>안내</h4>
+        <a href="guide.html">사용 가이드</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">소개</a>
+        <a href="contact.html">문의</a>
+      </div>
+      <div class="footer-col">
+        <h4>정책</h4>
+        <a href="privacy.html">개인정보처리방침</a>
+        <a href="terms.html">이용약관</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sisaemdal Tools. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
