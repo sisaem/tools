@@ -8,13 +8,13 @@
 <meta name="keywords" content="JSON 포맷, URL 인코딩, Base64, UUID 생성, 색상 변환, 비밀번호 생성">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Sisaemdal Tools">
-<link rel="canonical" href="https://sisaemdal.com/more-tools.html">
+<link rel="canonical" href="https://sisaemdal.com/more-tools">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Sisaemdal Tools">
 <meta property="og:title" content="무료 유틸리티 도구 - JSON·URL·Base64·UUID·색상 변환">
 <meta property="og:description" content="JSON 포맷, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호 생성 등 브라우저 기반 유틸리티 도구입니다.">
-<meta property="og:url" content="https://sisaemdal.com/more-tools.html">
+<meta property="og:url" content="https://sisaemdal.com/more-tools">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="무료 유틸리티 도구 - JSON·URL·Base64·UUID·색상 변환">
 <meta name="twitter:description" content="JSON 포맷, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호 생성 등 브라우저 기반 유틸리티 도구입니다.">
@@ -119,9 +119,9 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
 .btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
 </style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="index.html"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="about.html" >소개</a><a href="guide.html" >가이드</a><a href="faq.html" >FAQ</a><a href="privacy.html" >개인정보처리방침</a><a href="terms.html" >이용약관</a><a href="contact.html" class="nav-cta">문의하기</a></nav></header></div>
+<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about" >소개</a><a href="/guide" >가이드</a><a href="/faq" >FAQ</a><a href="/privacy" >개인정보처리방침</a><a href="/terms" >이용약관</a><a href="/contact" class="nav-cta">문의하기</a></nav></header></div>
 <div class="wrap">
-<section class="hero"><span class="badge">Utility Tools</span><h1>유틸리티 도구</h1><p>JSON 정리, URL 인코딩, Base64 변환, UUID 생성, 색상 변환처럼 자주 쓰는 보조 작업을 한 곳에서 처리합니다.</p><div class="backline"><a class="btn btn-home" href="index.html">← 홈페이지</a><a class="btn soft" href="utility-tools-guide.html">유틸리티 가이드</a></div></section>
+<section class="hero"><span class="badge">Utility Tools</span><h1>유틸리티 도구</h1><p>JSON 정리, URL 인코딩, Base64 변환, UUID 생성, 색상 변환처럼 자주 쓰는 보조 작업을 한 곳에서 처리합니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/utility-tools-guide">유틸리티 가이드</a></div></section>
 <section class="tool-panel"><div class="tool-tabs" id="utilTabs"><button class="active" data-target="jsonTool">JSON</button><button data-target="urlTool">URL</button><button data-target="base64Tool">Base64</button><button data-target="uuidTool">UUID</button><button data-target="colorTool">색상</button><button data-target="passwordTool">비밀번호</button></div>
 <div id="jsonTool" class="tool-section active"><h2>JSON 포맷/압축</h2><textarea id="jsonInput" class="textarea" placeholder='{"name":"Sisaemdal"}'></textarea><div class="tool-actions"><button class="btn primary" id="jsonPretty">보기 좋게 정리</button><button class="btn" id="jsonMin">압축</button><button class="btn" id="jsonCopy">결과 복사</button></div><pre id="jsonOutput" class="copy-output"></pre></div>
 <div id="urlTool" class="tool-section"><h2>URL 인코딩/디코딩</h2><textarea id="urlInput" class="textarea" placeholder="텍스트 또는 URL"></textarea><div class="tool-actions"><button class="btn primary" id="urlEnc">인코딩</button><button class="btn" id="urlDec">디코딩</button></div><pre id="urlOutput" class="copy-output"></pre></div>
@@ -142,4 +142,4 @@ function hexToRgb(hex){hex=hex.replace('#','').trim(); if(hex.length===3) hex=he
 function colorConvert(){try{const hex=$('hexInput').value; const [r,g,b]=hexToRgb(hex); const [h,s,l]=rgbToHsl(r,g,b); $('swatch').style.background=hex; $('colorPick').value=hex; $('colorOutput').textContent=`HEX: ${hex}\nRGB: rgb(${r}, ${g}, ${b})\nHSL: hsl(${h}, ${s}%, ${l}%)`;}catch(e){$('colorOutput').textContent='색상 값을 확인해 주세요.'}} $('colorConvert').onclick=colorConvert; $('colorPick').oninput=e=>{$('hexInput').value=e.target.value;colorConvert()}; colorConvert();
 function makePw(){const len=Math.max(8,Math.min(64,Number($('pwLen').value)||16)); const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'+($('pwSymbols').checked?'!@#$%^&*()-_=+[]{}?':''); let out=''; const arr=new Uint32Array(len); crypto.getRandomValues(arr); for(let i=0;i<len;i++) out+=chars[arr[i]%chars.length]; $('pwOutput').textContent=out;} $('pwMake').onclick=makePw; $('pwCopy').onclick=()=>copy('pwOutput'); makePw();})();
 </script>
-<footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a><a href="contact.html">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+<footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
