@@ -14,6 +14,6 @@
 
 ## 배포 전 확인
 
-1. `contact@sisaemdal.com`이 실제로 메일을 받는지 확인 (Cloudflare Email Routing 등으로 개인 메일에 연결)
+1. 문의 메일 주소: sisaemdal159@gmail.com (`build`의 CONTACT_EMAIL로 관리)
 2. `https://sisaemdal.com/ads.txt`가 브라우저에서 텍스트 한 줄로 열리는지 확인
 3. 공휴일 목록(`workdays`) 갱신 시 페이지 상단 고친 날짜도 함께 수정
