@@ -1,132 +1,97 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>문서 정리 도구 가이드</title>
-<meta name="description" content="CSV, Markdown, 문자열 비교, 파일명 정리 계획 기능을 사용하는 방법입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSV 한글 깨짐, 맥에서 온 파일명, 그리고 JSON·Base64가 필요한 순간 | 시샘달 도구함</title>
+<meta name="description" content="CSV를 엑셀에서 열면 한글이 깨지는 이유와 해결법, 앞자리 0이 사라지는 문제, 맥과 윈도우 사이 한글 파일명 자모 분리, URL 인코딩과 Base64를 실무 예시로 설명합니다.">
 <link rel="canonical" href="https://sisaemdal.com/document-tools-guide">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="문서 정리 도구 가이드">
-<meta property="og:description" content="CSV, Markdown, 문자열 비교, 파일명 정리 계획 기능을 사용하는 방법입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="CSV 한글 깨짐, 맥에서 온 파일명, 그리고 JSON·Base64가 필요한 순간 | 시샘달 도구함">
+<meta property="og:description" content="CSV를 엑셀에서 열면 한글이 깨지는 이유와 해결법, 앞자리 0이 사라지는 문제, 맥과 윈도우 사이 한글 파일명 자모 분리, URL 인코딩과 Base64를 실무 예시로 설명합니다.">
 <meta property="og:url" content="https://sisaemdal.com/document-tools-guide">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="문서 정리 도구 가이드">
-<meta name="twitter:description" content="CSV, Markdown, 문자열 비교, 파일명 정리 계획 기능을 사용하는 방법입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-
-/* Final guide hierarchy and readability styles */
-.category-guide{display:grid;gap:22px;margin-top:20px}.category-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 34px rgba(15,31,58,.06)}.category-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.04em}.category-card p{margin:0 0 14px;color:#52647d}.sub-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}.sub-guide-grid a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#263b5c}.sub-guide-grid strong{display:block;margin-bottom:4px}.sub-guide-grid span{display:block;color:#64748b;font-size:14px;line-height:1.55}.guide-detail .summary-box{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:22px 0}.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:20px 0}.guide-detail .guide-block h3{margin-top:0!important}.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.guide-detail .do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-detail .do-grid>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.guide-detail .table-wrap{overflow:auto}.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.guide-detail th{background:#eef6ff}.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}.guide-detail .cta{margin-top:28px}
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">Document Guide</span><h1>문서 정리 도구 가이드</h1><p>CSV, Markdown, 문자열 비교, 파일명 정리 계획 기능을 사용하는 방법입니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/guide">전체 가이드</a></div></section><section class="article guide-detail"><h2>문서 정리 도구 상세 가이드</h2><div class="summary-box"><p>문서 정리 도구는 복사한 데이터나 초안 문서를 정리하고, 변경 사항을 확인하는 데 도움이 됩니다.</p></div><div class="toc"><a href="#csv">CSV ↔ 표 변환</a><a href="#markdown">Markdown → HTML</a><a href="#diff">문자열 비교</a><a href="#filename">파일명 정리 계획표</a></div><div class="guide-block" id="csv"><h3>CSV ↔ 표 변환</h3><p>CSV 텍스트를 표로 확인하거나, 표 형태의 데이터를 CSV로 정리할 수 있습니다. 쉼표가 포함된 값은 따옴표 처리 여부에 따라 결과가 달라질 수 있습니다.</p></div><div class="guide-block" id="markdown"><h3>Markdown → HTML</h3><p>README, 공지 초안, 간단한 문서 내용을 HTML로 미리보기 할 수 있습니다. 복잡한 Markdown 확장 문법은 일부 다르게 보일 수 있습니다.</p></div><div class="guide-block" id="diff"><h3>문자열 비교</h3><p>원문과 수정본을 나란히 비교해 어떤 줄이 추가되거나 삭제되었는지 확인할 수 있습니다. 메일 문안, 공지문, 설정값 변경 비교에 적합합니다.</p></div><div class="guide-block" id="filename"><h3>파일명 정리 계획표</h3><p>여러 파일명을 직접 바꾸기 전에 새 파일명 계획을 만들어 볼 수 있습니다. 브라우저 보안 제한 때문에 실제 로컬 파일명을 자동 변경하지는 않으며, 정리 계획을 CSV로 내려받아 참고할 수 있습니다.</p></div><div class="cta"><a class="btn primary" href="/document-tools">문서 도구 열기</a><a class="btn" href="/guide#document">문서 가이드 목록</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools">도구</a><a href="/guide" aria-current="page">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/guide">가이드</a> / <span aria-current="page">CSV 한글 깨짐, 맥에서 온 파일명, 그리고 JSON·Base64가 필요한 순간</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>CSV 한글 깨짐, 맥에서 온 파일명, 그리고 JSON·Base64가 필요한 순간</h1>
+    <p class="lede">문서 정리 도구와 유틸리티 도구가 쓰이는 상황은 대개 '파일을 다른 프로그램으로 옮겼더니 이상해졌다'입니다. 자주 만나는 경우를 원인부터 정리했습니다.</p>
+    <p class="dates">2026년 7월 3일 작성, 2026년 11월 7일 고침</p>
+  </header>
+  <article class="prose">
+<nav class="toc" aria-label="이 글의 차례"><strong>차례</strong><ol><li><a href="#s1">CSV를 엑셀에서 열면 한글이 깨진다</a></li><li><a href="#s2">우편번호와 전화번호의 앞자리 0이 사라진다</a></li><li><a href="#s3">쉼표가 들어간 값</a></li><li><a href="#s4">맥에서 온 한글 파일 이름이 'ㅎㅏㄴㄱㅡㄹ'로 보인다</a></li><li><a href="#s5">마크다운은 어디에 쓰나</a></li><li><a href="#s6">두 글을 비교해야 할 때</a></li><li><a href="#s7">URL 인코딩: 주소 속 %ED%95%9C의 정체</a></li><li><a href="#s8">Base64는 암호가 아니다</a></li><li><a href="#s9">JSON 정리는 누가 쓰나</a></li><li><a href="#s10">임시 비밀번호와 UUID</a></li></ol></nav>
+
+<h2 id="s1">CSV를 엑셀에서 열면 한글이 깨진다</h2>
+<p>웹 서비스에서 내려받은 CSV 파일을 엑셀에서 더블클릭해 열면 한글이 <code>ì•ˆë…•</code> 같은 글자로 깨지는 일이 흔합니다. 원인은 문자 인코딩의 불일치입니다. 요즘 웹 서비스는 CSV를 UTF-8로 저장하는데, 한국어 윈도우의 엑셀은 별다른 표시가 없는 CSV를 예전 방식인 CP949(EUC-KR)로 읽으려 합니다.</p>
+<p>해결 방법은 두 가지입니다.</p>
+<ol>
+<li><strong>파일 맨 앞에 UTF-8 표시(BOM)를 넣는다.</strong> 엑셀은 이 표시를 보면 UTF-8로 읽습니다. 이 사이트의 문서 정리 도구에서 내려받는 CSV에는 이 표시가 들어 있어서 엑셀에서 바로 열립니다.</li>
+<li><strong>엑셀의 가져오기 기능을 쓴다.</strong> 빈 통합 문서에서 <strong>데이터 → 텍스트/CSV에서</strong>를 고르고, 파일 원본을 <strong>65001: 유니코드(UTF-8)</strong>로 지정하면 됩니다.</li>
+</ol>
+<p>반대로 엑셀에서 "CSV(쉼표로 분리)"로 저장한 파일을 다른 시스템에 올렸더니 한글이 깨진다면, 엑셀이 CP949로 저장했기 때문입니다. 저장할 때 <strong>CSV UTF-8(쉼표로 분리)</strong> 형식을 고르세요.</p>
+
+<h2 id="s2">우편번호와 전화번호의 앞자리 0이 사라진다</h2>
+<p>CSV를 엑셀에서 열면 <code>01012345678</code>이 <code>1012345678</code>로, 우편번호 <code>06236</code>이 <code>6236</code>으로 바뀝니다. 엑셀이 숫자처럼 보이는 값을 숫자로 바꾸면서 앞의 0을 버리기 때문입니다. 사원번호, 계좌번호, 제품 코드처럼 '숫자 모양의 글자'도 같은 일을 겪고, 15자리가 넘는 번호는 뒷자리가 0으로 바뀌기까지 합니다.</p>
+<p>한번 열어서 저장해 버리면 원래 값은 복구할 수 없습니다. 이런 열이 있는 CSV는 더블클릭으로 열지 말고, 위의 가져오기 기능에서 해당 열의 형식을 <strong>텍스트</strong>로 지정한 뒤 불러오세요. 내용 확인만 할 거라면 이 사이트의 <a href="/document-tools">CSV 표 변환</a>에 붙여 넣어 표로 보는 방법도 있습니다. 브라우저에서 보여 주기만 하므로 값이 바뀌지 않습니다.</p>
+
+<h2 id="s3">쉼표가 들어간 값</h2>
+<p>CSV는 쉼표로 칸을 나누기 때문에, 값 안에 쉼표가 있으면(<code>서울시 강남구, 101호</code>) 그 값을 큰따옴표로 감싸야 합니다. 감싸지 않은 CSV를 열면 칸이 하나씩 밀립니다. 직접 CSV를 만들어 다른 곳에 넘길 때는 주소, 금액(<code>1,000</code>), 메모처럼 쉼표가 들어갈 수 있는 칸을 따옴표로 감싸 두세요.</p>
+
+<h2 id="s4">맥에서 온 한글 파일 이름이 'ㅎㅏㄴㄱㅡㄹ'로 보인다</h2>
+<p>맥에서 만든 파일을 윈도우로 옮기거나, 맥 사용자가 웹에 올린 파일을 윈도우에서 내려받으면 파일 이름의 한글이 자음과 모음으로 풀어져 보이는 경우가 있습니다. 맥은 한글을 자모를 나눈 형태(NFD)로 저장하고, 윈도우는 완성된 글자(NFC)로 다루기 때문입니다. 보기에만 이상한 게 아니라 파일 이름 검색이 안 되거나, 같은 이름의 파일이 두 개처럼 보이기도 합니다.</p>
+<p>이 사이트의 <a href="/document-tools">파일명 정리</a> 기능은 결과를 완성형(NFC)으로 바꿔서 보여 줍니다. 풀어진 파일 이름 목록을 붙여 넣으면 정상적인 이름을 얻을 수 있고, 그 이름으로 파일을 다시 바꾸면 됩니다. 파일이 많다면 결과를 CSV로 받아 일괄 이름 바꾸기 프로그램에 넣어 쓰면 됩니다.</p>
+
+<h2 id="s5">마크다운은 어디에 쓰나</h2>
+<p>마크다운은 <code># 제목</code>, <code>- 목록</code>, <code>**굵게**</code>처럼 기호로 서식을 표시하는 글쓰기 방식입니다. 깃허브, 노션, 슬랙, 여러 사내 위키가 이 방식을 씁니다. 문서 정리 도구의 마크다운 변환은 마크다운을 HTML로 바꿔 미리 보여 주므로, 메일 본문이나 웹 게시판에 서식 있는 글을 붙여 넣어야 할 때 쓸 수 있습니다.</p>
+
+<h2 id="s6">두 글을 비교해야 할 때</h2>
+<p>계약서 수정본을 받았는데 어디가 바뀌었는지 표시가 없을 때, 같은 공지문의 두 버전 중 어느 것이 최신인지 헷갈릴 때 <strong>문자열 비교</strong>를 씁니다. 두 글을 줄 단위로 비교해서 추가된 줄과 삭제된 줄을 색으로 보여 줍니다. 한 문단 안에서 한 단어만 바뀌어도 그 줄 전체가 바뀐 것으로 표시되므로, 긴 문단은 문장마다 줄을 바꾼 뒤 비교하면 차이가 더 잘 보입니다.</p>
+
+<h2 id="s7">URL 인코딩: 주소 속 %ED%95%9C의 정체</h2>
+<p>한글이 들어간 주소를 복사해서 붙이면 <code>https://example.com/%ED%95%9C%EA%B8%80</code>처럼 바뀌어 있는 걸 볼 수 있습니다. 주소에는 영문과 일부 기호만 쓸 수 있어서, 한글을 UTF-8 바이트로 바꾼 뒤 <code>%</code>를 붙여 적은 것입니다. <code>%ED%95%9C</code>가 '한'입니다. <a href="/more-tools">유틸리티 도구의 URL 변환</a>에 넣으면 원래 한글로 되돌려 볼 수 있습니다. 메일이나 보고서에 링크를 적을 때 이 형태로 적혀 있으면 어떤 페이지인지 알 수 없으니, 풀어서 확인하는 데 씁니다.</p>
+
+<h2 id="s8">Base64는 암호가 아니다</h2>
+<p>Base64는 그림이나 파일 같은 데이터를 영문과 숫자로만 이루어진 글자로 바꾸는 방식입니다. 이메일 첨부 파일, 웹 페이지 안에 직접 넣은 작은 그림, 일부 설정 파일에서 쓰입니다. 겉보기에는 알아볼 수 없는 문자열이라 암호처럼 보이지만, 누구나 그대로 되돌릴 수 있는 변환일 뿐입니다. 비밀번호나 개인정보를 Base64로 바꿔 두었다고 안전해지지 않는다는 점을 기억하세요.</p>
+
+<h2 id="s9">JSON 정리는 누가 쓰나</h2>
+<p>JSON은 프로그램끼리 데이터를 주고받을 때 쓰는 형식입니다. 개발자가 아니어도 업무 시스템에서 데이터를 내보내기 했더니 JSON 파일이 나오거나, 오류 메시지에 긴 JSON이 한 줄로 붙어 있는 경우가 있습니다. <a href="/more-tools">JSON 정리</a>에 붙여 넣으면 들여쓰기를 해서 구조를 읽기 쉽게 보여 주고, 형식이 틀렸으면 어디가 틀렸는지 알려 줍니다.</p>
+
+<h2 id="s10">임시 비밀번호와 UUID</h2>
+<p>임시 비밀번호 생성은 브라우저의 암호학적 난수 기능(<code>crypto.getRandomValues</code>)으로 만듭니다. 새 계정의 초기 비밀번호나, PDF에 걸 암호를 만들 때 쓸 수 있습니다. UUID는 겹치지 않는 고유한 식별 번호가 필요할 때(장비 관리 번호, 테스트용 데이터 등) 씁니다.</p>
+
+  </article>
+  <div class="byline"><p>이 글은 시샘달 도구함 운영자가 썼습니다. 틀린 내용이나 바뀐 기준을 발견하면 <a href="/contact">문의 페이지</a>로 알려 주세요. 확인 후 고치고 고친 날짜를 위에 적어 둡니다.</p></div>
+  <section class="related"><h2>같이 보면 좋은 것</h2><ul><li><a href="/document-tools">문서 정리 도구 열기</a></li><li><a href="/more-tools">JSON·URL·Base64 변환 도구 열기</a></li><li><a href="/pdf-excel-guide">PDF 표를 엑셀로 옮길 때</a></li></ul></section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

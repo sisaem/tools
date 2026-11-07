@@ -1,312 +1,111 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sisaemdal Tools - 무료 온라인 웹 도구 모음</title>
-<meta name="description" content="PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리를 브라우저에서 처리하는 무료 온라인 도구 모음입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시샘달 도구함</title>
+<meta name="description" content="PDF 합치기·암호 해제, 사진 용량 줄이기, 글자 수와 바이트 세기, 연차·근무일 계산, QR 코드 만들기를 설치 없이 브라우저에서 처리하는 무료 도구와 사용 설명.">
 <link rel="canonical" href="https://sisaemdal.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="Sisaemdal Tools - 무료 온라인 웹 도구 모음">
-<meta property="og:description" content="PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리를 브라우저에서 처리하는 무료 온라인 도구 모음입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="시샘달 도구함">
+<meta property="og:description" content="PDF 합치기·암호 해제, 사진 용량 줄이기, 글자 수와 바이트 세기, 연차·근무일 계산, QR 코드 만들기를 설치 없이 브라우저에서 처리하는 무료 도구와 사용 설명.">
 <meta property="og:url" content="https://sisaemdal.com/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sisaemdal Tools - 무료 온라인 웹 도구 모음">
-<meta name="twitter:description" content="PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리를 브라우저에서 처리하는 무료 온라인 도구 모음입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-<style>
-:root{
-  --paper:#F4F5F0; --ink:#101C16; --ink2:#16261E; --line:#DDE2D9;
-  --accent:#0EA672; --accent-deep:#0A7A54; --accent-soft:#E1F3EA;
-  --muted:#576259; --card:#FFFFFF;
-  --mono:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace;
-  --shadow:0 20px 45px rgba(16,28,22,.10);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
-a{color:inherit}
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;max-width:1160px;margin:0 auto;padding:20px 24px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900;font-size:17px;letter-spacing:-.02em}
-.brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-weight:900;font-size:15px}
-.nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
-.nav a{text-decoration:none;color:var(--ink2);font-weight:700;font-size:14.5px}
-.nav a:hover{color:var(--accent-deep)}
-.nav .nav-cta{background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-weight:800}
-.nav .nav-cta:hover{background:var(--accent-deep);color:#fff}
-@media(max-width:820px){.nav{display:none}}
-.hero-band{background:var(--ink);color:#fff;padding:64px 0 0;overflow:hidden;position:relative}
-.hero-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero-eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--accent);font-weight:700;text-transform:uppercase}
-.hero-copy h1{font-size:clamp(34px,4.6vw,54px);line-height:1.15;letter-spacing:-.03em;margin:14px 0 20px;font-weight:900;word-break:keep-all;overflow-wrap:normal}
-.hero-copy h1 em{font-style:normal;color:var(--accent)}
-.hero-copy p{font-size:17px;color:#c6cfc9;max-width:520px;margin:0 0 26px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:11px;font-weight:800;font-size:14.5px;text-decoration:none;border:1px solid transparent;cursor:pointer}
-.btn-accent{background:var(--accent);color:#052015}
-.btn-accent:hover{background:#12c084}
-.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.6)}
-.hero-facts{display:flex;gap:26px;flex-wrap:wrap;padding-bottom:44px}
-.hero-facts .fact{font-size:13px;color:#9fada4;display:flex;align-items:center;gap:7px}
-.hero-facts .fact b{color:#fff;font-weight:800}
-.pegboard{position:relative;height:320px}
-.peg{position:absolute;background:var(--ink2);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 16px;box-shadow:0 18px 34px rgba(0,0,0,.35);display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;color:#eef1ee}
-.peg span.ic{font-size:20px}
-.peg-1{top:0;left:10%;transform:rotate(-6deg)}
-.peg-2{top:60px;left:52%;transform:rotate(4deg)}
-.peg-3{top:130px;left:4%;transform:rotate(3deg)}
-.peg-4{top:150px;left:56%;transform:rotate(-4deg)}
-.peg-5{top:220px;left:22%;transform:rotate(-2deg)}
-.peg-6{top:250px;left:60%;transform:rotate(5deg);background:var(--accent);color:#052015;border-color:transparent}
-@media(max-width:980px){.hero-inner{grid-template-columns:1fr}.pegboard{display:none}}
-.tagstrip{background:var(--card);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0}
-.tagstrip .track{display:flex;gap:14px;width:max-content;animation:scrollx 28s linear infinite}
-.tagstrip:hover .track{animation-play-state:paused}
-.tagstrip span{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink2);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;white-space:nowrap}
-@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.section{padding:72px 0}
-.section-head{max-width:640px;margin:0 auto 40px;text-align:center}
-.section-eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--accent-deep);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.section-head h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.03em;margin:10px 0 12px}
-.section-head p{color:var(--muted);font-size:15.5px}
-.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:1000px;margin:0 auto;position:relative}
-.timeline:before{content:"";position:absolute;top:20px;left:8%;right:8%;height:2px;background:var(--line)}
-.tl-step{position:relative;text-align:center;padding:0 18px}
-.tl-num{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--accent);display:grid;place-items:center;font-weight:900;font-family:var(--mono);margin:0 auto 18px;position:relative;z-index:1}
-.tl-step h3{font-size:16.5px;margin:0 0 8px;letter-spacing:-.02em}
-.tl-step p{font-size:14px;color:var(--muted);margin:0}
-@media(max-width:820px){.timeline{grid-template-columns:1fr;gap:28px}.timeline:before{display:none}}
-.tool-list{max-width:960px;margin:0 auto;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
-.tool-row{display:flex;align-items:center;gap:14px;padding:22px 28px;border-bottom:1px solid var(--line);transition:.15s}
-.tool-row:last-child{border-bottom:none}
-.tool-row:hover{background:var(--accent-soft)}
-.tool-row .t-main{display:flex;align-items:center;gap:20px;flex:1;min-width:0;text-decoration:none;color:var(--ink)}
-.tool-row .t-num{font-family:var(--mono);font-size:13px;color:var(--muted);width:26px;flex:0 0 26px}
-.tool-row .t-icon{width:52px;height:52px;flex:0 0 52px;border-radius:14px;background:var(--paper);display:grid;place-items:center;font-size:24px}
-.tool-row .t-body{flex:1;min-width:0}
-.tool-row .t-body h3{margin:0 0 4px;font-size:17.5px;letter-spacing:-.02em}
-.tool-row .t-body p{margin:0;font-size:14px;color:var(--muted)}
-.tool-row .t-side{flex:0 0 auto;display:flex;align-items:center;gap:16px}
-.tool-row .t-guide{font-size:13.5px;font-weight:700;color:var(--muted);text-decoration:none;white-space:nowrap}
-.tool-row .t-guide:hover{color:var(--accent-deep)}
-.tool-row .t-arrow{font-size:20px;color:var(--accent-deep);text-decoration:none;line-height:1}
-@media(max-width:700px){.tool-row{flex-wrap:wrap;padding:20px}.tool-row .t-side{width:100%;justify-content:space-between;margin-top:6px;padding-left:46px}}
-.why-band{background:var(--accent-soft)}
-.why-row{display:flex;justify-content:center;gap:0;max-width:1000px;margin:0 auto;flex-wrap:wrap}
-.why-item{flex:1 1 260px;padding:0 28px;text-align:center;border-right:1px solid rgba(10,122,84,.18)}
-.why-item:last-child{border-right:none}
-.why-item .ic{font-size:26px;margin-bottom:10px}
-.why-item h3{font-size:16px;margin:0 0 8px;letter-spacing:-.02em}
-.why-item p{font-size:13.5px;color:var(--accent-deep);margin:0;opacity:.85}
-@media(max-width:820px){.why-item{border-right:none;border-bottom:1px solid rgba(10,122,84,.18);padding-bottom:24px;margin-bottom:24px}.why-item:last-child{border-bottom:none;margin-bottom:0}}
-.info-card{max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:var(--shadow)}
-.info-card h2{font-size:24px;margin:0 0 14px;letter-spacing:-.03em}
-.info-card p{color:#33403a;font-size:15.5px;margin:0 0 14px}
-.info-card .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.info-card .btn-line{border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:10px;font-weight:800;font-size:14px;text-decoration:none}
-.info-card .btn-line:hover{border-color:var(--accent-deep);color:var(--accent-deep)}
-.site-footer{background:var(--ink);color:#c7cfc9;padding:52px 0 24px}
-.footer-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
-.footer-brand{display:flex;align-items:center;gap:8px;font-weight:900;color:#fff;font-size:16px;margin-bottom:10px}
-.footer-col p{color:#8f9c93;font-size:13.5px;margin:0}
-.footer-col h4{color:#fff;font-size:13px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;font-family:var(--mono)}
-.footer-col a{display:block;color:#aab6ad;text-decoration:none;font-size:13.5px;margin-bottom:9px}
-.footer-col a:hover{color:#fff}
-.footer-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px;color:#6d786f;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-@media(max-width:820px){.footer-cols{grid-template-columns:1fr 1fr;gap:24px}}
-</style>
 </head>
 <body>
-
-<header class="topbar">
-  <a class="brand" href="/"><span class="brand-mark">St</span><span>Sisaemdal Tools</span></a>
-  <nav class="nav" aria-label="주요 메뉴">
-    <a href="#tools">도구</a>
-    <a href="/guide">가이드</a>
-    <a href="/faq">FAQ</a>
-    <a href="/about">소개</a>
-    <a href="/contact" class="nav-cta">문의하기</a>
-  </nav>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools" aria-current="page">도구</a><a href="/guide">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
 </header>
-
-<section class="hero-band">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <span class="hero-eyebrow">Free Browser Toolkit</span>
-      <h1>파일 작업을,<br>브라우저에서 <em>바로</em> 끝내세요.</h1>
-      <p>PDF, 이미지, 텍스트, QR 코드, 계산, 문서 정리까지 — 설치도 회원가입도 없이, 필요한 순간 열어서 바로 쓰는 무료 도구 모음입니다.</p>
-      <div class="hero-actions">
-        <a class="btn btn-accent" href="#tools">도구 둘러보기 →</a>
-        <a class="btn btn-ghost" href="/guide">사용 가이드</a>
-      </div>
+<main id="main">
+<div class="container">
+  <section class="home-intro">
+    <h1>파일 정리와 사무 계산을 브라우저에서 바로 끝내는 도구함</h1>
+    <p>PDF 합치기, 사진 용량 줄이기, 글자 수 세기, 연차와 근무일 계산처럼 일하다 자주 막히는 작은 작업을 모았습니다. 설치나 가입이 필요 없고, 파일은 서버로 올라가지 않습니다.</p>
+    <div class="finder">
+      <label for="finder">하려는 작업을 적어 보세요</label>
+      <input id="finder" type="search" placeholder="예: 합치기, 용량, 연차, 글자 수" autocomplete="off">
+      <p class="finder-status" id="finderStatus" aria-live="polite"></p>
     </div>
-    <div class="pegboard" aria-hidden="true">
-      <div class="peg peg-1"><span class="ic">📄</span>PDF</div>
-      <div class="peg peg-2"><span class="ic">🖼️</span>Image</div>
-      <div class="peg peg-3"><span class="ic">🔤</span>Text</div>
-      <div class="peg peg-4"><span class="ic">▦</span>QR</div>
-      <div class="peg peg-5"><span class="ic">🧮</span>Calc</div>
-      <div class="peg peg-6"><span class="ic">✓</span>브라우저에서 완료</div>
-    </div>
+  </section>
+  <div class="task-index" id="tools">
+    <section class="task-group"><h2>PDF</h2><ul><li data-k="병합 붙이기 묶기 merge"><a href="/pdf-tools?tab=merge-split"><span class="t">PDF 여러 개를 한 파일로 합치기</span><small>제출 서류를 순서대로 묶을 때</small></a></li><li data-k="분할 나누기 자르기 split 페이지 추출"><a href="/pdf-tools?tab=merge-split"><span class="t">PDF에서 필요한 쪽만 떼어내기</span><small>1-3, 5처럼 범위로</small></a></li><li data-k="암호 해제 잠금 명세서 unlock"><a href="/pdf-tools?tab=password"><span class="t">알고 있는 PDF 비밀번호 풀기</span><small>매번 묻는 명세서 암호 없애기</small></a></li><li data-k="암호 설정 보안 잠그기 lock"><a href="/pdf-tools?tab=password"><span class="t">PDF에 비밀번호 걸기</span><small>AES-256</small></a></li><li data-k="회전 방향 돌리기 rotate"><a href="/pdf-tools?tab=rotate"><span class="t">옆으로 누운 스캔 쪽 바로 세우기</span><small>화질 손실 없음</small></a></li><li data-k="이미지 jpg png 변환 스캔"><a href="/pdf-tools?tab=convert-to-pdf"><span class="t">사진 여러 장을 PDF 하나로</span></a></li><li data-k="이미지 png jpg 변환 캡처"><a href="/pdf-tools?tab=convert-to-image"><span class="t">PDF 쪽을 그림 파일로 저장</span></a></li><li data-k="excel xlsx 변환 표"><a href="/pdf-tools?tab=excel"><span class="t">PDF 표를 엑셀로 옮기기</span><small>스캔본은 안 됨</small></a></li></ul></section><section class="task-group"><h2>사진·이미지</h2><ul><li data-k="압축 크기 조정 리사이즈 jpg webp 용량"><a href="/image-tools"><span class="t">업로드 한도에 맞게 사진 용량 줄이기</span></a></li><li data-k="자르기 크롭 crop"><a href="/image-tools"><span class="t">사진 일부만 잘라내기</span></a></li><li data-k="워터마크 사본 통장 신분증"><a href="/image-tools"><span class="t">신분증 사본에 제출용 문구 넣기</span></a></li><li data-k="exif gps 메타데이터 개인정보"><a href="/image-tools"><span class="t">사진 속 촬영 위치 정보 지우기</span><small>다시 저장하면 사라짐</small></a></li><li data-k="색상 추출 hex 팔레트"><a href="/image-tools"><span class="t">로고에서 색상 코드 뽑기</span></a></li><li data-k="favicon 아이콘"><a href="/image-tools"><span class="t">웹사이트 파비콘 만들기</span></a></li></ul></section><section class="task-group"><h2>글자·문서</h2><ul><li data-k="글자수 공백 바이트 자소서 byte"><a href="/text-tools"><span class="t">자기소개서 글자 수와 바이트 세기</span><small>EUC-KR·UTF-8 둘 다</small></a></li><li data-k="중복 제거 정렬 공백 정리"><a href="/text-tools"><span class="t">목록에서 빈 줄과 중복 지우기</span></a></li><li data-k="csv 한글 깨짐 표 변환 bom"><a href="/document-tools"><span class="t">엑셀에서 깨지는 CSV 열어 보기</span></a></li><li data-k="비교 diff 수정본 계약서"><a href="/document-tools"><span class="t">두 문서에서 바뀐 줄 찾기</span></a></li><li data-k="파일명 자모 분리 nfc 이름 정리"><a href="/document-tools"><span class="t">맥에서 온 한글 파일명 고치기</span></a></li><li data-k="markdown md html"><a href="/document-tools"><span class="t">마크다운을 HTML로 바꾸기</span></a></li></ul></section><section class="task-group"><h2>날짜·돈 계산</h2><ul><li data-k="연차 휴가 근속 입사일"><a href="/annual-leave"><span class="t">내 연차가 며칠인지 계산</span><small>입사일·회계연도 기준</small></a></li><li data-k="영업일 근무일 공휴일 대체공휴일"><a href="/workdays"><span class="t">공휴일 빼고 근무일 세기</span><small>2026·2027 공휴일 반영</small></a></li><li data-k="기한 마감 영업일"><a href="/workdays"><span class="t">영업일 기준 며칠 뒤 날짜 구하기</span></a></li><li data-k="부가세 vat 공급가액 세금계산서"><a href="/calculator-tools"><span class="t">부가세 포함 금액에서 공급가액 구하기</span></a></li><li data-k="할인 퍼센트 비율 %"><a href="/calculator-tools"><span class="t">할인율과 퍼센트 계산</span></a></li><li data-k="대출 이자 원리금 상환"><a href="/calculator-tools"><span class="t">대출 월 상환액 어림하기</span></a></li></ul></section><section class="task-group"><h2>QR·변환</h2><ul><li data-k="qr 큐알 코드 링크"><a href="/qr-tools"><span class="t">인쇄물에 넣을 QR 코드 만들기</span></a></li><li data-k="qr 일괄 대량"><a href="/qr-tools"><span class="t">QR 코드 여러 개 한 번에 만들기</span></a></li><li data-k="url 인코딩 디코딩 한글 주소"><a href="/more-tools"><span class="t">%ED%95%9C 같은 주소 풀어 보기</span></a></li><li data-k="json 들여쓰기 포맷"><a href="/more-tools"><span class="t">JSON 보기 좋게 정리하기</span></a></li><li data-k="비밀번호 생성 랜덤 password"><a href="/more-tools"><span class="t">임시 비밀번호 만들기</span></a></li><li data-k="uuid 식별자 guid"><a href="/more-tools"><span class="t">UUID 만들기</span></a></li></ul></section>
   </div>
-  <div class="hero-facts wrap">
-    <span class="fact"><b>7</b>개 카테고리</span>
-    <span class="fact"><b>40+</b>개 무료 기능</span>
-    <span class="fact">🔒 파일은 브라우저에서 처리</span>
-    <span class="fact">🙅 회원가입 불필요</span>
-  </div>
-</section>
-
-<div class="tagstrip" aria-hidden="true">
-  <div class="track">
-    <span>PDF 병합</span><span>PDF 암호 해제</span><span>이미지 압축</span><span>배경 워터마크</span><span>QR 코드 생성</span><span>단위 변환</span><span>JSON 정리</span><span>Base64 인코딩</span><span>CSV ↔ 표 변환</span><span>부가세 계산</span><span>Markdown 변환</span><span>파일명 정리</span>
-    <span>PDF 병합</span><span>PDF 암호 해제</span><span>이미지 압축</span><span>배경 워터마크</span><span>QR 코드 생성</span><span>단위 변환</span><span>JSON 정리</span><span>Base64 인코딩</span><span>CSV ↔ 표 변환</span><span>부가세 계산</span><span>Markdown 변환</span><span>파일명 정리</span>
+  <div class="home-split">
+    <section>
+      <h2>사용법과 배경 설명</h2>
+      <ul class="article-list"><li><a href="/annual-leave-guide">연차 일수 계산하는 법: 입사 첫해 11일부터 25일 한도까지</a><p>근로기준법 제60조를 기준으로 입사 1년 미만, 1년, 3년 이상 근무자의 연차 일수와 1년 계약직, 회계연도 기준 운영, 5인 미만 사업장 예외를 예시로 설명합니다.</p></li><li><a href="/pdf-merge-split-guide">PDF 합치기와 나누기: 제출 서류를 한 파일로 묶을 때 확인할 것</a><p>여러 PDF를 하나로 합치거나 필요한 쪽만 떼어낼 때 순서가 뒤섞이는 이유, 페이지 범위 쓰는 법, 합친 뒤 사라지는 것들과 파일명 규칙을 정리했습니다.</p></li><li><a href="/pdf-password-guide">PDF 비밀번호: 열람 암호와 권한 암호, 그리고 브라우저에서 처리한다는 것의 의미</a><p>PDF 암호의 두 종류, 암호를 알고 있을 때 해제하는 방법, 안전한 암호 설정과 전달 방법, 브라우저 처리 방식에서 남는 위험까지 설명합니다.</p></li><li><a href="/pdf-image-guide">스캔 문서 정리: 누운 페이지 바로 세우기, 사진을 PDF로, PDF를 그림으로</a><p>휴대폰으로 찍은 서류가 옆으로 눕는 이유, 화질을 잃지 않는 PDF 회전, 이미지를 PDF로 묶을 때의 해상도 기준과 PDF를 이미지로 바꿀 때의 배율을 설명합니다.</p></li><li><a href="/pdf-excel-guide">PDF 표를 엑셀로 옮길 때 칸이 어긋나는 이유와 바로잡는 법</a><p>PDF에는 표 구조가 없어서 변환 결과가 어긋납니다. 변환 민감도 설정의 의미, 스캔 PDF가 빈 결과로 나오는 이유, 엑셀에서 숫자를 되살리는 방법을 정리했습니다.</p></li><li><a href="/image-tools-guide">사진 용량 줄이기: 픽셀 크기와 화질 값, 무엇부터 줄일까</a><p>사진 용량을 결정하는 두 요소, 용도별 적당한 크기, JPG·PNG·WebP 선택, 투명 배경이 검게 변하는 이유, 위치 정보 제거와 신분증 사본 워터마크까지 정리했습니다.</p></li></ul>
+      <p style="margin-top:14px"><a href="/guide">글 전체 보기</a></p>
+    </section>
+    <section class="home-note">
+      <h2>이 사이트에 대해</h2>
+      <p>시샘달 도구함은 개인이 운영합니다. 회사에서 문서와 장비를 다루며 반복해서 쓰던 작업을, 프로그램 설치 없이 누구나 쓸 수 있게 정리한 것입니다.</p>
+      <p>도구는 대부분 이용자의 브라우저 안에서 파일을 처리합니다. PDF 암호를 풀거나 사진을 줄이는 동안 파일이 이 사이트의 서버로 전송되지 않습니다.</p>
+      <p>각 도구 아래와 가이드 글에는 결과가 기대와 다를 때의 이유와 확인할 점을 적어 두었습니다. 틀린 내용이나 필요한 기능은 <a href="/contact">문의</a>로 알려 주세요.</p>
+      <p><a href="/about">운영자와 운영 원칙</a></p>
+    </section>
   </div>
 </div>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-eyebrow">How it works</span>
-      <h2>이렇게 사용하세요</h2>
-      <p>복잡한 설정 없이 세 단계면 충분합니다.</p>
-    </div>
-    <div class="timeline">
-      <div class="tl-step"><div class="tl-num">01</div><h3>도구 선택</h3><p>필요한 카테고리를 고릅니다.</p></div>
-      <div class="tl-step"><div class="tl-num">02</div><h3>파일 · 값 입력</h3><p>브라우저 안에서 바로 처리됩니다.</p></div>
-      <div class="tl-step"><div class="tl-num">03</div><h3>확인 후 다운로드</h3><p>미리보기로 확인하고 저장합니다.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="tools" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-eyebrow">Toolbox</span>
-      <h2>7개 카테고리, 40개 이상의 도구</h2>
-      <p>필요한 항목을 눌러 바로 실행하세요.</p>
-    </div>
-    <div class="tool-list">
-      <div class="tool-row">
-        <a class="t-main" href="/pdf-tools">
-          <span class="t-num">01</span><span class="t-icon">📄</span>
-          <span class="t-body"><h3>PDF Tools</h3><p>암호 관리, 병합, 분할, 회전, 이미지·Excel 변환</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/guide#pdf">가이드</a><a class="t-arrow" href="/pdf-tools">→</a></span>
-      </div>
-      <div class="tool-row">
-        <a class="t-main" href="/image-tools">
-          <span class="t-num">02</span><span class="t-icon">🖼️</span>
-          <span class="t-body"><h3>Image Tools</h3><p>크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 생성</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/image-tools-guide">가이드</a><a class="t-arrow" href="/image-tools">→</a></span>
-      </div>
-      <div class="tool-row">
-        <a class="t-main" href="/text-tools">
-          <span class="t-num">03</span><span class="t-icon">🔤</span>
-          <span class="t-body"><h3>Text Tools</h3><p>글자 수 계산, 줄 정리, 중복 제거, 대소문자 변환</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/text-tools-guide">가이드</a><a class="t-arrow" href="/text-tools">→</a></span>
-      </div>
-      <div class="tool-row">
-        <a class="t-main" href="/qr-tools">
-          <span class="t-num">04</span><span class="t-icon">▦</span>
-          <span class="t-body"><h3>QR Code Tools</h3><p>URL·텍스트 QR 생성, 일괄 생성</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/qr-code-guide">가이드</a><a class="t-arrow" href="/qr-tools">→</a></span>
-      </div>
-      <div class="tool-row">
-        <a class="t-main" href="/calculator-tools">
-          <span class="t-num">05</span><span class="t-icon">🧮</span>
-          <span class="t-body"><h3>Calculator Tools</h3><p>날짜, 비율, 단위, 부가세, 할인율, 근무일, 대출 계산</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/calculator-tools-guide">가이드</a><a class="t-arrow" href="/calculator-tools">→</a></span>
-      </div>
-      <div class="tool-row">
-        <a class="t-main" href="/more-tools">
-          <span class="t-num">06</span><span class="t-icon">✨</span>
-          <span class="t-body"><h3>Utility Tools</h3><p>JSON, URL 인코딩, Base64, UUID, 색상 변환, 임시 비밀번호</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/utility-tools-guide">가이드</a><a class="t-arrow" href="/more-tools">→</a></span>
-      </div>
-      <div class="tool-row">
-        <a class="t-main" href="/document-tools">
-          <span class="t-num">07</span><span class="t-icon">📋</span>
-          <span class="t-body"><h3>Document Tools</h3><p>CSV ↔ 표 변환, Markdown 변환, 문자열 비교, 파일명 정리</p></span>
-        </a>
-        <span class="t-side"><a class="t-guide" href="/document-tools-guide">가이드</a><a class="t-arrow" href="/document-tools">→</a></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="why-band section">
-  <div class="wrap">
-    <div class="why-row">
-      <div class="why-item"><div class="ic">🔒</div><h3>브라우저 안에서만</h3><p>대부분의 기능은 파일을 서버로 보내지 않고 그 자리에서 처리합니다.</p></div>
-      <div class="why-item"><div class="ic">⚡</div><h3>설치 없이 바로</h3><p>계정을 만들 필요 없이 링크만 열면 바로 작업할 수 있습니다.</p></div>
-      <div class="why-item"><div class="ic">📚</div><h3>가이드까지 함께</h3><p>언제 어떤 기능을 쓰면 좋은지도 같이 안내합니다.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="info-card">
-      <h2>처음 방문한 사용자를 위한 안내</h2>
-      <p>Sisaemdal Tools는 복잡한 프로그램 설치 없이 작은 작업을 빠르게 처리하려는 사용자를 위한 사이트입니다. PDF 문서를 정리하거나, 이미지 용량을 줄이거나, 텍스트 목록을 정리하거나, URL 공유용 QR 코드를 만들 때 사용할 수 있습니다.</p>
-      <p>각 도구는 간단한 작업을 목표로 하며, 전문 편집 프로그램을 완전히 대체하지는 않습니다. 중요한 파일은 원본을 보관하고, 결과 파일은 직접 열어 내용과 품질을 확인한 뒤 사용하세요.</p>
-      <div class="cta-row">
-        <a class="btn-line" href="/guide">사용 가이드 보기</a>
-        <a class="btn-line" href="/faq">자주 묻는 질문</a>
-        <a class="btn-line" href="/browser-pdf-security">파일 보안 안내</a>
-      </div>
-    </div>
-  </div>
-</section>
-
+</main>
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-cols">
-      <div class="footer-col">
-        <div class="footer-brand"><span class="brand-mark">St</span><span>Sisaemdal Tools</span></div>
-        <p>브라우저에서 바로 사용하는 무료 온라인 도구 모음입니다.</p>
-      </div>
-      <div class="footer-col">
-        <h4>도구</h4>
-        <a href="/pdf-tools">PDF Tools</a>
-        <a href="/image-tools">Image Tools</a>
-        <a href="/text-tools">Text Tools</a>
-        <a href="/qr-tools">QR Code Tools</a>
-        <a href="/calculator-tools">Calculator Tools</a>
-        <a href="/more-tools">Utility Tools</a>
-        <a href="/document-tools">Document Tools</a>
-      </div>
-      <div class="footer-col">
-        <h4>안내</h4>
-        <a href="/guide">사용 가이드</a>
-        <a href="/faq">FAQ</a>
-        <a href="/about">소개</a>
-        <a href="/contact">문의</a>
-      </div>
-      <div class="footer-col">
-        <h4>정책</h4>
-        <a href="/privacy">개인정보처리방침</a>
-        <a href="/terms">이용약관</a>
-        <a href="sitemap.xml">Sitemap</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Sisaemdal Tools. All rights reserved.</span>
-    </div>
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
   </div>
 </footer>
-
+<script>
+(function(){
+  const input = document.getElementById('finder');
+  const status = document.getElementById('finderStatus');
+  const groups = Array.from(document.querySelectorAll('.task-group'));
+  const norm = s => s.toLowerCase().replace(/\s+/g, '');
+  groups.forEach(g => g.querySelectorAll('li').forEach(li => {
+    const a = li.querySelector('a .t'); li.dataset.label = a.textContent;
+  }));
+  function run(){
+    const q = norm(input.value);
+    let n = 0;
+    groups.forEach(g => {
+      let shown = 0;
+      g.querySelectorAll('li').forEach(li => {
+        const t = li.querySelector('a .t');
+        const hay = norm(li.dataset.label + ' ' + (li.dataset.k || ''));
+        const hit = !q || hay.includes(q);
+        li.hidden = !hit;
+        if (hit) { shown++; n++; }
+        const label = li.dataset.label;
+        const i = q ? label.toLowerCase().indexOf(input.value.trim().toLowerCase()) : -1;
+        t.textContent = '';
+        if (i >= 0 && input.value.trim()) {
+          const len = input.value.trim().length;
+          t.append(label.slice(0, i));
+          const m = document.createElement('mark'); m.textContent = label.slice(i, i + len); t.append(m);
+          t.append(label.slice(i + len));
+        } else { t.textContent = label; }
+      });
+      g.hidden = shown === 0;
+    });
+    if (!q) status.textContent = '';
+    else if (n === 0) status.innerHTML = '맞는 작업이 없습니다. 다른 낱말로 찾아보거나, 필요한 기능을 <a href="/contact">알려 주세요</a>.';
+    else status.textContent = n + '개 찾았습니다.';
+  }
+  input.addEventListener('input', run);
+})();
+</script>
 </body>
 </html>

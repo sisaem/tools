@@ -1,132 +1,120 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이미지 도구 가이드</title>
-<meta name="description" content="이미지 크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 사용 방법입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사진 용량 줄이기: 픽셀 크기와 화질 값, 무엇부터 줄일까 | 시샘달 도구함</title>
+<meta name="description" content="사진 용량을 결정하는 두 요소, 용도별 적당한 크기, JPG·PNG·WebP 선택, 투명 배경이 검게 변하는 이유, 위치 정보 제거와 신분증 사본 워터마크까지 정리했습니다.">
 <link rel="canonical" href="https://sisaemdal.com/image-tools-guide">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="이미지 도구 가이드">
-<meta property="og:description" content="이미지 크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 사용 방법입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="사진 용량 줄이기: 픽셀 크기와 화질 값, 무엇부터 줄일까 | 시샘달 도구함">
+<meta property="og:description" content="사진 용량을 결정하는 두 요소, 용도별 적당한 크기, JPG·PNG·WebP 선택, 투명 배경이 검게 변하는 이유, 위치 정보 제거와 신분증 사본 워터마크까지 정리했습니다.">
 <meta property="og:url" content="https://sisaemdal.com/image-tools-guide">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="이미지 도구 가이드">
-<meta name="twitter:description" content="이미지 크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 사용 방법입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-
-/* Final guide hierarchy and readability styles */
-.category-guide{display:grid;gap:22px;margin-top:20px}.category-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 34px rgba(15,31,58,.06)}.category-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.04em}.category-card p{margin:0 0 14px;color:#52647d}.sub-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}.sub-guide-grid a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#263b5c}.sub-guide-grid strong{display:block;margin-bottom:4px}.sub-guide-grid span{display:block;color:#64748b;font-size:14px;line-height:1.55}.guide-detail .summary-box{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:22px 0}.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:20px 0}.guide-detail .guide-block h3{margin-top:0!important}.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.guide-detail .do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-detail .do-grid>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.guide-detail .table-wrap{overflow:auto}.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.guide-detail th{background:#eef6ff}.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}.guide-detail .cta{margin-top:28px}
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">Image Guide</span><h1>이미지 도구 가이드</h1><p>이미지 크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 사용 방법입니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/guide">전체 가이드</a></div></section><section class="article guide-detail"><h2>이미지 도구 상세 가이드</h2><div class="summary-box"><p>이미지 도구는 업로드, 공유, 보관 목적에 맞게 이미지를 가볍게 정리하는 브라우저 기반 도구입니다.</p></div><div class="toc"><a href="#resize">크기 조정·압축·형식 변환</a><a href="#crop">이미지 자르기</a><a href="#watermark">텍스트 워터마크</a><a href="#palette">색상 팔레트 추출</a><a href="#favicon">파비콘 생성</a></div><div class="guide-block" id="resize"><h3>크기 조정·압축·형식 변환</h3><p>가로 또는 세로 크기를 줄이면 웹 업로드와 메신저 공유에 적합한 용량으로 만들 수 있습니다. JPG는 사진에, PNG는 글자·도형·투명 배경에, WebP는 웹 사용에 적합합니다.</p><ol><li>이미지를 선택합니다.</li><li>가로 또는 세로 크기를 입력합니다.</li><li>원본 비율 유지를 켜면 한쪽 크기에 맞춰 다른 쪽이 자동 계산됩니다.</li><li>형식과 품질을 선택합니다.</li><li>미리보기와 용량을 확인한 뒤 다운로드합니다.</li></ol></div><div class="guide-block" id="crop"><h3>이미지 자르기</h3><p>자르기는 필요한 영역만 남길 때 사용합니다. X와 Y는 이미지의 왼쪽 위를 기준으로 한 시작 위치이고, 가로·세로는 잘라낼 영역의 크기입니다.</p><ul class="check-list"><li>프로필 이미지, 썸네일, 문서 캡처 정리에 적합합니다.</li><li>잘라낸 결과가 너무 작아지면 확대 시 흐릴 수 있습니다.</li><li>결과 미리보기로 필요한 영역이 정확히 들어갔는지 확인하세요.</li></ul></div><div class="guide-block" id="watermark"><h3>텍스트 워터마크</h3><p>워터마크는 이미지에 간단한 출처나 표시 문구를 넣을 때 사용합니다. 위치, 크기, 투명도, 색상을 조정할 수 있습니다.</p><ul class="check-list"><li>너무 진한 워터마크는 원본 내용을 가릴 수 있습니다.</li><li>너무 작은 워터마크는 축소 시 보이지 않을 수 있습니다.</li><li>공유 전 원본과 결과 파일을 구분해 저장하세요.</li></ul></div><div class="guide-block" id="palette"><h3>색상 팔레트 추출</h3><p>이미지에서 많이 사용된 색상을 뽑아 HEX 코드로 확인할 수 있습니다. 디자인 참고나 간단한 색상 통일 작업에 사용할 수 있습니다.</p><p>사진의 조명, 그림자, 압축 상태에 따라 대표 색상은 실제 인상과 다르게 나올 수 있습니다.</p></div><div class="guide-block" id="favicon"><h3>파비콘 생성</h3><p>파비콘은 웹사이트 탭이나 바로가기 아이콘에 쓰이는 작은 이미지입니다. 원본 이미지는 단순하고 정사각형에 가까울수록 좋습니다.</p><ul class="check-list"><li>작은 크기에서는 복잡한 글자보다 단순한 심볼이 잘 보입니다.</li><li>투명 배경이 필요하면 PNG 원본을 사용하는 것이 좋습니다.</li><li>생성된 여러 크기 중 필요한 크기를 골라 사용하세요.</li></ul></div><div class="cta"><a class="btn primary" href="/image-tools">이미지 도구 열기</a><a class="btn" href="/guide#image">이미지 가이드 목록</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools">도구</a><a href="/guide" aria-current="page">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/guide">가이드</a> / <span aria-current="page">사진 용량 줄이기: 픽셀 크기와 화질 값, 무엇부터 줄일까</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>사진 용량 줄이기: 픽셀 크기와 화질 값, 무엇부터 줄일까</h1>
+    <p class="lede">업로드 한도에 걸린 사진을 줄일 때 화질 값부터 낮추는 경우가 많은데, 대부분은 픽셀 크기를 먼저 줄이는 쪽이 훨씬 효과적입니다.</p>
+    <p class="dates">2026년 7월 3일 작성, 2026년 11월 7일 고침</p>
+  </header>
+  <article class="prose">
+<nav class="toc" aria-label="이 글의 차례"><strong>차례</strong><ol><li><a href="#s1">용량은 '픽셀 수 × 압축 정도'로 정해진다</a></li><li><a href="#s2">용도별로 이 정도면 충분하다</a></li><li><a href="#s3">JPG, PNG, WebP 고르기</a></li><li><a href="#s4">투명 배경이 검게 변하는 이유</a></li><li><a href="#s5">사진에 숨어 있는 위치 정보</a></li><li><a href="#s6">신분증·통장 사본에 워터마크 넣기</a></li><li><a href="#s7">파비콘은 몇 가지 크기가 필요할까</a></li><li><a href="#s8">색상 추출은 어디에 쓰나</a></li></ol></nav>
+
+<h2 id="s1">용량은 '픽셀 수 × 압축 정도'로 정해진다</h2>
+<p>사진 파일의 용량은 크게 두 가지로 결정됩니다. 가로·세로 픽셀이 몇 개인지, 그리고 그 픽셀을 얼마나 강하게 압축했는지입니다. 이 중 효과가 큰 쪽은 픽셀 수입니다. 긴 변을 절반으로 줄이면 픽셀 수는 4분의 1이 되기 때문입니다.</p>
+<div class="table-wrap"><table>
+<tr><th>크기</th><th class="num">픽셀 수</th><th class="num">원본 대비</th></tr>
+<tr><td>4000 × 3000 (휴대폰 원본 예)</td><td class="num">1,200만</td><td class="num">100%</td></tr>
+<tr><td>2000 × 1500</td><td class="num">300만</td><td class="num">25%</td></tr>
+<tr><td>1600 × 1200</td><td class="num">192만</td><td class="num">16%</td></tr>
+<tr><td>1200 × 900</td><td class="num">108만</td><td class="num">9%</td></tr>
+</table></div>
+<p>용량이 픽셀 수에 정확히 비례하지는 않지만, 방향은 같습니다. 반면 JPG 화질 값을 0.9에서 0.7로 낮추는 것은 눈에 띄는 차이 없이 용량을 꽤 줄일 수 있지만, 0.5 아래로 내려가면 하늘이나 피부 같은 부드러운 부분에 계단 무늬가 생기기 시작합니다.</p>
+<p>그래서 순서는 <strong>먼저 용도에 맞게 크기를 줄이고, 그래도 크면 화질 값을 0.75~0.85 사이에서 조정</strong>하는 것이 좋습니다.</p>
+
+<h2 id="s2">용도별로 이 정도면 충분하다</h2>
+<div class="table-wrap"><table>
+<tr><th>용도</th><th>긴 변 기준</th><th>메모</th></tr>
+<tr><td>블로그·게시판 본문</td><td>1200~1600px</td><td>대부분의 화면 폭보다 큼</td></tr>
+<tr><td>서류 제출용 사진(문서 촬영)</td><td>1800~2400px</td><td>작은 글씨까지 읽혀야 함</td></tr>
+<tr><td>메신저·메일 첨부</td><td>1600px 안팎</td><td>상대가 휴대폰으로 볼 때가 많음</td></tr>
+<tr><td>쇼핑몰 상품 이미지</td><td>판매처 안내를 따름</td><td>정사각형 요구가 흔함</td></tr>
+<tr><td>프로필 사진</td><td>400~800px</td><td>대부분 작게 잘려서 보임</td></tr>
+</table></div>
+<p>인쇄용이라면 이야기가 달라집니다. 출력 크기(cm)에 해상도를 곱해서 계산해야 하며, A4 기준 숫자는 <a href="/pdf-image-guide">스캔 문서 정리 글</a>에 표로 적어 두었습니다.</p>
+
+<h2 id="s3">JPG, PNG, WebP 고르기</h2>
+<ul>
+<li><strong>JPG</strong>: 사진에 맞는 형식입니다. 어디서나 열리고 용량이 작습니다. 투명한 부분을 담을 수 없습니다.</li>
+<li><strong>PNG</strong>: 화면 캡처, 글자, 도표, 로고처럼 경계가 또렷한 그림에 맞습니다. 투명 배경을 담을 수 있습니다. 사진을 PNG로 저장하면 JPG보다 몇 배 커지는 경우가 많습니다.</li>
+<li><strong>WebP</strong>: 같은 화질에서 JPG보다 작게 나오는 경우가 많고 투명도 지원합니다. 최신 브라우저와 휴대폰은 문제없이 열지만, 오래된 프로그램이나 일부 업로드 양식은 받지 않습니다. 제출용이라면 JPG가 무난합니다.</li>
+</ul>
+
+<h2 id="s4">투명 배경이 검게 변하는 이유</h2>
+<p>로고나 서명처럼 배경이 투명한 PNG를 JPG로 바꾸면, 투명했던 부분이 검은색으로 채워지는 일이 있습니다. JPG에는 투명이라는 개념이 없어서 무언가로 채워야 하는데, 브라우저가 그림을 다룰 때 투명 부분의 기본값이 '투명한 검정'이기 때문입니다. 서명 이미지를 문서에 넣을 생각이었다면 PNG로 두는 것이 맞고, 꼭 JPG가 필요하다면 흰 배경을 먼저 깔고 저장해야 합니다.</p>
+
+<h2 id="s5">사진에 숨어 있는 위치 정보</h2>
+<p>휴대폰 사진에는 찍은 시각, 기종, 그리고 설정에 따라 촬영 장소의 GPS 좌표가 EXIF 정보로 들어 있습니다. 집에서 찍은 중고 거래 사진을 원본 그대로 올리면 이 정보가 함께 올라갈 수 있습니다. 요즘 큰 커뮤니티와 메신저는 업로드할 때 이 정보를 지우는 경우가 많지만, 모든 곳이 그런 것은 아닙니다.</p>
+<p>이 사이트의 이미지 도구는 그림을 브라우저의 캔버스에 다시 그려서 저장하는 방식이라, 저장된 결과물에는 원본의 EXIF 정보가 남지 않습니다. 크기를 바꾸지 않고 같은 크기로 다시 저장하기만 해도 위치 정보를 지우는 효과가 있습니다.</p>
+
+<h2 id="s6">신분증·통장 사본에 워터마크 넣기</h2>
+<p>신분증이나 통장 사본을 보내야 할 때, 사본 위에 용도와 날짜를 적어 두면 다른 곳에 재사용되는 것을 어느 정도 막을 수 있습니다. 보통 이렇게 적습니다.</p>
+<p><code>○○회사 입사 서류 제출용 2026.11.07</code></p>
+<p><a href="/image-tools">이미지 도구의 워터마크</a> 기능에서 문구를 넣을 때는 다음을 지키면 효과가 있습니다.</p>
+<ul>
+<li>사진이나 이름, 번호 위에 겹치도록 놓습니다. 가장자리 빈 곳에 넣으면 잘라내면 그만입니다.</li>
+<li>불투명도는 글자는 읽히지만 내용도 보일 정도(30~50%)로 둡니다.</li>
+<li>받는 곳이 한 곳이면 회사나 기관 이름을 꼭 넣습니다. 이름이 있어야 재사용을 막는 의미가 있습니다.</li>
+</ul>
+<p>주민등록번호 뒷자리는 제출처가 요구하지 않는다면 가리고 보내는 것이 원칙입니다.</p>
+
+<h2 id="s7">파비콘은 몇 가지 크기가 필요할까</h2>
+<p>웹사이트 주소창이나 탭에 보이는 작은 아이콘이 파비콘입니다. 지금 기준으로는 다음 정도면 대부분의 환경을 덮습니다.</p>
+<div class="table-wrap"><table>
+<tr><th>크기</th><th>쓰이는 곳</th></tr>
+<tr><td>32×32 (또는 16×16)</td><td>브라우저 탭</td></tr>
+<tr><td>180×180</td><td>아이폰 홈 화면에 추가했을 때</td></tr>
+<tr><td>192×192, 512×512</td><td>안드로이드 홈 화면, 앱처럼 설치할 때</td></tr>
+</table></div>
+<p>원본은 정사각형으로, 가장자리에 여백을 조금 두고 만드는 것이 좋습니다. 작은 크기에서는 가는 선과 작은 글자가 뭉개지므로, 로고에서 글자를 빼고 상징만 남긴 버전을 쓰는 경우가 많습니다.</p>
+
+<h2 id="s8">색상 추출은 어디에 쓰나</h2>
+<p>로고나 사진에서 주로 쓰인 색을 뽑아 <code>#1F45C9</code> 같은 색상 코드로 보여 주는 기능입니다. 발표 자료나 문서를 회사 로고 색에 맞출 때, 디자이너에게 "이 사진 같은 느낌의 색"을 설명할 때 쓸 수 있습니다. 사진에서 뽑은 색은 조명과 압축의 영향을 받으므로, 공식 브랜드 색이 정해져 있다면 그 값을 쓰는 것이 정확합니다.</p>
+
+  </article>
+  <div class="byline"><p>이 글은 시샘달 도구함 운영자가 썼습니다. 틀린 내용이나 바뀐 기준을 발견하면 <a href="/contact">문의 페이지</a>로 알려 주세요. 확인 후 고치고 고친 날짜를 위에 적어 둡니다.</p></div>
+  <section class="related"><h2>같이 보면 좋은 것</h2><ul><li><a href="/image-tools">이미지 도구 열기</a></li><li><a href="/pdf-image-guide">사진 여러 장을 PDF 한 파일로</a></li><li><a href="/qr-code-guide">인쇄물용 QR 코드 만들기</a></li></ul></section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

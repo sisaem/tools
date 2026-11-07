@@ -1,142 +1,83 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>무료 QR 코드 생성기 - URL·텍스트 QR 만들기</title>
-<meta name="description" content="URL과 텍스트를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR 코드 만들기 (URL·텍스트, 여러 개 한 번에) | 시샘달 도구함</title>
+<meta name="description" content="주소나 글을 넣으면 QR 코드 이미지를 만듭니다. 색과 크기를 정할 수 있고, 한 줄에 하나씩 적어 여러 개를 한 번에 만들 수도 있습니다. 인쇄 크기 기준도 함께 안내합니다.">
 <link rel="canonical" href="https://sisaemdal.com/qr-tools">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="무료 QR 코드 생성기 - URL·텍스트 QR 만들기">
-<meta property="og:description" content="URL과 텍스트를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="QR 코드 만들기 (URL·텍스트, 여러 개 한 번에) | 시샘달 도구함">
+<meta property="og:description" content="주소나 글을 넣으면 QR 코드 이미지를 만듭니다. 색과 크기를 정할 수 있고, 한 줄에 하나씩 적어 여러 개를 한 번에 만들 수도 있습니다. 인쇄 크기 기준도 함께 안내합니다.">
 <meta property="og:url" content="https://sisaemdal.com/qr-tools">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="무료 QR 코드 생성기 - URL·텍스트 QR 만들기">
-<meta name="twitter:description" content="URL과 텍스트를 QR 코드로 만들고 PNG로 저장할 수 있는 무료 QR 코드 생성기입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">QR Code Tools</span><h1>QR 코드 생성기</h1><p>URL과 텍스트를 QR 코드로 만들고 PNG로 저장합니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/qr-code-guide">QR 코드 가이드</a></div></section>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools" aria-current="page">도구</a><a href="/guide">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/#tools">도구</a> / <span aria-current="page">QR 코드 만들기</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>QR 코드 만들기</h1>
+    <p class="lede">주소나 글을 넣고 만들기를 누르면 PNG 이미지로 저장할 수 있습니다. 여러 개가 필요하면 일괄 생성 탭을 쓰세요.</p>
+  </header>
+  <section class="tool-area" aria-label="QR 코드 만들기">
 <section class="tool-panel">
-  <div class="tool-tabs" id="qrTabs"><button class="active" data-target="qrBasic">기본 QR</button><button data-target="qrBulk">일괄 생성</button></div>
-  <div class="two-col"><div>
-    <div class="tool-section active" id="qrBasic"><h2>URL·텍스트 QR</h2><div class="form-row"><label>QR 코드에 넣을 내용</label><textarea id="qrText" class="textarea" placeholder="https://sisaemdal.com"></textarea></div></div>
-    <div class="tool-section" id="qrBulk"><h2>여러 QR 일괄 생성</h2><div class="form-row"><label>한 줄에 하나씩 입력</label><textarea id="bulkText" class="textarea" placeholder="https://example.com/page1&#10;https://example.com/page2"></textarea></div><p class="small">각 줄이 하나의 QR 코드로 생성됩니다.</p></div>
-    <div class="inline-grid" style="margin-top:18px"><div class="form-row"><label>크기(px)</label><input id="qrSize" class="input" type="number" value="256" min="128" max="1024"></div><div class="form-row"><label>QR 색상</label><input id="qrColor" class="input color-picker" type="color" value="#111827"></div><div class="form-row"><label>배경 색상</label><input id="qrBg" class="input color-picker" type="color" value="#ffffff"></div></div><div class="tool-actions"><button class="btn primary" id="makeQr">QR 생성</button><button class="btn" id="downloadQr" disabled>PNG 다운로드</button></div>
-  </div><div><h2>미리보기</h2><div class="preview-box" id="qrPreview">내용을 입력하고 QR 생성을 누르세요.</div><div class="note">색상은 QR의 모듈과 배경 색상을 바꾸는 기능입니다. 가장 안정적인 조합은 어두운 QR 색상과 밝은 배경입니다.</div></div></div>
+<div class="tool-tabs" id="qrTabs"><button class="active" data-target="qrBasic">기본 QR</button><button data-target="qrBulk">일괄 생성</button></div>
+<div class="two-col"><div>
+<div class="tool-section active" id="qrBasic"><h2>URL·텍스트 QR</h2><div class="form-row"><label>QR 코드에 넣을 내용</label><textarea class="textarea" id="qrText" placeholder="https://sisaemdal.com"></textarea></div></div>
+<div class="tool-section" id="qrBulk"><h2>여러 QR 일괄 생성</h2><div class="form-row"><label>한 줄에 하나씩 입력</label><textarea class="textarea" id="bulkText" placeholder="https://example.com/page1
+https://example.com/page2"></textarea></div><p class="small">각 줄이 하나의 QR 코드로 생성됩니다.</p></div>
+<div class="inline-grid" style="margin-top:18px"><div class="form-row"><label>크기(px)</label><input class="input" id="qrSize" max="1024" min="128" type="number" value="256"/></div><div class="form-row"><label>QR 색상</label><input class="input color-picker" id="qrColor" type="color" value="#111827"/></div><div class="form-row"><label>배경 색상</label><input class="input color-picker" id="qrBg" type="color" value="#ffffff"/></div></div><div class="tool-actions"><button class="btn primary" id="makeQr">QR 생성</button><button class="btn" disabled="" id="downloadQr">PNG 다운로드</button></div>
+</div><div><h2>미리보기</h2><div class="preview-box" id="qrPreview">내용을 입력하고 QR 생성을 누르세요.</div><div class="note">색상은 QR의 모듈과 배경 색상을 바꾸는 기능입니다. 가장 안정적인 조합은 어두운 QR 색상과 밝은 배경입니다.</div></div></div>
 </section>
-<section class="article"><h2>QR 코드 사용 시 주의</h2><p>QR 코드는 사용자가 눈으로 내용을 확인하기 어렵기 때문에, 배포 전 연결 대상과 문구를 반드시 확인해야 합니다. URL을 넣는 경우에는 오타, 만료된 링크, 접근 권한을 확인하세요.</p><p>인쇄하거나 배포하기 전에는 휴대폰 카메라로 실제 스캔 테스트를 해보는 것이 좋습니다.</p><div class="cta"><a class="btn" href="/qr-code-guide">QR 코드 가이드</a><a class="btn" href="/">홈페이지</a></div></section>
-<footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script><script>
+  </section>
+  <div class="tool-notes">
+    <article class="prose">
+
+<h2>인쇄하기 전에</h2>
+<p>QR 코드 한 변은 <strong>스캔 거리의 10분의 1 이상</strong>으로 인쇄하는 것이 안전합니다. 명함은 2cm, 테이블 안내문은 3~4cm, 벽 포스터는 10cm 정도입니다. 주소가 길면 코드의 칸이 촘촘해져서 같은 크기에서도 인식이 어려워지므로, 주소 뒤에 붙은 추적 변수(<code>?utm_...</code>)는 지우고 넣으세요.</p>
+<p>코드 둘레의 흰 여백은 자르지 마세요. 카메라는 이 여백으로 코드의 경계를 찾습니다. 색을 바꿀 때는 어두운 코드와 밝은 배경을 유지해야 하고, 노란 바탕의 주황 코드처럼 대비가 약한 조합은 인식이 불안정합니다.</p>
+<h2>이 도구가 만드는 코드</h2>
+<p>오류 복원 수준 M(약 15% 손상까지 복원)으로 만들며, 주소를 그림 안에 그대로 담는 정적 코드입니다. 유효기간이 없고 이 사이트가 없어져도 작동하지만, 담긴 주소의 페이지가 바뀌면 다시 만들어야 합니다. 나중에 바뀔 수 있는 링크라면 내가 관리하는 고정 페이지 주소를 넣고, 그 페이지에서 실제 링크로 연결하는 방법을 권합니다.</p>
+<p>최종 크기로 한 장 시험 인쇄해서, 실제 놓일 거리에서 휴대폰 두세 대로 찍어 보는 것이 가장 확실한 확인 방법입니다.</p>
+
+    </article>
+    <aside>
+<h2>자세한 설명</h2>
+<p><a href="/qr-code-guide">인쇄물에 넣을 QR 코드: 크기, 여백, 대비</a></p>
+<h2>다른 도구</h2>
+<ul><li><a href="/image-tools">이미지 크기 조정</a></li><li><a href="/text-tools">목록 정리(일괄 생성 전)</a></li></ul>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+<script>
 (function(){
   const $ = id => document.getElementById(id);
   const NL = String.fromCharCode(10);
@@ -166,4 +107,6 @@ input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;bor
   ['qrColor','qrBg','qrSize'].forEach(id=>$(id).addEventListener('input',()=>{ if($('qrPreview').querySelector('canvas')) makeQr(); }));
   $('makeQr').onclick=makeQr; $('downloadQr').onclick=()=>{ const c=$('qrPreview').querySelector('canvas'); if(c) downloadCanvas(c,'sisaemdal-qr'); };
 })();
-</script></body></html>
+</script>
+</body>
+</html>

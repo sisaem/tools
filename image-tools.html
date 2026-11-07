@@ -1,258 +1,84 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>무료 이미지 도구 - 크기 조정·자르기·워터마크·색상 추출</title>
-<meta name="description" content="이미지 크기 조정, 압축, 포맷 변환, 자르기, 워터마크, 색상 추출, 파비콘 생성을 브라우저에서 처리합니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이미지 크기 조정·압축·자르기·워터마크 | 시샘달 도구함</title>
+<meta name="description" content="사진 크기 조정과 압축, JPG·PNG·WebP 변환, 자르기, 문구 워터마크, 대표 색상 추출, 파비콘 만들기를 브라우저에서 처리합니다. 저장하면 위치 정보(EXIF)가 남지 않습니다.">
 <link rel="canonical" href="https://sisaemdal.com/image-tools">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="무료 이미지 도구 - 크기 조정·자르기·워터마크·색상 추출">
-<meta property="og:description" content="이미지 크기 조정, 압축, 포맷 변환, 자르기, 워터마크, 색상 추출, 파비콘 생성을 브라우저에서 처리합니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="이미지 크기 조정·압축·자르기·워터마크 | 시샘달 도구함">
+<meta property="og:description" content="사진 크기 조정과 압축, JPG·PNG·WebP 변환, 자르기, 문구 워터마크, 대표 색상 추출, 파비콘 만들기를 브라우저에서 처리합니다. 저장하면 위치 정보(EXIF)가 남지 않습니다.">
 <meta property="og:url" content="https://sisaemdal.com/image-tools">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="무료 이미지 도구 - 크기 조정·자르기·워터마크·색상 추출">
-<meta name="twitter:description" content="이미지 크기 조정, 압축, 포맷 변환, 자르기, 워터마크, 색상 추출, 파비콘 생성을 브라우저에서 처리합니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-
-/* Final image tool column alignment */
-.image-tool-main .tool-section .inline-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important;align-items:start!important}
-.image-tool-main .tool-section .inline-grid>.form-row,.image-tool-main .tool-section .inline-grid>label{width:100%!important;min-width:0!important}
-.image-tool-main .form-row .input,.image-tool-main .form-row .select{width:100%!important;min-width:0!important;height:56px!important}
-.image-tool-main input[type="range"].input{height:56px!important;padding:0 4px!important}
-.image-tool-main .tool-section h2{margin-top:24px!important;margin-bottom:18px!important}
-.image-tool-main .tool-actions{margin-top:20px!important}
-@media(max-width:860px){.image-tool-main .tool-section .inline-grid{grid-template-columns:1fr!important}}
-
-
-/* Image tool field width final fix */
-.image-tool-main #resize .inline-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:start!important}
-.image-tool-main #resize .inline-grid .form-row{width:100%!important;min-width:0!important}
-.image-tool-main #resize .inline-grid .form-row:nth-child(4){grid-column:1 / -1!important;max-width:100%!important}
-.image-tool-main #resizeQ{width:100%!important;display:block!important}
-.image-tool-main #crop .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
-.image-tool-main #watermark .inline-grid,.image-tool-main #favicon .inline-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-.image-tool-main .inline-grid .form-row{display:flex!important;flex-direction:column!important}
-.image-tool-main .inline-grid .input,.image-tool-main .inline-grid .select{box-sizing:border-box!important;width:100%!important;max-width:100%!important}
-@media(max-width:860px){.image-tool-main #resize .inline-grid,.image-tool-main #crop .inline-grid,.image-tool-main #watermark .inline-grid,.image-tool-main #favicon .inline-grid{grid-template-columns:1fr!important}.image-tool-main #resize .inline-grid .form-row:nth-child(4){grid-column:auto!important}}
-
-/* Hard override: keep image resize controls as equal-width fields */
-.image-tool-main #resize .inline-grid{
-  display:grid!important;
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
-  gap:14px!important;
-  align-items:start!important;
-}
-.image-tool-main #resize .inline-grid .form-row{
-  width:100%!important;
-  min-width:0!important;
-  max-width:none!important;
-}
-.image-tool-main #resize .inline-grid .form-row:nth-child(4){
-  grid-column:auto!important;
-  max-width:none!important;
-}
-.image-tool-main #resize .inline-grid .form-row .input,
-.image-tool-main #resize .inline-grid .form-row .select{
-  width:100%!important;
-  max-width:100%!important;
-  min-width:0!important;
-  box-sizing:border-box!important;
-}
-.image-tool-main #resizeQ.input{
-  height:56px!important;
-  padding:0!important;
-}
-@media(max-width:1100px){
-  .image-tool-main #resize .inline-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
-}
-@media(max-width:680px){
-  .image-tool-main #resize .inline-grid{grid-template-columns:1fr!important;}
-}
-
-
-/* Final image page width alignment fix: keep preview/info row the same width as the main tool card and guide card. */
-.two-col{
-  width:100%!important;
-  max-width:var(--content-w)!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:22px!important;
-}
-.two-col > .tool-panel{
-  width:auto!important;
-  max-width:none!important;
-  margin:0!important;
-  min-width:0!important;
-}
-section.tool-panel.image-tool-main,
-section.two-col,
-section.article{
-  max-width:var(--content-w)!important;
-}
-@media(max-width:860px){
-  .two-col{grid-template-columns:1fr!important;max-width:100%!important;}
-}
-
-
-/* Image metrics readability fix: use two wider columns and keep dimension numbers on one line. */
-.two-col .metric-grid{
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:14px!important;
-}
-.two-col .metric{
-  min-width:0!important;
-  min-height:94px!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:center!important;
-}
-.two-col .metric strong{
-  display:block!important;
-  font-size:clamp(20px,2vw,24px)!important;
-  line-height:1.18!important;
-  white-space:nowrap!important;
-  word-break:normal!important;
-  overflow-wrap:normal!important;
-  letter-spacing:-0.035em!important;
-}
-.two-col .metric .small{
-  white-space:nowrap!important;
-}
-@media(max-width:520px){
-  .two-col .metric-grid{grid-template-columns:1fr!important;}
-}
-
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">Image Tools</span><h1>이미지 도구</h1><p>크기 조정, 자르기, 워터마크, 색상 추출, 파비콘 생성을 브라우저에서 처리합니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/image-tools-guide">이미지 가이드</a></div></section>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools" aria-current="page">도구</a><a href="/guide">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/#tools">도구</a> / <span aria-current="page">이미지 크기 조정과 압축</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>이미지 크기 조정과 압축</h1>
+    <p class="lede">사진을 올려 크기와 화질을 정하면 바로 결과 용량을 확인할 수 있습니다. 위 탭에서 자르기, 워터마크, 색상 추출, 파비콘을 고를 수 있습니다.</p>
+  </header>
+  <section class="tool-area" aria-label="이미지 크기 조정과 압축">
 <section class="tool-panel image-tool-main">
-  <div class="tool-tabs" id="imgTabs"><button class="active" data-target="resize">크기/압축/변환</button><button data-target="crop">자르기</button><button data-target="watermark">워터마크</button><button data-target="palette">색상 추출</button><button data-target="favicon">파비콘</button></div>
-  <div class="form-row"><label for="imgFile">이미지 선택</label><input id="imgFile" class="input" type="file" accept="image/*"><span class="small">선택한 이미지는 브라우저 안에서 처리되며 서버로 업로드하지 않습니다.</span></div>
-  <div class="tool-section active" id="resize"><h2>이미지 크기 조정·압축·변환</h2><div class="inline-grid"><div class="form-row"><label>가로(px)</label><input id="resizeW" class="input" type="number" min="1" placeholder="예: 1200"></div><div class="form-row"><label>세로(px)</label><input id="resizeH" class="input" type="number" min="1" placeholder="자동 계산"></div><div class="form-row"><label>형식</label><select id="resizeFmt" class="select"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div><div class="form-row"><label>품질</label><input id="resizeQ" class="input" type="range" min="0.1" max="1" step="0.05" value="0.8"><span class="small" id="resizeQLabel">80%</span></div></div><label class="notice-row" style="margin-top:12px"><input id="keepRatio" type="checkbox" checked> 원본 비율 유지</label><div class="tool-actions"><button class="btn" id="renderResize">미리보기 다시 계산</button><button class="btn primary" id="downloadResize" disabled>결과 다운로드</button></div></div>
-  <div class="tool-section" id="crop"><h2>이미지 자르기</h2><div class="inline-grid"><div class="form-row"><label>X</label><input id="cropX" class="input" type="number" value="0"></div><div class="form-row"><label>Y</label><input id="cropY" class="input" type="number" value="0"></div><div class="form-row"><label>가로</label><input id="cropW" class="input" type="number"></div><div class="form-row"><label>세로</label><input id="cropH" class="input" type="number"></div></div><div class="tool-actions"><button class="btn" id="renderCrop">미리보기 계산</button><button class="btn primary" id="downloadCrop" disabled>자른 이미지 다운로드</button></div></div>
-  <div class="tool-section" id="watermark"><h2>텍스트 워터마크</h2><div class="inline-grid"><div class="form-row"><label>워터마크 문구</label><input id="wmText" class="input" value="Sisaemdal"></div><div class="form-row"><label>위치</label><select id="wmPos" class="select"><option value="br">오른쪽 아래</option><option value="bl">왼쪽 아래</option><option value="tr">오른쪽 위</option><option value="tl">왼쪽 위</option><option value="center">가운데</option></select></div><div class="form-row"><label>글자 크기</label><input id="wmSize" class="input" type="number" value="48"></div><div class="form-row"><label>투명도</label><input id="wmOpacity" class="input" type="range" min="0.1" max="1" step="0.05" value="0.45"></div><div class="form-row"><label>색상</label><input id="wmColor" class="input color-picker" type="color" value="#ffffff"></div></div><div class="tool-actions"><button class="btn" id="renderWm">미리보기 계산</button><button class="btn primary" id="downloadWm" disabled>워터마크 이미지 다운로드</button></div></div>
-  <div class="tool-section" id="palette"><h2>색상 팔레트 추출</h2><p class="small">이미지에서 많이 쓰인 색상을 간단히 추출합니다. 사진에 따라 실제 대표 색상과 차이가 있을 수 있습니다.</p><div class="tool-actions"><button class="btn primary" id="extractPalette">색상 추출</button></div><div class="swatches" id="paletteOut" style="margin-top:16px"></div></div>
-  <div class="tool-section" id="favicon"><h2>파비콘 이미지 생성</h2><p class="small">선택한 이미지를 정사각형 아이콘 크기로 변환합니다. 투명 배경은 PNG 원본일 때 유지될 수 있습니다.</p><div class="tool-actions"><button class="btn primary" id="makeFavicon">파비콘 미리보기 생성</button></div><div class="canvas-list" id="faviconOut" style="margin-top:16px"></div></div>
+<div class="tool-tabs" id="imgTabs"><button class="active" data-target="resize">크기/압축/변환</button><button data-target="crop">자르기</button><button data-target="watermark">워터마크</button><button data-target="palette">색상 추출</button><button data-target="favicon">파비콘</button></div>
+<div class="form-row"><label for="imgFile">이미지 선택</label><input accept="image/*" class="input" id="imgFile" type="file"/><span class="small">선택한 이미지는 브라우저 안에서 처리되며 서버로 업로드하지 않습니다.</span></div>
+<div class="tool-section active" id="resize"><h2>이미지 크기 조정·압축·변환</h2><div class="inline-grid"><div class="form-row"><label>가로(px)</label><input class="input" id="resizeW" min="1" placeholder="예: 1200" type="number"/></div><div class="form-row"><label>세로(px)</label><input class="input" id="resizeH" min="1" placeholder="자동 계산" type="number"/></div><div class="form-row"><label>형식</label><select class="select" id="resizeFmt"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div><div class="form-row"><label>품질</label><input class="input" id="resizeQ" max="1" min="0.1" step="0.05" type="range" value="0.8"/><span class="small" id="resizeQLabel">80%</span></div></div><label class="notice-row" style="margin-top:12px"><input checked="" id="keepRatio" type="checkbox"/> 원본 비율 유지</label><div class="tool-actions"><button class="btn" id="renderResize">미리보기 다시 계산</button><button class="btn primary" disabled="" id="downloadResize">결과 다운로드</button></div></div>
+<div class="tool-section" id="crop"><h2>이미지 자르기</h2><div class="inline-grid"><div class="form-row"><label>X</label><input class="input" id="cropX" type="number" value="0"/></div><div class="form-row"><label>Y</label><input class="input" id="cropY" type="number" value="0"/></div><div class="form-row"><label>가로</label><input class="input" id="cropW" type="number"/></div><div class="form-row"><label>세로</label><input class="input" id="cropH" type="number"/></div></div><div class="tool-actions"><button class="btn" id="renderCrop">미리보기 계산</button><button class="btn primary" disabled="" id="downloadCrop">자른 이미지 다운로드</button></div></div>
+<div class="tool-section" id="watermark"><h2>텍스트 워터마크</h2><div class="inline-grid"><div class="form-row"><label>워터마크 문구</label><input class="input" id="wmText" value="Sisaemdal"/></div><div class="form-row"><label>위치</label><select class="select" id="wmPos"><option value="br">오른쪽 아래</option><option value="bl">왼쪽 아래</option><option value="tr">오른쪽 위</option><option value="tl">왼쪽 위</option><option value="center">가운데</option></select></div><div class="form-row"><label>글자 크기</label><input class="input" id="wmSize" type="number" value="48"/></div><div class="form-row"><label>투명도</label><input class="input" id="wmOpacity" max="1" min="0.1" step="0.05" type="range" value="0.45"/></div><div class="form-row"><label>색상</label><input class="input color-picker" id="wmColor" type="color" value="#ffffff"/></div></div><div class="tool-actions"><button class="btn" id="renderWm">미리보기 계산</button><button class="btn primary" disabled="" id="downloadWm">워터마크 이미지 다운로드</button></div></div>
+<div class="tool-section" id="palette"><h2>색상 팔레트 추출</h2><p class="small">이미지에서 많이 쓰인 색상을 간단히 추출합니다. 사진에 따라 실제 대표 색상과 차이가 있을 수 있습니다.</p><div class="tool-actions"><button class="btn primary" id="extractPalette">색상 추출</button></div><div class="swatches" id="paletteOut" style="margin-top:16px"></div></div>
+<div class="tool-section" id="favicon"><h2>파비콘 이미지 생성</h2><p class="small">선택한 이미지를 정사각형 아이콘 크기로 변환합니다. 투명 배경은 PNG 원본일 때 유지될 수 있습니다.</p><div class="tool-actions"><button class="btn primary" id="makeFavicon">파비콘 미리보기 생성</button></div><div class="canvas-list" id="faviconOut" style="margin-top:16px"></div></div>
 </section>
 <section class="two-col" style="margin-top:22px"><div class="tool-panel"><h2>미리보기</h2><div class="preview-box" id="imagePreview">이미지를 선택하면 미리보기가 표시됩니다.</div></div><div class="tool-panel"><h2>처리 정보</h2><div class="metric-grid"><div class="metric"><span class="small">원본 크기</span><strong id="origSize">-</strong></div><div class="metric"><span class="small">결과 크기</span><strong id="outSize">-</strong></div><div class="metric"><span class="small">원본 용량</span><strong id="origBytes">-</strong></div><div class="metric"><span class="small">결과 용량</span><strong id="outBytes">-</strong></div></div><div class="note">이미지 처리는 브라우저에서 이루어집니다. 결과 파일은 다운로드 전에 미리보기로 품질을 확인하세요.</div></div></section>
-<section class="article"><h2>이미지 도구 사용 안내</h2><p>웹 업로드나 메신저 공유용 이미지는 지나치게 큰 해상도가 필요하지 않은 경우가 많습니다. 화면 공유용 이미지는 가로 1200~1600px 정도로 줄여도 충분할 수 있습니다.</p><p>인쇄나 보관 목적의 이미지는 너무 낮은 해상도로 줄이지 않는 것이 좋습니다. 워터마크와 색상 추출 결과는 이미지 특성에 따라 달라질 수 있으니 결과를 확인한 뒤 사용하세요.</p><div class="cta"><a class="btn" href="/image-tools-guide">이미지 도구 가이드</a><a class="btn" href="/">홈페이지</a></div></section>
+  </section>
+  <div class="tool-notes">
+    <article class="prose">
 
-<footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div>
+<h2>용량을 줄일 때는 크기부터</h2>
+<p>화질 값보다 픽셀 크기를 줄이는 쪽이 효과가 큽니다. 긴 변을 절반으로 줄이면 픽셀 수는 4분의 1이 됩니다. 게시판·블로그용이면 긴 변 1200~1600픽셀, 서류 사진이면 1800~2400픽셀이면 충분하고, 그래도 크면 JPG 화질을 0.75~0.85 사이로 내려 보세요. 0.5 아래부터는 하늘이나 피부에 얼룩이 눈에 띕니다.</p>
+<h2>저장하면 사라지는 정보</h2>
+<p>이 도구는 그림을 브라우저 캔버스에 다시 그려서 저장합니다. 그래서 결과 파일에는 원본의 촬영 위치(GPS), 기종, 촬영 시각 같은 EXIF 정보가 남지 않습니다. 중고 거래나 커뮤니티에 사진을 올리기 전에 크기 변경 없이 다시 저장하는 용도로도 쓸 수 있습니다.</p>
+<h2>투명 배경과 JPG</h2>
+<p>투명 배경 PNG(서명, 로고)를 JPG로 바꾸면 투명했던 곳이 검게 채워질 수 있습니다. JPG는 투명을 담을 수 없기 때문입니다. 투명이 필요하면 PNG나 WebP로 저장하세요.</p>
+<h2>신분증 사본 워터마크</h2>
+<p>신분증·통장 사본에는 <code>○○ 제출용 2026.11.07</code>처럼 제출처와 날짜를 사진과 번호 위에 겹치게 넣으면 다른 곳에 다시 쓰이기 어렵습니다. 불투명도는 30~50% 정도가 내용과 문구가 함께 읽히는 수준입니다.</p>
+
+    </article>
+    <aside>
+<h2>자세한 설명</h2>
+<p><a href="/image-tools-guide">사진 용량 줄이기: 픽셀 크기와 화질 값</a></p>
+<h2>다른 도구</h2>
+<ul><li><a href="/pdf-tools?tab=convert">사진 여러 장을 PDF로</a></li><li><a href="/qr-tools">QR 코드 만들기</a></li></ul>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
 <script>
 (function(){
 const $=id=>document.getElementById(id), nf=new Intl.NumberFormat('ko-KR'); let img=null,file=null,lastBlob=null,lastName='image';
@@ -271,4 +97,6 @@ function makeFav(){if(!img)return; const sizes=[16,32,48,180,512]; $('faviconOut
 document.querySelectorAll('#imgTabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#imgTabs button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tool-section').forEach(s=>s.classList.remove('active'));b.classList.add('active');$(b.dataset.target).classList.add('active');});
 $('imgFile').onchange=e=>{if(e.target.files[0])loadFile(e.target.files[0])}; ['resizeW','resizeH','resizeFmt','resizeQ','keepRatio'].forEach(id=>$(id).addEventListener('input',()=>{ $('resizeQLabel').textContent=Math.round(getQ()*100)+'%'; renderResize();})); ['cropX','cropY','cropW','cropH'].forEach(id=>$(id).addEventListener('input',renderCrop)); ['wmText','wmPos','wmSize','wmOpacity','wmColor'].forEach(id=>$(id).addEventListener('input',renderWm)); $('renderResize').onclick=renderResize; $('renderCrop').onclick=renderCrop; $('renderWm').onclick=renderWm; $('downloadResize').onclick=()=>downloadCurrent(lastName+'-resized'); $('downloadCrop').onclick=()=>downloadCurrent(lastName+'-crop'); $('downloadWm').onclick=()=>downloadCurrent(lastName+'-watermark'); $('extractPalette').onclick=extractPalette; $('makeFavicon').onclick=makeFav;
 })();
-</script></body></html>
+</script>
+</body>
+</html>

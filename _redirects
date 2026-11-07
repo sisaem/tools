@@ -1,1 +1,8 @@
-# No redirects configured
+# 예전 주소 → 합쳐진 새 주소 (301 영구 이동)
+/standalone              /pdf-tools              301
+/standalone.html         /pdf-tools              301
+/pdf-rotate-guide        /pdf-image-guide        301
+/pdf-file-organization   /pdf-merge-split-guide  301
+/browser-pdf-security    /pdf-password-guide     301
+/utility-tools-guide     /document-tools-guide   301
+/troubleshooting         /faq                    301

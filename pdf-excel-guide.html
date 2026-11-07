@@ -1,132 +1,99 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF Excel 변환 가이드</title>
-<meta name="description" content="PDF와 Excel 사이의 표 변환 한계와 확인 방법입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF 표를 엑셀로 옮길 때 칸이 어긋나는 이유와 바로잡는 법 | 시샘달 도구함</title>
+<meta name="description" content="PDF에는 표 구조가 없어서 변환 결과가 어긋납니다. 변환 민감도 설정의 의미, 스캔 PDF가 빈 결과로 나오는 이유, 엑셀에서 숫자를 되살리는 방법을 정리했습니다.">
 <link rel="canonical" href="https://sisaemdal.com/pdf-excel-guide">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="PDF Excel 변환 가이드">
-<meta property="og:description" content="PDF와 Excel 사이의 표 변환 한계와 확인 방법입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="PDF 표를 엑셀로 옮길 때 칸이 어긋나는 이유와 바로잡는 법 | 시샘달 도구함">
+<meta property="og:description" content="PDF에는 표 구조가 없어서 변환 결과가 어긋납니다. 변환 민감도 설정의 의미, 스캔 PDF가 빈 결과로 나오는 이유, 엑셀에서 숫자를 되살리는 방법을 정리했습니다.">
 <meta property="og:url" content="https://sisaemdal.com/pdf-excel-guide">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PDF Excel 변환 가이드">
-<meta name="twitter:description" content="PDF와 Excel 사이의 표 변환 한계와 확인 방법입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-
-/* Final guide hierarchy and readability styles */
-.category-guide{display:grid;gap:22px;margin-top:20px}.category-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 34px rgba(15,31,58,.06)}.category-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.04em}.category-card p{margin:0 0 14px;color:#52647d}.sub-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}.sub-guide-grid a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#263b5c}.sub-guide-grid strong{display:block;margin-bottom:4px}.sub-guide-grid span{display:block;color:#64748b;font-size:14px;line-height:1.55}.guide-detail .summary-box{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:22px 0}.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:20px 0}.guide-detail .guide-block h3{margin-top:0!important}.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.guide-detail .do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-detail .do-grid>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.guide-detail .table-wrap{overflow:auto}.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.guide-detail th{background:#eef6ff}.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}.guide-detail .cta{margin-top:28px}
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">PDF Guide</span><h1>PDF ↔ Excel 가이드</h1><p>PDF와 Excel 사이의 표 변환 한계와 확인 방법입니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/guide">전체 가이드</a></div></section><section class="article guide-detail"><h2>PDF ↔ Excel 변환 상세 가이드</h2><div class="summary-box"><p>PDF와 Excel 변환은 표 데이터를 빠르게 옮기는 보조 기능이며, 결과 검토가 특히 중요합니다.</p></div><div class="toc"><a href="#purpose">무엇을 변환할 수 있나</a><a href="#limits">한계 이해</a><a href="#workflow">권장 작업 순서</a><a href="#check">결과 검토 기준</a></div><div class="guide-block" id="purpose"><h3>무엇을 변환할 수 있나</h3><p>PDF ↔ Excel 기능은 표 형태의 내용을 간단히 옮겨 보기 위한 보조 기능입니다. PDF 내부에 실제 텍스트와 표 구조가 있는 경우가 가장 잘 맞습니다.</p></div><div class="guide-block" id="limits"><h3>한계 이해</h3><ul class="check-list"><li>스캔 이미지 PDF는 표를 정확히 인식하지 못할 수 있습니다.</li><li>병합 셀, 복잡한 표, 여러 줄 셀은 결과가 어긋날 수 있습니다.</li><li>회계, 계약, 정산 자료는 원본과 반드시 대조해야 합니다.</li></ul></div><div class="guide-block" id="workflow"><h3>권장 작업 순서</h3><ol><li>PDF에서 표가 실제 텍스트인지 확인합니다.</li><li>변환을 실행합니다.</li><li>Excel 결과에서 열 수, 행 수, 숫자 자리수를 확인합니다.</li><li>합계, 날짜, 금액처럼 중요한 값은 원본과 비교합니다.</li><li>필요하면 Excel에서 서식을 다시 정리합니다.</li></ol></div><div class="guide-block" id="check"><h3>결과 검토 기준</h3><div class="table-wrap"><table><tr><th>항목</th><th>확인 내용</th></tr><tr><td>숫자</td><td>쉼표, 소수점, 음수 표시가 유지되는지 확인합니다.</td></tr><tr><td>날짜</td><td>연월일 순서가 바뀌지 않았는지 확인합니다.</td></tr><tr><td>셀 구조</td><td>행과 열이 밀리지 않았는지 확인합니다.</td></tr></table></div></div><div class="cta"><a class="btn primary" href="/pdf-tools">PDF 도구 홈</a><a class="btn" href="/guide#pdf">PDF 가이드 목록</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools">도구</a><a href="/guide" aria-current="page">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/guide">가이드</a> / <span aria-current="page">PDF 표를 엑셀로 옮길 때 칸이 어긋나는 이유와 바로잡는 법</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>PDF 표를 엑셀로 옮길 때 칸이 어긋나는 이유와 바로잡는 법</h1>
+    <p class="lede">PDF 속 표는 눈으로는 표지만, 파일 안에서는 정해진 좌표에 찍힌 글자 조각일 뿐입니다. 변환이 완벽할 수 없는 이유이고, 그래서 정리 요령이 필요합니다.</p>
+    <p class="dates">2026년 7월 3일 작성, 2026년 11월 7일 고침</p>
+  </header>
+  <article class="prose">
+<nav class="toc" aria-label="이 글의 차례"><strong>차례</strong><ol><li><a href="#s1">PDF에는 '표'가 없다</a></li><li><a href="#s2">변환 민감도는 무엇을 바꾸나</a></li><li><a href="#s3">결과가 비어 있다면: 스캔 PDF</a></li><li><a href="#s4">엑셀에서 숫자가 숫자로 안 될 때</a></li><li><a href="#s5">날짜가 이상하게 바뀔 때</a></li><li><a href="#s6">엑셀을 PDF로 바꿀 때</a></li></ol></nav>
+
+<h2 id="s1">PDF에는 '표'가 없다</h2>
+<p>엑셀이나 한글 문서의 표는 "3행 2열에 이 값이 있다"는 구조를 가지고 있습니다. PDF로 저장하는 순간 이 구조는 사라지고, "가로 120, 세로 340 위치에 '1,250,000'이라는 글자를 그린다" 같은 명령만 남습니다. 표의 선도 글자와 상관없는 별개의 선일 뿐입니다.</p>
+<p>그래서 PDF를 엑셀로 바꾸는 프로그램은 글자 조각들의 위치를 보고 "세로 위치가 비슷하면 같은 행, 가로로 많이 떨어져 있으면 다른 열"이라고 추측해서 표를 다시 짜 맞춥니다. 추측이기 때문에 표 모양에 따라 잘 맞기도 하고 크게 어긋나기도 합니다.</p>
+
+<h2 id="s2">변환 민감도는 무엇을 바꾸나</h2>
+<p>이 사이트의 <a href="/pdf-tools?tab=excel">PDF → Excel 변환</a>에는 민감도를 세 단계로 고르는 막대가 있습니다. 이 값이 바꾸는 것은 두 가지입니다.</p>
+<div class="table-wrap"><table>
+<tr><th>단계</th><th>같은 행으로 보는 세로 오차</th><th>새 열로 나누는 가로 간격</th><th>잘 맞는 표</th></tr>
+<tr><td>느슨하게</td><td>10 이내</td><td>60 이상 떨어지면</td><td>칸이 넓고 열이 적은 표</td></tr>
+<tr><td>보통</td><td>6 이내</td><td>40 이상</td><td>일반적인 목록, 거래 내역</td></tr>
+<tr><td>정교하게</td><td>4 이내</td><td>25 이상</td><td>열이 많고 칸이 좁은 표</td></tr>
+</table></div>
+<p>(숫자 단위는 PDF 좌표 단위로, 대략 1단위가 0.35mm입니다.)</p>
+<p>결과를 보고 이렇게 조정하면 됩니다.</p>
+<ul>
+<li><strong>서로 다른 열의 값이 한 칸에 붙어 나온다</strong> → 한 단계 더 정교하게</li>
+<li><strong>한 칸이어야 할 글자가 두세 칸으로 쪼개진다</strong> (예: "서울 강남구"가 두 칸) → 한 단계 느슨하게</li>
+<li><strong>한 행이 두 줄로 나뉜다</strong> → 칸 안에서 줄바꿈된 표입니다. 느슨하게로 바꾸거나, 변환 후 엑셀에서 합치는 수밖에 없습니다.</li>
+</ul>
+<p>한 번에 맞추려 하기보다 세 단계를 모두 돌려 보고 가장 덜 고쳐도 되는 결과를 고르는 편이 빠릅니다.</p>
+
+<h2 id="s3">결과가 비어 있다면: 스캔 PDF</h2>
+<p>변환했는데 시트가 비어 있거나 거의 아무것도 없다면, 그 PDF는 글자가 아니라 그림으로 되어 있을 가능성이 큽니다. 확인 방법은 간단합니다. PDF 뷰어에서 표의 숫자를 마우스로 끌어 선택해 보세요. 글자가 선택되지 않거나, 쪽 전체가 하나의 사각형으로 선택되면 스캔본입니다.</p>
+<p>스캔본은 OCR(문자 인식)을 거쳐야 표로 만들 수 있고, 이 사이트에는 그 기능이 없습니다. 이럴 때는 원본 엑셀 파일을 보낸 쪽에 요청하는 것이 가장 정확합니다. 거래처 정산서, 카드 이용 내역처럼 원래 엑셀로 만들어진 문서는 요청하면 받을 수 있는 경우가 많습니다.</p>
+
+<h2 id="s4">엑셀에서 숫자가 숫자로 안 될 때</h2>
+<p>변환된 표에서 합계를 내려고 하면 0이 나오거나, 숫자가 왼쪽 정렬되어 있는 경우가 있습니다. 숫자가 아니라 "글자로 된 숫자"로 들어왔기 때문입니다. PDF에서 온 값에는 쉼표(<code>1,250,000</code>), 원 표시(<code>₩</code>), 끝의 공백이 섞여 있기 때문입니다.</p>
+<ol>
+<li>숫자 열을 선택하고 <strong>찾기 및 바꾸기</strong>(Ctrl+H)로 쉼표와 <code>원</code>, <code>₩</code>를 빈칸으로 바꿉니다.</li>
+<li>그래도 왼쪽 정렬이면 열을 선택한 뒤 <strong>데이터 → 텍스트 나누기 → 마침</strong>을 누릅니다. 아무것도 나누지 않아도 이 과정에서 숫자로 다시 인식됩니다.</li>
+<li>빈 칸에 <code>1</code>을 적고 복사한 뒤, 숫자 열에 <strong>선택하여 붙여넣기 → 곱하기</strong>를 해도 같은 효과가 납니다.</li>
+</ol>
+<p>음수가 괄호로 표시된 회계 양식(<code>(15,000)</code>)은 바꾸기에서 <code>(</code>를 <code>-</code>로, <code>)</code>를 빈칸으로 바꾸면 됩니다.</p>
+
+<h2 id="s5">날짜가 이상하게 바뀔 때</h2>
+<p><code>11-07</code>처럼 들어온 값을 엑셀이 날짜로 오해해서 "11월 7일"로 바꾸거나, 반대로 날짜가 글자로 남는 경우도 있습니다. 날짜 열은 텍스트 나누기 마지막 단계에서 열 형식을 <strong>날짜(YMD)</strong>로 지정하면 대부분 정리됩니다.</p>
+
+<h2 id="s6">엑셀을 PDF로 바꿀 때</h2>
+<p>반대 방향인 Excel → PDF 변환은 시트의 값을 표로 그려서 PDF로 만듭니다. 셀 색, 글꼴, 병합 셀, 인쇄 영역 같은 엑셀의 서식은 대부분 반영되지 않고, 값이 담긴 단순한 표가 나옵니다. 서식이 중요한 문서라면 엑셀 프로그램의 <strong>파일 → 다른 이름으로 저장 → PDF</strong>를 쓰는 편이 낫습니다. 이 기능은 엑셀이 설치되지 않은 컴퓨터에서 받은 시트 내용을 빠르게 PDF로 넘길 때 쓸모가 있습니다.</p>
+
+  </article>
+  <div class="byline"><p>이 글은 시샘달 도구함 운영자가 썼습니다. 틀린 내용이나 바뀐 기준을 발견하면 <a href="/contact">문의 페이지</a>로 알려 주세요. 확인 후 고치고 고친 날짜를 위에 적어 둡니다.</p></div>
+  <section class="related"><h2>같이 보면 좋은 것</h2><ul><li><a href="/pdf-tools?tab=excel">PDF ↔ Excel 변환 도구 열기</a></li><li><a href="/document-tools-guide">CSV로 받은 표가 엑셀에서 깨질 때</a></li><li><a href="/pdf-image-guide">스캔 PDF와 글자 PDF의 차이</a></li></ul></section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

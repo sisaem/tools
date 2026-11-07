@@ -1,132 +1,95 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF 이미지 변환 가이드</title>
-<meta name="description" content="PDF 페이지를 이미지로 저장하거나 이미지를 PDF로 묶는 방법입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스캔 문서 정리: 누운 페이지 바로 세우기, 사진을 PDF로, PDF를 그림으로 | 시샘달 도구함</title>
+<meta name="description" content="휴대폰으로 찍은 서류가 옆으로 눕는 이유, 화질을 잃지 않는 PDF 회전, 이미지를 PDF로 묶을 때의 해상도 기준과 PDF를 이미지로 바꿀 때의 배율을 설명합니다.">
 <link rel="canonical" href="https://sisaemdal.com/pdf-image-guide">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="PDF 이미지 변환 가이드">
-<meta property="og:description" content="PDF 페이지를 이미지로 저장하거나 이미지를 PDF로 묶는 방법입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="스캔 문서 정리: 누운 페이지 바로 세우기, 사진을 PDF로, PDF를 그림으로 | 시샘달 도구함">
+<meta property="og:description" content="휴대폰으로 찍은 서류가 옆으로 눕는 이유, 화질을 잃지 않는 PDF 회전, 이미지를 PDF로 묶을 때의 해상도 기준과 PDF를 이미지로 바꿀 때의 배율을 설명합니다.">
 <meta property="og:url" content="https://sisaemdal.com/pdf-image-guide">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PDF 이미지 변환 가이드">
-<meta name="twitter:description" content="PDF 페이지를 이미지로 저장하거나 이미지를 PDF로 묶는 방법입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-
-/* Final guide hierarchy and readability styles */
-.category-guide{display:grid;gap:22px;margin-top:20px}.category-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 34px rgba(15,31,58,.06)}.category-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.04em}.category-card p{margin:0 0 14px;color:#52647d}.sub-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}.sub-guide-grid a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#263b5c}.sub-guide-grid strong{display:block;margin-bottom:4px}.sub-guide-grid span{display:block;color:#64748b;font-size:14px;line-height:1.55}.guide-detail .summary-box{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:22px 0}.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:20px 0}.guide-detail .guide-block h3{margin-top:0!important}.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.guide-detail .do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-detail .do-grid>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.guide-detail .table-wrap{overflow:auto}.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.guide-detail th{background:#eef6ff}.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}.guide-detail .cta{margin-top:28px}
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">PDF Guide</span><h1>PDF ↔ 이미지 가이드</h1><p>PDF 페이지를 이미지로 저장하거나 이미지를 PDF로 묶는 방법입니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/guide">전체 가이드</a></div></section><section class="article guide-detail"><h2>PDF ↔ 이미지 변환 상세 가이드</h2><div class="summary-box"><p>PDF와 이미지 변환은 문서를 공유하거나 스캔 자료를 정리할 때 자주 사용하는 기능입니다.</p></div><div class="toc"><a href="#pdf-to-image">PDF를 이미지로 저장</a><a href="#image-to-pdf">이미지를 PDF로 묶기</a><a href="#format">JPG와 PNG 선택</a><a href="#quality">품질 확인</a></div><div class="guide-block" id="pdf-to-image"><h3>PDF를 이미지로 저장</h3><p>PDF 페이지를 JPG 또는 PNG 이미지로 저장하면 메신저 공유, 이미지 삽입, 미리보기 제작에 편리합니다.</p><ol><li>PDF 파일을 선택합니다.</li><li>변환할 페이지 또는 전체 페이지를 선택합니다.</li><li>이미지 형식과 품질을 선택합니다.</li><li>결과 이미지를 다운로드하고 글자 가독성을 확인합니다.</li></ol></div><div class="guide-block" id="image-to-pdf"><h3>이미지를 PDF로 묶기</h3><p>여러 이미지를 하나의 PDF로 묶으면 스캔본, 영수증, 캡처 자료를 문서처럼 정리할 수 있습니다.</p><ol><li>이미지 파일을 선택합니다.</li><li>페이지 순서를 확인합니다.</li><li>PDF로 변환합니다.</li><li>다운로드한 PDF에서 이미지가 잘리지 않았는지 확인합니다.</li></ol></div><div class="guide-block" id="format"><h3>JPG와 PNG 선택</h3><div class="table-wrap"><table><tr><th>형식</th><th>적합한 경우</th><th>주의할 점</th></tr><tr><td>JPG</td><td>사진, 캡처, 용량을 줄이고 싶은 경우</td><td>압축으로 인해 글자가 약간 흐려질 수 있습니다.</td></tr><tr><td>PNG</td><td>텍스트, 도형, 투명 배경 이미지</td><td>사진 파일에서는 용량이 커질 수 있습니다.</td></tr></table></div></div><div class="guide-block" id="quality"><h3>품질 확인</h3><ul class="check-list"><li>작은 글자가 읽히는지 확인합니다.</li><li>페이지 가장자리가 잘리지 않았는지 확인합니다.</li><li>여러 이미지 PDF는 페이지 순서가 맞는지 확인합니다.</li><li>제출용 문서는 변환 후 반드시 전체 페이지를 열어봅니다.</li></ul></div><div class="cta"><a class="btn primary" href="/pdf-tools">PDF 도구 홈</a><a class="btn" href="/guide#pdf">PDF 가이드 목록</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools">도구</a><a href="/guide" aria-current="page">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/guide">가이드</a> / <span aria-current="page">스캔 문서 정리: 누운 페이지 바로 세우기, 사진을 PDF로, PDF를 그림으로</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>스캔 문서 정리: 누운 페이지 바로 세우기, 사진을 PDF로, PDF를 그림으로</h1>
+    <p class="lede">휴대폰으로 서류를 찍어 PDF로 만들면 몇 장이 옆으로 누워 있는 일이 잦습니다. 원인을 알면 고치는 방법도 간단해집니다.</p>
+    <p class="dates">2026년 7월 3일 작성, 2026년 11월 7일 고침</p>
+  </header>
+  <article class="prose">
+<nav class="toc" aria-label="이 글의 차례"><strong>차례</strong><ol><li><a href="#s1">사진이 옆으로 눕는 진짜 이유</a></li><li><a href="#s2">PDF 회전은 화질을 떨어뜨리지 않는다</a></li><li><a href="#s3">사진을 PDF로 묶을 때의 해상도 기준</a></li><li><a href="#s4">PDF를 그림으로 바꿀 때의 배율</a></li><li><a href="#s5">PNG와 JPG 중 무엇으로</a></li><li><a href="#s6">스캔본에서 글자를 뽑을 수 있나</a></li></ol></nav>
+
+<h2 id="s1">사진이 옆으로 눕는 진짜 이유</h2>
+<p>휴대폰 카메라는 사진을 찍을 때 센서 방향 그대로 저장하고, "이 사진은 90도 돌려서 보여 줘야 한다"는 정보를 파일 안의 EXIF라는 메타데이터에 따로 적어 둡니다. 휴대폰 갤러리나 대부분의 사진 앱은 이 정보를 읽어서 똑바로 보여 주지만, 일부 변환 프로그램은 이 정보를 무시하고 센서 방향 그대로 그림을 붙입니다. 그래서 갤러리에서는 멀쩡하던 사진이 PDF 안에서는 누워 있게 됩니다.</p>
+<p>서류를 책상에 놓고 휴대폰을 위에서 내려다보며 찍을 때 특히 자주 생깁니다. 휴대폰이 거의 수평이면 기기가 가로인지 세로인지 판단하기 어려워서, 방향 정보 자체가 틀리게 기록되기도 합니다.</p>
+<p>이미 만들어진 PDF라면 회전으로 고치면 되고, 앞으로 찍을 사진이라면 다음 두 가지가 도움이 됩니다.</p>
+<ul>
+<li>찍기 직전에 휴대폰을 살짝 세웠다가 다시 눕혀서 화면 방향을 맞춘 뒤 찍습니다.</li>
+<li>휴대폰 기본 스캔 기능(메모 앱이나 파일 앱의 문서 스캔)을 쓰면 방향과 기울기를 자동으로 보정해 줍니다.</li>
+</ul>
+
+<h2 id="s2">PDF 회전은 화질을 떨어뜨리지 않는다</h2>
+<p>PDF의 각 쪽에는 "이 쪽을 몇 도 돌려서 보여 줄지"를 적는 값이 있습니다. <a href="/pdf-tools?tab=rotate">회전 도구</a>는 쪽 안의 그림을 다시 그리는 것이 아니라 이 값만 바꿉니다. 그래서 몇 번을 돌려도 화질이 떨어지지 않고, 용량도 거의 그대로입니다.</p>
+<p>회전 도구에서는 첫 쪽 미리보기를 보면서 각도를 고를 수 있습니다. 오른쪽 90도는 시계 방향, 왼쪽 90도는 반시계 방향입니다. 글자가 오른쪽으로 누워서 위에서 아래로 읽히면 왼쪽으로 90도, 왼쪽으로 누워서 아래에서 위로 읽히면 오른쪽으로 90도 돌리면 됩니다.</p>
+<div class="check"><p class="check-title">회전 후 확인할 것</p>
+<p>인쇄할 문서라면 인쇄 미리보기에서도 방향을 한 번 더 보세요. 일부 프린터 설정은 "용지에 맞춰 자동 회전"을 켜 두어서, 화면과 다른 방향으로 인쇄하기도 합니다.</p></div>
+
+<h2 id="s3">사진을 PDF로 묶을 때의 해상도 기준</h2>
+<p>사진을 PDF로 만들 때 가장 많이 받는 질문은 "어느 정도 크기면 충분한가"입니다. 기준은 출력했을 때 A4 한 장에 몇 픽셀이 들어가느냐입니다. 인쇄 품질을 말할 때 쓰는 dpi(1인치당 점 수)로 계산하면 A4(210×297mm) 한 장은 이렇게 됩니다.</p>
+<div class="table-wrap"><table>
+<tr><th class="num">dpi</th><th>A4에 필요한 픽셀</th><th>이런 용도에</th></tr>
+<tr><td class="num">150</td><td>1240 × 1754</td><td>화면으로 보는 제출 서류, 일반 글씨</td></tr>
+<tr><td class="num">200</td><td>1654 × 2339</td><td>작은 글씨가 있는 계약서, 영수증</td></tr>
+<tr><td class="num">300</td><td>2480 × 3508</td><td>다시 인쇄할 문서, 도장·서명 선명도가 중요할 때</td></tr>
+</table></div>
+<p>요즘 휴대폰 사진은 긴 변이 4000픽셀이 넘어서 300dpi 기준보다도 큽니다. 즉 대부분의 제출 용도에는 원본이 필요 이상으로 크고, 그만큼 용량만 커집니다. 업로드 한도가 빠듯하다면 <a href="/image-tools">이미지 도구</a>에서 긴 변을 2000픽셀 정도로 줄인 뒤 PDF로 묶어 보세요.</p>
+<p>여러 장을 묶을 때는 사진을 고른 순서가 그대로 쪽 순서가 됩니다. 파일 이름에 01, 02처럼 번호를 붙여 두면 고를 때 헷갈리지 않습니다.</p>
+
+<h2 id="s4">PDF를 그림으로 바꿀 때의 배율</h2>
+<p>PDF 한 쪽을 이미지로 저장하는 기능은 발표 자료에 문서 일부를 넣거나, PDF를 받지 않는 곳에 문서를 올릴 때 씁니다. PDF는 크기를 1인치=72단위로 계산하기 때문에, 배율 1로 그리면 A4가 595×842픽셀 정도의 작은 그림이 됩니다. 이 사이트의 변환 기능은 배율 2(약 144dpi)로 그려서 A4 한 쪽이 1190×1684픽셀 정도로 나옵니다. 화면에서 읽기에는 충분하고, 작은 글씨가 많은 문서를 크게 인쇄해야 한다면 원본 PDF를 그대로 쓰는 편이 낫습니다.</p>
+<p>이미지로 바꾸면 글자가 그림이 되기 때문에 검색하거나 복사할 수 없게 됩니다. 받는 쪽이 글자를 다시 쓸 일이 있다면 PDF로 보내는 것이 좋습니다.</p>
+
+<h2 id="s5">PNG와 JPG 중 무엇으로</h2>
+<p>글자와 선 위주의 문서는 PNG가 깔끔합니다. JPG는 사진에 맞게 만들어진 압축 방식이라, 흰 바탕의 검은 글자 주변에 얼룩 같은 잡티가 생기기 쉽습니다. 반대로 사진이 많은 문서는 JPG가 용량이 훨씬 작습니다. 어떤 것을 골라야 할지 모르겠다면, 둘 다 저장해서 같은 배율로 확대해 보고 글자 테두리가 깨끗한 쪽을 고르면 됩니다.</p>
+
+<h2 id="s6">스캔본에서 글자를 뽑을 수 있나</h2>
+<p>휴대폰으로 찍거나 스캐너로 읽은 PDF는 글자처럼 보여도 실제로는 그림입니다. 이런 파일에서 글자를 뽑아내려면 OCR(광학 문자 인식)이 필요한데, 이 사이트의 도구에는 OCR 기능이 없습니다. 스캔본을 엑셀로 바꾸려다 빈 결과가 나온다면 이 때문입니다. 자세한 내용은 <a href="/pdf-excel-guide">PDF 표를 엑셀로 옮길 때</a>를 참고하세요.</p>
+
+  </article>
+  <div class="byline"><p>이 글은 시샘달 도구함 운영자가 썼습니다. 틀린 내용이나 바뀐 기준을 발견하면 <a href="/contact">문의 페이지</a>로 알려 주세요. 확인 후 고치고 고친 날짜를 위에 적어 둡니다.</p></div>
+  <section class="related"><h2>같이 보면 좋은 것</h2><ul><li><a href="/pdf-tools?tab=rotate">PDF 회전 도구 열기</a></li><li><a href="/pdf-tools?tab=convert">PDF ↔ 이미지 변환 도구 열기</a></li><li><a href="/image-tools-guide">사진 용량을 줄이는 기준</a></li></ul></section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

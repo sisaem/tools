@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>근무일 계산기 (2026·2027 공휴일·대체공휴일 반영) | 시샘달 도구함</title>
+<meta name="description" content="두 날짜 사이의 근무일 수, 또는 &#x27;영업일 기준 N일 뒤&#x27; 날짜를 계산합니다. 2026년 제헌절·노동절과 대체공휴일, 2027년 공휴일을 반영하고 회사 휴일을 추가할 수 있습니다.">
+<link rel="canonical" href="https://sisaemdal.com/workdays">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="근무일 계산기 (2026·2027 공휴일·대체공휴일 반영) | 시샘달 도구함">
+<meta property="og:description" content="두 날짜 사이의 근무일 수, 또는 &#x27;영업일 기준 N일 뒤&#x27; 날짜를 계산합니다. 2026년 제헌절·노동절과 대체공휴일, 2027년 공휴일을 반영하고 회사 휴일을 추가할 수 있습니다.">
+<meta property="og:url" content="https://sisaemdal.com/workdays">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools" aria-current="page">도구</a><a href="/guide">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/#tools">도구</a> / <span aria-current="page">공휴일을 뺀 근무일 계산기</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>공휴일을 뺀 근무일 계산기</h1>
+    <p class="lede">주말과 공휴일, 대체공휴일을 빼고 셉니다. 아래 목록에서 쉬지 않는 날은 체크를 풀고, 회사 휴일은 추가할 수 있습니다.</p>
+  </header>
+  <section class="tool-area" aria-label="공휴일을 뺀 근무일 계산기">
+
+<div class="tool-panel">
+  <div class="tool-tabs" id="wdTabs" role="tablist">
+    <button type="button" class="active" data-mode="count">두 날짜 사이 근무일</button>
+    <button type="button" data-mode="add">며칠 근무일 뒤 날짜</button>
+  </div>
+  <div class="form-grid">
+    <div class="form-row"><label for="wdStart">시작일</label><input class="input" type="date" id="wdStart"></div>
+    <div class="form-row" id="wdEndRow"><label for="wdEnd">종료일</label><input class="input" type="date" id="wdEnd"></div>
+    <div class="form-row" id="wdNRow" hidden><label for="wdN">근무일 수</label><input class="input" type="number" id="wdN" min="1" max="999" value="5"></div>
+  </div>
+  <div class="form-grid" style="margin-top:12px">
+    <label class="checkbox-container"><input type="checkbox" id="wdIncludeStart" checked> 시작일도 근무일로 셈</label>
+    <label class="checkbox-container"><input type="checkbox" id="wdSat"> 토요일도 근무</label>
+  </div>
+  <div class="calc-result" id="wdResult" aria-live="polite"></div>
+  <fieldset>
+    <legend>빼는 공휴일 (체크 해제하면 근무일로 셈)</legend>
+    <p class="small" style="margin:0 0 6px">관공서 공휴일 기준입니다. 상시 5인 이상 사업장은 같은 날이 유급휴일입니다. 회사 창립기념일처럼 추가로 쉬는 날은 아래에 더하세요.</p>
+    <ul class="holiday-list" id="wdHolidays"></ul>
+    <div class="form-grid" style="margin-top:12px">
+      <div class="form-row"><label for="wdCustom">추가 휴일</label><input class="input" type="date" id="wdCustom"></div>
+      <div class="form-row"><button type="button" class="btn" id="wdAdd">휴일 추가</button></div>
+    </div>
+  </fieldset>
+</div>
+
+  </section>
+  <div class="tool-notes">
+    <article class="prose">
+
+<h2>2026년에 달라진 것</h2>
+<p>2026년부터 7월 17일 제헌절이 다시 공휴일이 되었고, 5월 1일 노동절도 관공서 공휴일에 들어갔습니다. 6월 3일은 전국동시지방선거로 쉬는 날입니다. 그래서 예전 감각으로 "토·일만 빼면 되겠지" 하고 세면 5월, 6월, 7월에 하루씩 틀리기 쉽습니다.</p>
+<h2>대체공휴일이 붙는 규칙</h2>
+<p>국경일(삼일절, 광복절, 개천절, 한글날, 제헌절)과 어린이날, 부처님오신날, 성탄절은 토요일이나 일요일과 겹치면 그다음 첫 평일이 대체공휴일이 됩니다. 설날과 추석 연휴는 <strong>일요일과 겹칠 때만</strong> 대체공휴일이 생기고, 토요일과 겹치면 생기지 않습니다. 2026년 추석(9월 24~26일)은 토요일과 겹쳐서 대체공휴일이 없습니다. 현충일과 신정은 대체공휴일 대상이 아닙니다.</p>
+<h2>목록을 믿기 전에</h2>
+<p>공휴일은 정부가 임시공휴일을 지정하면 늘어날 수 있고, 법이 바뀌면 대체공휴일 대상이 달라질 수 있습니다. 2027년 5월 3일(노동절 대체공휴일)은 자료마다 다르게 안내되고 있어서 기본값을 체크 해제해 두었습니다. 정부 발표로 확정되면 이 목록을 고치고 위의 고친 날짜를 바꿔 두겠습니다. 중요한 기한이라면 인사혁신처나 우주항공청(월력요항)의 발표를 함께 확인하세요.</p>
+<h2>시작일을 셀까 말까</h2>
+<p>"접수일로부터 영업일 5일 이내"처럼 쓰인 기한은 보통 다음 영업일부터 셉니다. 그럴 때는 <strong>시작일도 근무일로 셈</strong>의 체크를 푸세요. 근무 기간이나 출근일 수를 셀 때는 체크해 두는 것이 맞습니다.</p>
+
+    </article>
+    <aside>
+<h2>자세한 설명</h2>
+<p><a href="/annual-leave-guide">연차 일수 계산하는 법</a></p>
+<h2>다른 도구</h2>
+<ul><li><a href="/annual-leave">연차 계산기</a></li><li><a href="/calculator-tools">부가세·할인율·날짜 계산</a></li></ul>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const HOL = [["2026-01-01","신정",1],["2026-02-16","설날 연휴",1],["2026-02-17","설날",1],["2026-02-18","설날 연휴",1],["2026-03-01","삼일절",1],["2026-03-02","대체공휴일(삼일절)",1],["2026-05-01","노동절",1],["2026-05-05","어린이날",1],["2026-05-24","부처님오신날",1],["2026-05-25","대체공휴일(부처님오신날)",1],["2026-06-03","전국동시지방선거",1],["2026-06-06","현충일",1],["2026-07-17","제헌절",1],["2026-08-15","광복절",1],["2026-08-17","대체공휴일(광복절)",1],["2026-09-24","추석 연휴",1],["2026-09-25","추석",1],["2026-09-26","추석 연휴",1],["2026-10-03","개천절",1],["2026-10-05","대체공휴일(개천절)",1],["2026-10-09","한글날",1],["2026-12-25","성탄절",1],["2027-01-01","신정",1],["2027-02-06","설날 연휴",1],["2027-02-07","설날",1],["2027-02-08","설날 연휴",1],["2027-02-09","대체공휴일(설날)",1],["2027-03-01","삼일절",1],["2027-05-01","노동절",1],["2027-05-03","대체공휴일(노동절) — 확정 여부 확인 필요",0],["2027-05-05","어린이날",1],["2027-05-13","부처님오신날",1],["2027-06-06","현충일",1],["2027-07-17","제헌절",1],["2027-07-19","대체공휴일(제헌절)",1],["2027-08-15","광복절",1],["2027-08-16","대체공휴일(광복절)",1],["2027-09-14","추석 연휴",1],["2027-09-15","추석",1],["2027-09-16","추석 연휴",1],["2027-10-03","개천절",1],["2027-10-04","대체공휴일(개천절)",1],["2027-10-09","한글날",1],["2027-10-11","대체공휴일(한글날)",1],["2027-12-25","성탄절",1],["2027-12-27","대체공휴일(성탄절)",1]];
+  const $ = id => document.getElementById(id);
+  const custom = [];
+  let mode = 'count';
+  const pad = n => String(n).padStart(2,'0');
+  const iso = d => d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  const parse = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+  const wk = ['일','월','화','수','목','금','토'];
+  const label = d => (d.getMonth()+1)+'월 '+d.getDate()+'일('+wk[d.getDay()]+')';
+  const fmtFull = d => d.getFullYear()+'년 '+label(d);
+
+  function renderHolidays(){
+    const ul = $('wdHolidays'); ul.innerHTML = '';
+    HOL.concat(custom.map(c => [c,'추가한 휴일',1,true])).forEach((h, i) => {
+      const d = parse(h[0]);
+      const li = document.createElement('li');
+      li.innerHTML = '<label><input type="checkbox" data-date="'+h[0]+'"'+(h[2]?' checked':'')+'> <span class="d">'+d.getFullYear()+'. '+label(d)+'</span> <span>'+h[1]+'</span></label>';
+      ul.appendChild(li);
+    });
+    ul.querySelectorAll('input').forEach(cb => cb.addEventListener('change', calc));
+  }
+  function holidaySet(){
+    const s = new Map();
+    document.querySelectorAll('#wdHolidays input:checked').forEach(cb => {
+      const name = cb.parentElement.querySelector('span:last-child').textContent;
+      s.set(cb.dataset.date, name);
+    });
+    return s;
+  }
+  function isWork(d, hs){
+    const w = d.getDay();
+    if (w === 0) return false;
+    if (w === 6 && !$('wdSat').checked) return false;
+    return !hs.has(iso(d));
+  }
+  function calc(){
+    const out = $('wdResult');
+    const sv = $('wdStart').value;
+    if (!sv) { out.innerHTML = '<p>시작일을 고르세요.</p>'; return; }
+    const hs = holidaySet();
+    const start = parse(sv);
+    if (mode === 'count') {
+      const ev = $('wdEnd').value;
+      if (!ev) { out.innerHTML = '<p>종료일을 고르세요.</p>'; return; }
+      let a = start, b = parse(ev);
+      if (b < a) { out.innerHTML = '<p>종료일이 시작일보다 앞입니다. 날짜를 확인하세요.</p>'; return; }
+      let work = 0, total = 0, weekend = 0; const hit = [];
+      const d = new Date(a);
+      if (!$('wdIncludeStart').checked) d.setDate(d.getDate()+1);
+      for (; d <= b; d.setDate(d.getDate()+1)) {
+        total++;
+        const w = d.getDay();
+        if (w === 0 || (w === 6 && !$('wdSat').checked)) { weekend++; continue; }
+        if (hs.has(iso(d))) { hit.push([new Date(d), hs.get(iso(d))]); continue; }
+        work++;
+      }
+      let rows = hit.map(h => '<tr><td>'+fmtFull(h[0])+'</td><td>'+h[1]+'</td></tr>').join('');
+      out.innerHTML = '<div class="big"><mark>'+work+'일</mark> 근무</div>'+
+        '<p>전체 '+total+'일 중 주말 '+weekend+'일, 평일 공휴일 '+hit.length+'일을 뺐습니다.</p>'+
+        (hit.length ? '<table><tr><th>빠진 공휴일</th><th>이름</th></tr>'+rows+'</table>' : '');
+    } else {
+      const n = parseInt($('wdN').value, 10);
+      if (!(n > 0)) { out.innerHTML = '<p>근무일 수를 1 이상으로 넣으세요.</p>'; return; }
+      const d = new Date(start); let c = 0; const hit = [];
+      if ($('wdIncludeStart').checked && isWork(d, hs)) c = 1;
+      let guard = 0;
+      while (c < n && guard < 4000) {
+        d.setDate(d.getDate()+1); guard++;
+        if (d.getDay() !== 0 && !(d.getDay() === 6 && !$('wdSat').checked) && hs.has(iso(d))) hit.push([new Date(d), hs.get(iso(d))]);
+        if (isWork(d, hs)) c++;
+      }
+      const rows = hit.map(h => '<tr><td>'+fmtFull(h[0])+'</td><td>'+h[1]+'</td></tr>').join('');
+      out.innerHTML = '<div class="big"><mark>'+fmtFull(d)+'</mark></div>'+
+        '<p>'+fmtFull(start)+'부터 근무일 '+n+'일째 되는 날입니다'+($('wdIncludeStart').checked ? ' (시작일 포함)' : ' (시작일 다음 근무일부터 셈)')+'.</p>'+
+        (hit.length ? '<table><tr><th>사이에 낀 공휴일</th><th>이름</th></tr>'+rows+'</table>' : '');
+    }
+  }
+  document.querySelectorAll('#wdTabs button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#wdTabs button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); mode = b.dataset.mode;
+    $('wdEndRow').hidden = mode !== 'count'; $('wdNRow').hidden = mode !== 'add';
+    calc();
+  }));
+  $('wdAdd').addEventListener('click', () => {
+    const v = $('wdCustom').value; if (!v || custom.includes(v)) return;
+    custom.push(v); renderHolidays(); calc();
+  });
+  ['wdStart','wdEnd','wdN','wdIncludeStart','wdSat'].forEach(id => $(id).addEventListener('input', calc));
+  const t = new Date();
+  $('wdStart').value = iso(t);
+  const e = new Date(t); e.setDate(e.getDate()+30); $('wdEnd').value = iso(e);
+  renderHolidays(); calc();
+})();
+</script>
+
+</body>
+</html>

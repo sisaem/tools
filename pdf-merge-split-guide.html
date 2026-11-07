@@ -1,132 +1,118 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF 병합·분할 가이드</title>
-<meta name="description" content="여러 PDF를 합치거나 필요한 페이지만 분리하는 방법입니다.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Sisaemdal Tools">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF 합치기와 나누기: 제출 서류를 한 파일로 묶을 때 확인할 것 | 시샘달 도구함</title>
+<meta name="description" content="여러 PDF를 하나로 합치거나 필요한 쪽만 떼어낼 때 순서가 뒤섞이는 이유, 페이지 범위 쓰는 법, 합친 뒤 사라지는 것들과 파일명 규칙을 정리했습니다.">
 <link rel="canonical" href="https://sisaemdal.com/pdf-merge-split-guide">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Sisaemdal Tools">
-<meta property="og:title" content="PDF 병합·분할 가이드">
-<meta property="og:description" content="여러 PDF를 합치거나 필요한 페이지만 분리하는 방법입니다.">
+<meta property="og:site_name" content="시샘달 도구함">
+<meta property="og:title" content="PDF 합치기와 나누기: 제출 서류를 한 파일로 묶을 때 확인할 것 | 시샘달 도구함">
+<meta property="og:description" content="여러 PDF를 하나로 합치거나 필요한 쪽만 떼어낼 때 순서가 뒤섞이는 이유, 페이지 범위 쓰는 법, 합친 뒤 사라지는 것들과 파일명 규칙을 정리했습니다.">
 <meta property="og:url" content="https://sisaemdal.com/pdf-merge-split-guide">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PDF 병합·분할 가이드">
-<meta name="twitter:description" content="여러 PDF를 합치거나 필요한 페이지만 분리하는 방법입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1f29" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261107">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5853821606258910" crossorigin="anonymous"></script>
-<style>
-:root{--bg:#F4F5F0;--card:#fff;--ink:#101C16;--muted:#576259;--line:#DDE2D9;--brand:#0EA672;--brand2:#0A7A54;--soft:#F0F6F2;--accent:#E1F3EA;--good:#0A7A54;--warn:#b45309;--shadow:0 20px 45px rgba(16,28,22,.10)}
-*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7faff 0%,#e8eef5 100%);color:var(--ink);line-height:1.75}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:48px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900}.brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#f1eafe;box-shadow:0 10px 28px rgba(124,92,255,.13)}.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav a,.pill,.btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:999px;padding:10px 17px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(15,31,58,.04)}.nav a:hover,.btn:hover{border-color:#b7c7de;transform:translateY(-1px)}.hero{text-align:center;margin:36px auto 48px;max-width:900px}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 16px;border-radius:999px;font-weight:800;color:#51627b;font-size:14px}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.02;margin:24px 0 18px;letter-spacing:-.055em}.hero p{font-size:clamp(17px,2vw,21px);color:#41536d;margin:0 auto;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:28px 0}.card{background:#fff;border:1px solid rgba(219,228,239,.9);border-radius:24px;padding:30px;box-shadow:var(--shadow)}.tool-card{text-align:center;min-height:246px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;transition:.2s}.tool-card:hover{transform:translateY(-4px)}.icon{display:grid;place-items:center;width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,#ffe4e6,#eef6ff);font-size:32px;margin-bottom:20px}.status{position:absolute;right:18px;top:18px;font-size:12px;background:#E1F3EA;color:#0A7A54;border-radius:999px;padding:5px 10px;font-weight:900}.soon{background:#fff7ed;color:#9a5a00}.card h2,.card h3{margin:.2em 0 .55em;letter-spacing:-.035em}.card p{color:#52647d;margin:.4em 0}.card a.more{font-weight:900;color:#0A7A54;text-decoration:none}.section{margin:28px 0}.section h2{font-size:30px;margin:0 0 16px;letter-spacing:-.04em}.article{background:#fff;border:1px solid var(--line);border-radius:24px;padding:42px;box-shadow:var(--shadow);width:100%;max-width:none;margin:56px 0 24px}.article h1{font-size:clamp(34px,5vw,52px);line-height:1.12;margin:14px 0 22px;letter-spacing:-.055em}.article h2{font-size:28px;margin:42px 0 14px;letter-spacing:-.04em}.article h3{font-size:21px;margin:28px 0 8px}.article p,.article li{font-size:16.5px;color:#334155}.article ul,.article ol{padding-left:24px}.note{border-left:5px solid var(--brand);background:#F0F6F2;padding:18px 20px;border-radius:16px;margin:22px 0;color:#334155}.warn{border-left-color:#f59e0b;background:#fffbeb}.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}.toc a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#0A7A54;font-weight:800}.steps{counter-reset:step;display:grid;gap:14px}.step{display:flex;gap:14px;background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#0A7A54;color:#fff;font-weight:900}.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#64748b}.footer a{color:#475569;text-decoration:none;margin-right:14px}.mini-list{display:grid;gap:12px}.mini-list a{background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:18px;text-decoration:none;color:#263b5c;font-weight:850}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.primary{background:#0EA672;color:white;border-color:#0EA672}.muted{color:#64748b}.faq dt{font-weight:900;margin-top:22px}.faq dd{margin:8px 0 0;color:#41536d}.table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.table th,.table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.table th{background:#F1F6F3}@media(max-width:860px){.grid{grid-template-columns:1fr}.toc{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.article{padding:28px 20px}.wrap{padding:20px 14px 48px}}
-
-.tool-layout{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:56px}.tool-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.form-row{display:flex;flex-direction:column;gap:8px}.form-row label{font-weight:850;color:#263b5c}.input,.textarea,.select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.textarea{min-height:220px;resize:vertical}.tool-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.preview-box{border:1px dashed #b7c7de;background:#F1F6F3;border-radius:18px;padding:18px;min-height:170px;display:grid;place-items:center;text-align:center;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto;border-radius:12px}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px}.metric strong{display:block;font-size:22px}.small{font-size:13px;color:#64748b}.danger{background:#fff7ed;border-color:#fed7aa;color:#9a3412}.success{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.tablike{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tablike button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tablike button.active{background:#0EA672;color:#fff;border-color:#0EA672}@media(max-width:860px){.form-grid,.metric-grid{grid-template-columns:1fr}.tool-panel{padding:22px 16px}}
-
-
-.feature-card{position:relative;overflow:hidden}.feature-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}.feature-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#E1F3EA,#f1eafe);font-size:28px}.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature-actions .btn{display:inline-flex;align-items:center}.btn.primary{background:#0EA672;color:#fff;border-color:#0EA672}.btn.soft{background:#F0F6F2;color:#0EA672;border-color:#CFE8DA}.backline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0}.tool-panel{overflow:hidden}.metric-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}.metric strong{font-size:clamp(18px,2.3vw,22px);overflow-wrap:anywhere;word-break:keep-all}.preview-box{max-width:100%;overflow:auto}.preview-box img,.preview-box canvas{max-width:100%;height:auto}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-bottom:56px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.color-swatch{width:100%;height:80px;border-radius:16px;border:1px solid var(--line);background:#111827}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:850;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.notice-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kicker{font-weight:900;color:#0EA672}.mini-note{font-size:14px;color:#64748b;margin-top:8px}.card .feature-actions{margin-top:18px}.guide-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-links a{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:#263b5c;box-shadow:0 10px 25px rgba(15,31,58,.05)}.guide-links strong{display:block;margin-bottom:6px;font-size:18px}.guide-links span{color:#64748b}.tool-status{font-size:13px;border-radius:999px;padding:6px 10px;background:#E1F3EA;color:#0A7A54;font-weight:900}@media(max-width:860px){.split{grid-template-columns:1fr}.hero h1{font-size:44px}.feature-head{flex-direction:row}.backline{justify-content:flex-start}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.split + .article,.tool-layout + .article{margin-top:0}
-
-/* Final layout polish: unified content width and comfortable hero spacing */
-.wrap{max-width:1180px}
-.hero{max-width:1020px;margin-bottom:64px}
-.hero p{max-width:960px;line-height:1.85;word-break:keep-all;overflow-wrap:normal;margin-left:auto;margin-right:auto}
-.hero .backline,.backline{margin-top:28px;gap:12px}
-.grid,.tool-layout,.split{max-width:1000px;margin-left:auto;margin-right:auto}
-.article{max-width:1000px;margin-left:auto;margin-right:auto}
-.grid + .article,.tool-layout + .article,.split + .article{max-width:1000px;margin-top:72px}
-.tool-layout{margin-bottom:72px}
-.split{margin-bottom:72px}
-.article h1,.article h2,.article h3,.card h2,.card h3{word-break:keep-all}
-.card p,.article p,.hero p{word-break:keep-all}
-.feature-card p{min-height:84px}
-.feature-actions{margin-top:24px}
-@media(max-width:860px){.grid,.tool-layout,.split,.article{max-width:100%}.hero{margin-bottom:44px}.hero p{word-break:normal}.feature-card p{min-height:auto}}
-
-
-
-/* Layout balance update: unified widths, moderate spacing, clearer color controls */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-page-article{width:100%;max-width:var(--content-w)!important}
-.grid + .article,.tool-layout + .article,.split + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:40px!important}
-.article{margin-top:40px!important;margin-bottom:24px!important}
-.hero{margin-bottom:48px!important}
-.card p,.feature-card p{word-break:keep-all;overflow-wrap:normal;line-height:1.85}
-.feature-card p{min-height:0!important;max-width:270px;margin-left:auto!important;margin-right:auto!important}
-.tool-card{padding-top:34px!important;padding-bottom:34px!important}
-.tool-card .feature-actions{margin-top:22px!important}
-input[type="color"].input{height:56px!important;min-height:56px!important;padding:6px!important;border-radius:16px!important;cursor:pointer;background:#fff!important}
-input[type="color"].input::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input::-webkit-color-swatch{border:0!important;border-radius:12px!important}
-input[type="color"].input::-moz-color-swatch{border:0!important;border-radius:12px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.article,.tool-page-article{max-width:100%!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}.tool-layout,.split{margin-bottom:32px!important}.hero{margin-bottom:36px!important}.feature-card p{max-width:100%}}
-
-
-
-/* Final width and hero correction: equal content width, readable one-line summaries */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:40px!important}
-.tool-layout,.split{margin-bottom:0!important}
-.hero{max-width:1120px!important;margin-bottom:44px!important}
-.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:normal!important}
-.hero .backline,.backline{margin-top:30px!important}
-input[type="color"].input.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}
-input[type="color"].input.color-picker::-webkit-color-swatch-wrapper{padding:0!important}
-input[type="color"].input.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}
-input[type="color"].input.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}
-@media(max-width:860px){.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}section.tool-panel + section.article,section.tool-layout + section.article,section.split + section.article,.grid + .article{margin-top:32px!important}}
-
-
-
-/* Tool expansion layout standards */
-:root{--content-w:1000px}
-.grid,.tool-layout,.split,.tool-panel,.article,.tool-page-article{width:100%;max-width:var(--content-w)!important;margin-left:auto!important;margin-right:auto!important}
-.tool-layout,.split{margin-bottom:0!important}.grid + .article,.tool-layout + .article,.split + .article,section.tool-panel + section.article{margin-top:40px!important}.article{margin-top:40px!important}.hero{max-width:1120px!important;margin-bottom:44px!important}.hero p{max-width:1120px!important;line-height:1.7!important;word-break:keep-all!important}.hero .backline,.backline{margin-top:30px!important}.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}.tool-tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.tool-tabs button.active{background:#0EA672;color:#fff;border-color:#0EA672}.tool-section{display:none}.tool-section.active{display:block}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.result-card{background:#F1F6F3;border:1px solid var(--line);border-radius:18px;padding:18px}.copy-output{white-space:pre-wrap;word-break:break-word;background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;min-height:90px}.diff-out{font-family:Consolas,monospace;white-space:pre-wrap}.diff-add{background:#ecfdf5;color:#166534;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-del{background:#fff1f2;color:#9f1239;display:block;padding:4px 8px;border-radius:8px;margin:2px 0}.diff-same{display:block;padding:4px 8px;color:#475569}.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}.swatch{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.swatch-color{height:64px}.swatch-code{padding:10px;font-weight:900;text-align:center}.canvas-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.canvas-item{border:1px solid var(--line);border-radius:16px;background:#F1F6F3;padding:14px;text-align:center}.mini-table{width:100%;border-collapse:collapse;background:#fff}.mini-table th,.mini-table td{border:1px solid var(--line);padding:8px 10px;text-align:left}.mini-table th{background:#F1F6F3}.preview-frame{width:100%;min-height:240px;border:1px solid var(--line);border-radius:16px;background:#fff}.color-picker{height:64px!important;min-height:64px!important;padding:0!important;border:3px solid #dbe4ef!important;border-radius:18px!important;overflow:hidden!important;cursor:pointer!important;background:#fff!important;-webkit-appearance:none!important;appearance:none!important}.color-picker::-webkit-color-swatch-wrapper{padding:0!important}.color-picker::-webkit-color-swatch{border:0!important;border-radius:14px!important}.color-picker::-moz-color-swatch{border:0!important;border-radius:14px!important}.tool-card p{min-height:0!important;max-width:280px;margin-left:auto;margin-right:auto;word-break:keep-all}.wide-note{max-width:var(--content-w)!important}.hidden{display:none!important}@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.grid,.tool-layout,.split,.tool-panel,.article{max-width:100%!important}.hero p{word-break:normal!important}.hero{margin-bottom:34px!important}.grid + .article,.tool-layout + .article,.split + .article{margin-top:32px!important}}
-
-
-/* Guide/detail and final tool layout fixes */
-.image-tool-main .inline-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:end!important}
-.image-tool-main .form-row{min-width:0!important}
-.image-tool-main .input,.image-tool-main .select,.image-tool-main .textarea{min-width:0!important}
-.image-tool-main #wmColor.form-row,.image-tool-main #paletteOut,.image-tool-main #faviconOut{min-width:0!important}
-.image-tool-main .tool-section h2{margin-top:24px!important}
-.image-tool-main .tool-section.active{min-height:170px!important}
-.image-tool-main .tool-actions{margin-top:18px!important}
-.two-col > .tool-panel,.split > .tool-panel{min-width:0!important}
-.preview-box{min-height:220px!important}
-.qr-color-block .color-picker,.color-picker{height:68px!important;min-height:68px!important;border:4px solid #dbe4ef!important;border-radius:18px!important}
-.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:18px 0}
-.guide-detail .guide-block h3{margin-top:0!important}
-.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}
-.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}
-.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
-.guide-detail th{background:#eef6ff}
-@media(max-width:860px){.image-tool-main .inline-grid{grid-template-columns:1fr!important}.preview-box{min-height:180px!important}}
-
-
-
-/* Final guide hierarchy and readability styles */
-.category-guide{display:grid;gap:22px;margin-top:20px}.category-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 34px rgba(15,31,58,.06)}.category-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.04em}.category-card p{margin:0 0 14px;color:#52647d}.sub-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}.sub-guide-grid a{display:block;background:#F1F6F3;border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:#263b5c}.sub-guide-grid strong{display:block;margin-bottom:4px}.sub-guide-grid span{display:block;color:#64748b;font-size:14px;line-height:1.55}.guide-detail .summary-box{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:22px 0}.guide-detail .guide-block{background:#F1F6F3;border:1px solid var(--line);border-radius:20px;padding:22px;margin:20px 0}.guide-detail .guide-block h3{margin-top:0!important}.guide-detail .check-list{display:grid;gap:10px;margin:14px 0;padding-left:0!important;list-style:none}.guide-detail .check-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.guide-detail .do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.guide-detail .do-grid>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.guide-detail .table-wrap{overflow:auto}.guide-detail table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:16px;overflow:hidden}.guide-detail th,.guide-detail td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}.guide-detail th{background:#eef6ff}.guide-detail .toc{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}.guide-detail .cta{margin-top:28px}
-
-.topbar-wrap{background:var(--ink);position:sticky;top:0;z-index:50;margin:0 0 40px}
-.topbar{padding:16px 22px;border-radius:0;margin-bottom:0}
-.topbar .brand{color:#fff}
-.topbar .brand-icon{background:var(--brand);color:#052015;box-shadow:none}
-.topbar .nav{align-items:center}
-.topbar .nav a{background:none;border:none;color:#c7cfc9;padding:8px 4px;font-weight:700;box-shadow:none}
-.topbar .nav a:hover{color:#fff}
-.topbar .nav a.nav-cta{background:var(--brand);color:#052015;padding:10px 18px;border-radius:999px;margin-left:6px}
-.topbar .nav a.nav-cta:hover{background:#12c084;color:#052015}
-.btn-home{border-color:var(--brand2)!important;color:var(--brand2)!important;font-weight:900!important;background:#fff!important}
-.btn-home:hover{background:var(--accent-soft, #E1F3EA)!important}
-</style>
 </head>
-<body><div class="topbar-wrap"><header class="topbar wrap"><a class="brand" href="/"><span class="brand-icon">🧰</span><span>Sisaemdal Tools</span></a><nav class="nav" aria-label="주요 메뉴"><a href="/about">소개</a><a href="/guide">가이드</a><a href="/faq">FAQ</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a></nav></header></div>
-<div class="wrap">
-<section class="hero"><span class="badge">PDF Guide</span><h1>PDF 병합·분할 가이드</h1><p>여러 PDF를 합치거나 필요한 페이지만 분리하는 방법입니다.</p><div class="backline"><a class="btn btn-home" href="/">← 홈페이지</a><a class="btn soft" href="/guide">전체 가이드</a></div></section><section class="article guide-detail"><h2>PDF 병합·분할 상세 가이드</h2><div class="summary-box"><p>병합·분할 기능은 여러 문서를 하나로 묶거나 필요한 페이지만 따로 저장할 때 유용합니다.</p></div><div class="toc"><a href="#prepare">파일 준비</a><a href="#merge">병합 사용 순서</a><a href="#split">분할 사용 순서</a><a href="#quality">결과 확인</a><a href="#limits">한계</a></div><div class="guide-block" id="prepare"><h3>파일 준비</h3><p>병합할 PDF는 순서가 중요합니다. 회의 자료, 계약서, 증빙 자료처럼 순서가 의미를 가지는 문서는 업로드 전 파일명을 번호로 정리하면 실수를 줄일 수 있습니다.</p><ul class="check-list"><li>예: 01_표지.pdf, 02_본문.pdf, 03_첨부.pdf</li><li>암호가 걸린 PDF는 먼저 암호 해제 가능 여부를 확인합니다.</li><li>이미지가 많은 PDF는 결과 용량이 커질 수 있습니다.</li></ul></div><div class="guide-block" id="merge"><h3>병합 사용 순서</h3><ol><li>PDF 병합·분할 기능을 엽니다.</li><li>합칠 PDF 파일을 선택합니다.</li><li>화면에 표시된 파일 순서를 확인합니다.</li><li>병합을 실행하고 결과 파일을 다운로드합니다.</li><li>첫 페이지, 마지막 페이지, 중간 연결 지점이 자연스러운지 확인합니다.</li></ol></div><div class="guide-block" id="split"><h3>분할 사용 순서</h3><ol><li>분리할 PDF를 선택합니다.</li><li>필요한 페이지 범위 또는 분리 기준을 입력합니다.</li><li>분할 결과를 다운로드합니다.</li><li>필요 없는 페이지가 포함되지 않았는지 확인합니다.</li></ol><p>페이지 번호는 PDF 뷰어의 표시 방식과 실제 페이지 순서가 다를 수 있으므로, 표지나 목차가 있는 문서는 한 번 더 확인하는 것이 좋습니다.</p></div><div class="guide-block" id="quality"><h3>결과 확인</h3><div class="table-wrap"><table><tr><th>확인 항목</th><th>확인 방법</th></tr><tr><td>페이지 수</td><td>원본과 비교해 누락되거나 중복된 페이지가 없는지 확인합니다.</td></tr><tr><td>순서</td><td>병합된 파일의 앞뒤 흐름이 맞는지 확인합니다.</td></tr><tr><td>표시 품질</td><td>이미지, 글자, 서명, 도장이 깨지지 않았는지 확인합니다.</td></tr></table></div></div><div class="guide-block" id="limits"><h3>한계</h3><p>PDF 내부 구조가 복잡하거나, 특정 프로그램 전용 기능이 포함된 경우 일부 주석·양식·첨부 정보가 예상과 다르게 보일 수 있습니다. 제출용 문서는 최종 파일을 반드시 열어 검토하세요.</p></div><div class="cta"><a class="btn primary" href="/pdf-tools">PDF 도구 홈</a><a class="btn" href="/guide#pdf">PDF 가이드 목록</a></div></section><footer class="footer"><div>© 2026 Sisaemdal Tools. 브라우저에서 바로 사용하는 무료 웹 도구 모음.</div><div><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/contact">문의</a><a href="sitemap.xml">Sitemap</a></div></footer></div></body></html>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h9.5L19 7v14.5H5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 2.5V7H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8" stroke="#ffe45a" stroke-width="3.2" stroke-linecap="round"/><path d="M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>시샘달 도구함</span></a>
+    <nav class="site-nav" aria-label="주요 메뉴"><a href="/#tools">도구</a><a href="/guide" aria-current="page">가이드</a><a href="/faq">자주 묻는 질문</a><a href="/about">소개</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="container"><p class="crumbs"><a href="/">홈</a> / <a href="/guide">가이드</a> / <span aria-current="page">PDF 합치기와 나누기: 제출 서류를 한 파일로 묶을 때 확인할 것</span></p></div>
+<div class="container">
+  <header class="page-head">
+    <h1>PDF 합치기와 나누기: 제출 서류를 한 파일로 묶을 때 확인할 것</h1>
+    <p class="lede">서류 여러 장을 한 파일로 내라는 안내를 받았을 때, 합치는 일 자체보다 순서와 용량, 합친 뒤의 확인에서 실수가 더 많이 납니다.</p>
+    <p class="dates">2026년 7월 3일 작성, 2026년 11월 7일 고침</p>
+  </header>
+  <article class="prose">
+<nav class="toc" aria-label="이 글의 차례"><strong>차례</strong><ol><li><a href="#s1">합치기 전에: 파일 이름으로 순서를 먼저 정한다</a></li><li><a href="#s2">합치기 전에: 암호, 용량, 종이 크기</a></li><li><a href="#s3">나누기: 범위를 적는 법</a></li><li><a href="#s4">합친 뒤에 사라지는 것들</a></li><li><a href="#s5">합친 뒤 30초 확인</a></li><li><a href="#s6">제출용 파일 이름 짓기</a></li><li><a href="#s7">용량이 너무 클 때</a></li></ol></nav>
+
+<p>입사 서류, 지원금 신청, 학교 제출물처럼 "증빙 서류를 PDF 한 개로 올려 주세요"라는 안내는 흔합니다. 파일 세 개를 하나로 붙이는 일은 몇 초면 끝나지만, 막상 제출하고 나서 순서가 바뀌어 있거나 한 장이 빠져 있거나 용량 제한에 걸려 다시 작업하는 경우가 많습니다. 이 글은 그런 일을 줄이기 위해 합치기 전, 합치는 중, 합친 뒤에 각각 볼 것을 정리한 것입니다.</p>
+
+<h2 id="s1">합치기 전에: 파일 이름으로 순서를 먼저 정한다</h2>
+<p>파일을 한꺼번에 선택해서 올리면 대부분의 도구는 파일 목록에 보이는 순서대로 합칩니다. 문제는 그 목록 순서가 운영체제와 프로그램마다 다르다는 점입니다. 윈도우 탐색기는 숫자를 숫자로 읽어 <code>2.pdf</code>를 <code>10.pdf</code>보다 앞에 두지만, 많은 프로그램은 글자 순서로 정렬해서 <code>1, 10, 11, 2, 3</code> 순으로 놓습니다.</p>
+<p>가장 확실한 방법은 처음부터 이름 앞에 두 자리 번호를 붙이는 것입니다.</p>
+<div class="table-wrap"><table>
+<tr><th>이렇게 하면 섞입니다</th><th>이렇게 하면 어디서나 같은 순서</th></tr>
+<tr><td>1_신청서.pdf<br>2_신분증.pdf<br>10_통장사본.pdf</td><td>01_신청서.pdf<br>02_신분증.pdf<br>10_통장사본.pdf</td></tr>
+</table></div>
+<p>열 개를 넘지 않더라도 <code>01</code>부터 시작해 두면 나중에 서류가 늘어도 다시 이름을 고칠 필요가 없습니다. 이 사이트의 병합 도구에서는 목록에 올린 뒤 순서를 확인할 수 있으니, 합치기 버튼을 누르기 전에 위에서부터 한 번 읽어 보는 습관을 들이면 됩니다.</p>
+
+<h2 id="s2">합치기 전에: 암호, 용량, 종이 크기</h2>
+<p>세 가지를 미리 확인하면 대부분의 실패를 피할 수 있습니다.</p>
+<ul>
+<li><strong>암호가 걸린 파일이 섞여 있는지.</strong> 급여명세서, 카드 명세서, 보험 증권처럼 열 때 비밀번호를 묻는 PDF는 그대로 합칠 수 없습니다. 암호를 알고 있다면 <a href="/pdf-tools?tab=password">암호 해제</a>를 먼저 하고 합칩니다.</li>
+<li><strong>올릴 곳의 용량 한도.</strong> 제출 시스템마다 한도가 다르고, 10MB나 20MB로 정해진 곳이 흔합니다. 합치기는 파일을 압축하지 않기 때문에 결과 용량은 원본 용량을 더한 값과 거의 같습니다. 휴대폰으로 찍은 스캔본이 한 장에 3~5MB씩 되는 경우가 많아서, 다섯 장만 넣어도 한도를 넘기 쉽습니다.</li>
+<li><strong>종이 크기가 섞여 있는지.</strong> A4 문서 사이에 영수증 사진이나 미국식 Letter 크기 문서가 끼면, 합친 파일에서 그 쪽만 작거나 크게 보입니다. 제출에는 문제가 없는 경우가 많지만, 인쇄해서 내야 한다면 미리 A4로 맞춰 두는 편이 낫습니다.</li>
+</ul>
+
+<h2 id="s3">나누기: 범위를 적는 법</h2>
+<p>PDF를 나누는 방식은 크게 세 가지입니다. 필요한 쪽만 골라 새 파일로 만들기, 일정한 쪽수마다 자르기, 한 쪽씩 전부 낱장으로 만들기입니다. 이 사이트의 분할 기능은 앞의 두 방식을 지원합니다.</p>
+<p>쪽 범위를 적을 때는 쉼표와 붙임표를 씁니다. 몇 가지 예를 보면 금방 익숙해집니다.</p>
+<div class="table-wrap"><table>
+<tr><th>입력</th><th>뜻</th></tr>
+<tr><td><code>1-3</code></td><td>1, 2, 3쪽</td></tr>
+<tr><td><code>1, 4, 7</code></td><td>1쪽, 4쪽, 7쪽만</td></tr>
+<tr><td><code>2-5, 9</code></td><td>2~5쪽과 9쪽</td></tr>
+<tr><td><code>10-12, 1</code></td><td>10~12쪽 다음에 1쪽 (적은 순서대로 나오는지는 도구에 따라 다름)</td></tr>
+</table></div>
+<p>여기서 말하는 쪽 번호는 PDF 뷰어 아래쪽에 표시되는 순서 번호입니다. 문서 안에 인쇄된 쪽 번호와 다를 수 있다는 점을 기억해 두세요. 표지와 목차가 있는 보고서는 본문 1쪽이 실제로는 PDF의 3쪽이나 4쪽인 경우가 많습니다.</p>
+<p>일정한 쪽수마다 자르기는 스캔한 서류 묶음을 사람별로 나눌 때 유용합니다. 예를 들어 한 사람당 2쪽짜리 신청서 30부를 한 번에 스캔했다면, 2쪽 단위로 자르면 30개 파일이 나옵니다.</p>
+
+<h2 id="s4">합친 뒤에 사라지는 것들</h2>
+<p>브라우저에서 PDF를 합치는 도구는 대개 각 파일의 쪽을 새 문서로 옮겨 붙이는 방식으로 동작합니다. 이 방식에서는 쪽의 내용은 그대로 남지만, 문서 전체에 붙어 있던 정보 일부는 따라오지 않을 수 있습니다.</p>
+<ul>
+<li><strong>책갈피(목차 패널).</strong> 긴 보고서의 왼쪽 목차가 합친 파일에서는 보이지 않을 수 있습니다.</li>
+<li><strong>입력 양식.</strong> 칸을 눌러 글자를 넣는 PDF 양식은 합친 뒤 칸이 사라지거나 입력한 값만 남을 수 있습니다. 양식은 다 채우고 저장한 뒤에 합치는 것이 안전합니다.</li>
+<li><strong>전자서명.</strong> 전자서명이 들어간 PDF는 내용을 조금이라도 바꾸면 서명 검증이 깨집니다. 합치는 것도 바꾸는 것에 해당합니다. 전자서명 문서는 따로 제출할 수 있는지 먼저 확인하세요.</li>
+</ul>
+<p>본문 글자, 표, 이미지, 도장 이미지처럼 쪽 위에 그려진 내용은 그대로 유지됩니다.</p>
+
+<h2 id="s5">합친 뒤 30초 확인</h2>
+<div class="check"><p class="check-title">제출 전에 이것만 봅니다</p>
+<ul>
+<li>전체 쪽수가 원본 쪽수를 더한 값과 같은가</li>
+<li>첫 쪽과 마지막 쪽이 의도한 서류인가</li>
+<li>가로로 누운 쪽이 없는가 (있다면 <a href="/pdf-tools?tab=rotate">회전</a>)</li>
+<li>파일 용량이 제출 한도 안인가</li>
+</ul></div>
+<p>쪽수를 맞춰 보는 것만으로도 한 장 빠뜨리는 실수는 거의 다 잡힙니다.</p>
+
+<h2 id="s6">제출용 파일 이름 짓기</h2>
+<p>받는 사람이 수십, 수백 개 파일을 내려받아 정리한다고 생각하면 파일 이름의 기준이 보입니다. 날짜, 이름, 서류 종류를 앞에서부터 적으면 정렬했을 때 보기 좋습니다.</p>
+<p><code>20261107_홍길동_재직증명서.pdf</code></p>
+<p>날짜는 <code>2026-11-7</code>처럼 쓰지 말고 여덟 자리로 붙여 쓰면 정렬이 깨지지 않습니다. 윈도우에서는 <code>\ / : * ? " &lt; &gt; |</code> 아홉 글자를 파일 이름에 쓸 수 없고, 맥에서 만든 파일은 쓸 수 있더라도 윈도우 사용자에게 넘어가면 이름이 바뀌거나 열리지 않습니다. 괄호와 밑줄, 붙임표는 어디서나 안전합니다. 여러 파일 이름을 한꺼번에 정리해야 한다면 <a href="/document-tools">문서 정리 도구의 파일명 정리</a>를 쓰면 편합니다.</p>
+
+<h2 id="s7">용량이 너무 클 때</h2>
+<p>합친 파일이 한도를 넘는다면 원인은 거의 항상 사진이나 스캔 이미지입니다. 글자로 된 PDF는 수십 쪽이어도 1MB가 안 되는 경우가 많지만, 사진 한 장은 그 자체로 몇 MB가 됩니다. 이럴 때는 PDF를 합치기 전에 원본 사진의 크기를 줄이는 것이 가장 효과가 큽니다. 휴대폰 사진의 긴 변을 2000픽셀 안팎으로 줄이면 A4로 출력해도 글자를 읽는 데 지장이 없고 용량은 몇 분의 일로 줄어듭니다. 자세한 기준은 <a href="/image-tools-guide">사진 용량 줄이기</a>에 정리해 두었습니다.</p>
+
+  </article>
+  <div class="byline"><p>이 글은 시샘달 도구함 운영자가 썼습니다. 틀린 내용이나 바뀐 기준을 발견하면 <a href="/contact">문의 페이지</a>로 알려 주세요. 확인 후 고치고 고친 날짜를 위에 적어 둡니다.</p></div>
+  <section class="related"><h2>같이 보면 좋은 것</h2><ul><li><a href="/pdf-tools?tab=merge-split">PDF 병합·분할 도구 열기</a></li><li><a href="/pdf-password-guide">암호 걸린 PDF는 먼저 해제해야 합니다</a></li><li><a href="/pdf-image-guide">스캔본을 PDF로 만들고 방향을 바로잡는 법</a></li></ul></section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <nav aria-label="사이트 정보">
+      <a href="/about">소개</a><a href="/guide">가이드 목록</a><a href="/faq">자주 묻는 질문</a>
+      <a href="/contact">문의</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+    </nav>
+    <p>시샘달 도구함은 개인이 운영하는 사이트입니다. 도구는 대부분 파일을 서버로 보내지 않고 이용자의 브라우저에서 처리합니다. 결과물은 사용 전에 직접 확인해 주세요.</p>
+    <p>© 2026 시샘달 도구함 · sisaemdal.com</p>
+  </div>
+</footer>
+
+</body>
+</html>
